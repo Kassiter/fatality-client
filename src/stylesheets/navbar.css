@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.navbar__logo{
+   width: 75px;
+   height: 75px;
+   background-image: url('../img/logo.png');
+   /* display: block; */
+   background-size: 100%;
+}
+
+.navbar__pp{
+   display: flex !important;
+   flex-direction: row !important;
+   align-items: center;
+   justify-content: space-around;
+   width: 170px;
+   margin-right: 50px;
+}
+
+.navbar__pp-text{
+   text-transform: uppercase;
+   font-family: 'Roboto', sans-serif;
+   text-align: left;
+   margin-left: 5px;
+}
+
+.steam-icon{
+   font-size: 2em;
+}
+
+.nav-link{
+   text-transform: uppercase;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;
+   color: white !important;
+   
+}
+
+.nav-link:hover{
+   color: rgb(163, 163, 163) !important;
+}
+
+.navbar--container{
+   background-color: rgb(29, 29, 29) !important;
+}

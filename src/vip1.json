@@ -1,0 +1,21 @@
+{
+   "name": "VIP",
+   "features": [
+      {"icon": "BsArrowClockwise", "description": "Воскрешение", "misc": "×1"},
+      {"icon": "GiFalling", "description": "Без урона от падения"},
+      {"icon": "GiStrong", "description": "Выносливость", "tooltip": "Не будет стоппить при получении урона"},
+      {"icon": "GiFishMonster", "description": "Возможность выбрать любой скин"},
+      {"icon": "FaHeartbeat", "description": "Восстановление HP", "tooltip": "10HP/Минута"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом"},
+      {"icon": "RiCoinsLine", "description": "Множитель кредитов", "misc": "×2"},
+      {"icon": "GiRainbowStar", "description": "Трейлы"},
+      {"icon": "BsChatDots", "description": "Цветной чат", "tooltip": "Настройка цвета исходящих сообщений"},
+      {"icon": "RiHeartAddLine", "description": "125HP при старте"},
+      {"icon": "IoMdFlashOff", "description": "Anti-flash", "tooltip": "Не слепит от союзников"},
+      {"icon": "RiMedalLine", "description": "Значки в табе", "tooltip": "DreamHack и другие"}
+   ],
+   "cost_month": 70,
+   "cost_lifetime": 302,
+   "link_month": "http://primearea.biz",
+   "link_lifetime": "http://google.com"
+}

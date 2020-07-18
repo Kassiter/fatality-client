@@ -6,6 +6,7 @@ import '../../stylesheets/previlegies.css'
 import { BsArrowClockwise } from 'react-icons/bs';
 import { FaHeartbeat } from 'react-icons/fa';
 import { FaFireAlt } from 'react-icons/fa';
+import { FaUserCog } from 'react-icons/fa';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { GiFalling } from 'react-icons/gi';
 import { GiStrong } from 'react-icons/gi';
@@ -13,7 +14,12 @@ import { GiFishMonster } from 'react-icons/gi';
 import { GiRainbowStar } from 'react-icons/gi';
 import { BsChatDots } from 'react-icons/bs';
 import { RiHeartAddLine } from 'react-icons/ri'
+import { RiCoinsLine } from 'react-icons/ri'
 import { RiMedalLine } from 'react-icons/ri'
+import { FiUserMinus } from 'react-icons/fi'
+import { GiBeamsAura } from 'react-icons/gi'
+import { GiJumpAcross } from 'react-icons/gi'
+import { IoMdFlashOff } from 'react-icons/io'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
@@ -35,7 +41,13 @@ class CardCustom extends React.Component {
          GiRainbowStar: GiRainbowStar,
          BsChatDots: BsChatDots,
          RiHeartAddLine: RiHeartAddLine,
-         RiMedalLine: RiMedalLine
+         RiMedalLine: RiMedalLine,
+         FiUserMinus: FiUserMinus,
+         GiBeamsAura: GiBeamsAura,
+         RiCoinsLine: RiCoinsLine,
+         IoMdFlashOff: IoMdFlashOff,
+         GiJumpAcross: GiJumpAcross,
+         FaUserCog: FaUserCog
       }
    }
 
@@ -56,7 +68,7 @@ class CardCustom extends React.Component {
        this.props.previliege.features.forEach(feature => {
           features.push( 
             <Card.Text className="previlegies-card__text">
-               {React.createElement(this.state[feature.icon], null)}
+               {React.createElement(this.state[feature.icon], null)}&nbsp;
                {feature.description} <span className="text-muted">{feature.misc ? feature.misc : null}</span>&nbsp;
                {feature.tooltip ? this.renderTooltipBase(feature.tooltip) : false}
             </Card.Text>
@@ -85,7 +97,7 @@ class CardCustom extends React.Component {
                {this.parseFeatures()}
             </Card.Body>
             <Card.Footer>
-               <Button variant="success" id="vip-buy" href={this.state.toggleChecked ? this.props.previliege.link_month : this.props.previliege.link_lifetime}>{this.state.amountMonth}₽</Button>
+               <Button variant="success" id="vip-buy" href={this.state.toggleChecked ? this.props.previliege.link_month : this.props.previliege.link_lifetime} className="btn-price">{this.state.amountMonth}₽</Button>
             </Card.Footer>
             <Card.Footer id="switcher">
                <BootstrapSwitchButton 

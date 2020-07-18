@@ -1,19 +1,11 @@
 import CardDeck from 'react-bootstrap/CardDeck';
-import Card from 'react-bootstrap/Card';
 import CardCustom from './cardCustom';
-import Button from 'react-bootstrap/Button';
 import React from "react";
 import '../../stylesheets/previlegies.css'
-import { BsArrowClockwise } from 'react-icons/bs';
-import { FaHeartbeat } from 'react-icons/fa';
-import { FaFireAlt } from 'react-icons/fa';
-import { AiOutlineQuestionCircle } from 'react-icons/ai';
-import { GiFalling } from 'react-icons/gi';
-import { GiStrong } from 'react-icons/gi';
-import { GiFishMonster } from 'react-icons/gi';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
-import BootstrapSwitchButton from 'bootstrap-switch-button-react';
+import vip1 from '../../vip1.json'
+import supreme from '../../supreme.json'
+import admin_plus from '../../admin_plus.json'
 
 class Privilegies extends React.Component {
    constructor(props){
@@ -21,26 +13,14 @@ class Privilegies extends React.Component {
       this.state = {
          toggleChecked: true,
          amountMonth: 70,
-         test: {
-            "name": "VIP",
-            "features": [
-               {"icon": "BsArrowClockwise", "description": "Воскрешение", "misc": "×1"},
-               {"icon": "GiFalling", "description": "Без урона от падения"},
-               {"icon": "GiStrong", "description": "Выносливость", "tooltip": "Не будет стоппить при получении урона"},
-               {"icon": "GiFishMonster", "description": "Возможность выбрать любой скин"},
-               {"icon": "FaHeartbeat", "description": "Восстановление HP", "tooltip": "10HP/Минута"},
-               {"icon": "FaFireAlt", "description": "Огонь при ударе ножом"},
-               {"icon": "GiRainbowStar", "description": "Трейлы"},
-               {"icon": "BsChatDots", "description": "Цветной чат", "tooltip": "Настройка цвета исходящих сообщений"},
-               {"icon": "RiHeartAddLine", "description": "125HP при старте"},
-               {"icon": "RiMedalLine", "description": "Значки в табе", "tooltip": "DreamHack и другие"}
-            ],
-            "cost_month": 70,
-            "cost_lifetime": 302,
-            "link_month": "http://primearea.biz",
-            "link_lifetime": "http://google.com"
-         }
+         vip: vip1,
+         supreme: supreme,
+         admin_plus: admin_plus
       }
+   }
+
+   componentDidMount(){
+      console.log(vip1)
    }
 
    renderTooltip = (props) => {
@@ -65,39 +45,13 @@ class Privilegies extends React.Component {
 
     render() {
         return(
-            <div className="container previlegies-section__container">
+            <div className="container previlegies-section__container" id="#previlegies">
                <h1>Привилегии</h1>
                <CardDeck>
-                  <CardCustom previliege={this.state.test} />
-                  <Card>
-                     <div className="previlegies-card__top card__top--1">
-                        <h2>Supreme</h2>
-                     </div>
-                     <Card.Body>
-                        <Card.Text>
-                        This card has supporting text below as a natural lead-in to additional
-                        content.{' '}
-                        </Card.Text>
-                     </Card.Body>
-                     <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                     </Card.Footer>
-                  </Card>
-                  <Card>
-                     <div className="previlegies-card__top card__top--1">
-                        <h2>Admin+</h2>
-                     </div>
-                     <Card.Body>
-                        <Card.Text>
-                        This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This card has even longer content than the first to
-                        show that equal height action.
-                        </Card.Text>
-                     </Card.Body>
-                     <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                     </Card.Footer>
-                  </Card>
+                  <CardCustom previliege={this.state.vip} />
+                  <CardCustom previliege={this.state.supreme} />
+                  <CardCustom previliege={this.state.admin_plus} />
+                  <CardCustom previliege={this.state.vip} />
                </CardDeck>
             </div>
         );

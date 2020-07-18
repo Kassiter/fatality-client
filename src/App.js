@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/header/header';
 import Slider from './components/slider/slider';
+import Individuals from './components/individuals/individuals';
 import Privilegies from './components/privilegies/privilegies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './stylesheets/global.css'
@@ -17,10 +18,14 @@ class App extends React.Component {
   
   render(){
     return (
-      <div className="App">
+      <div className="App d-flex flex-column">
         <Header />
         <Slider />
         <Privilegies />
+        <div className='splitter'>
+          <div className='splitter__clip'></div>
+        </div>
+        <Individuals/>
       </div>
     );
   }

@@ -1,0 +1,70 @@
+.individuals-section__container{
+   width: 100%;
+   height: 500px;
+   background-color: #131313;
+}
+
+.individuals-section__container h1{
+   color: white;
+   padding: 15px;
+}
+
+.individuals-section__cards-container{
+   margin-top: 30px;
+   width: 100%;
+   display: flex;
+   justify-content: space-around;
+   flex-direction: row !important;
+}
+
+.individuals-card{
+   border-radius: 20px;
+   width: 500px;
+   height: 300px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+}
+
+.personal-skin{
+   background-image: url('../img/personal-skins.jpg');
+   background-size: 100% 100%;
+}
+
+.credits{
+   background-image: url('../img/credits.jpg');
+   background-size: 100% 100%;
+}
+
+.trails{
+   background-image:
+   linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+   url('../img/trails.jpg');
+   background-size: 100% 100%;
+}
+
+.individuals-card h2{
+   line-height: 5px;
+   color: white;
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 300;
+   font-size: 3em;
+}
+
+.individuals-card .btn-price{
+   font-size: 1.5em;
+}
+
+#ind-card .btn-primary, #ind-card .btn-danger{
+   border-radius: 20px !important;
+}
+
+#ind-card .btn-light{
+   border-radius: 50%;
+   width: 35px;
+}
+
+#ind-card .switch{
+   width: 140px !important;
+}

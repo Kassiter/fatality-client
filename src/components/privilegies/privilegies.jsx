@@ -6,6 +6,7 @@ import Tooltip from 'react-bootstrap/Tooltip'
 import vip1 from '../../vip1.json'
 import supreme from '../../supreme.json'
 import admin_plus from '../../admin_plus.json'
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 class Privilegies extends React.Component {
    constructor(props){
@@ -45,7 +46,8 @@ class Privilegies extends React.Component {
 
     render() {
         return(
-            <div className="container previlegies-section__container" id="#previlegies">
+            <div className="container previlegies-section__container">
+               <ScrollableAnchor id={'privilegies'}><div></div></ScrollableAnchor>
                <h1>Привилегии</h1>
                <CardDeck>
                   <CardCustom previliege={this.state.vip} />

@@ -17,6 +17,7 @@ class Individuals extends React.Component {
                <div className="individuals-section__cards-container">
                   <IndividualsCard 
                      name="Personal skin"
+                     tooltip="Персональный скин на Ваш выбор. доступен только Вам"
                      background="personal-skin"
                      link_month="http://google.com"
                      link_lifetime="http://google.com"
@@ -41,6 +42,8 @@ class Individuals extends React.Component {
 
                   <IndividualsCard 
                      name="Personal trail"
+                     tooltip="Персональный трейл на Ваш выбор. Доступен только Вам. Пердоставляется услуга создания из картинки"
+                     tooltipPlacement="left"
                      background="trails"
                      link_month="http://google.com"
                      link_lifetime="http://google.com"

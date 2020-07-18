@@ -7,6 +7,7 @@ import Individuals from './components/individuals/individuals';
 import Privilegies from './components/privilegies/privilegies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './stylesheets/global.css'
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 class App extends React.Component {
   componentDidMount(){
@@ -23,6 +24,7 @@ class App extends React.Component {
         <Slider />
         <Privilegies />
         <div className='splitter'>
+          <ScrollableAnchor id={'personal-stuff'}><div></div></ScrollableAnchor>
           <div className='splitter__clip'></div>
         </div>
         <Individuals/>

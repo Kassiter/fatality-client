@@ -7,6 +7,7 @@ import vip1 from '../../vip1.json'
 import supreme from '../../supreme.json'
 import admin_plus from '../../admin_plus.json'
 import ScrollableAnchor from 'react-scrollable-anchor';
+import axios from 'axios';
 
 class Privilegies extends React.Component {
    constructor(props){
@@ -14,14 +15,15 @@ class Privilegies extends React.Component {
       this.state = {
          toggleChecked: true,
          amountMonth: 70,
-         vip: vip1,
-         supreme: supreme,
-         admin_plus: admin_plus
+         privilieges: []
       }
    }
 
    componentDidMount(){
-      console.log(vip1)
+    axios.get(`http://localhost:3000/privilieges_all`)
+    .then(res => {
+      this.setState({ privilieges: res.data });
+    })
    }
 
    renderTooltip = (props) => {
@@ -44,16 +46,21 @@ class Privilegies extends React.Component {
       this.setState({ toggleChecked: !this.state.toggleChecked, amountMonth: !this.state.toggleChecked ? 70 : 300 })
     }
 
+    renderCards= () => {
+      const result = []
+      this.state.privilieges.forEach(priviliege => {
+        result.push(<CardCustom previliege={priviliege} />)
+      });
+      return result;
+    }
+
     render() {
         return(
             <div className="container previlegies-section__container">
                <ScrollableAnchor id={'privilegies'}><div></div></ScrollableAnchor>
                <h1>Привилегии</h1>
                <CardDeck>
-                  <CardCustom previliege={this.state.vip} />
-                  <CardCustom previliege={this.state.supreme} />
-                  <CardCustom previliege={this.state.admin_plus} />
-                  <CardCustom previliege={this.state.vip} />
+                  {this.renderCards()}
                </CardDeck>
             </div>
         );

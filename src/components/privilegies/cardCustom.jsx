@@ -64,9 +64,9 @@ class CardCustom extends React.Component {
     }
 
     parseFeatures = () =>{
-       let features = [];
-       this.props.previliege.features.forEach(feature => {
-          features.push( 
+       let privilieges_features = [];
+       this.props.previliege.privilieges_features.forEach(feature => {
+          privilieges_features.push( 
             <Card.Text className="previlegies-card__text">
                {React.createElement(this.state[feature.icon], null)}&nbsp;
                {feature.description} <span className="text-muted">{feature.misc ? feature.misc : null}</span>&nbsp;
@@ -74,7 +74,7 @@ class CardCustom extends React.Component {
             </Card.Text>
          );
        });
-       return(features);
+       return(privilieges_features);
     }
 
     renderTooltipBase = (text) => {

@@ -7,7 +7,7 @@ import { FaSteamSymbol } from 'react-icons/fa';
 
 class Header extends React.Component {
     signIn = () => {
-        require('dotenv').config()
+        require('dotenv').config();
         alert(process.env.API_URL)
     }
 

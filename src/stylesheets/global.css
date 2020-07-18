@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 .btn-danger{
    background-color: #c60000;
    border-color: #c60000;
@@ -7,4 +6,24 @@
 
 .btn-danger:hover{
    background-color: #9b0000;
+}
+
+h1{
+   font-size: 3em;
+   text-transform: uppercase;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;
+   color: black
+}
+
+body::-webkit-scrollbar {
+   width: 7px; 
+}
+body::-webkit-scrollbar-track {
+   background: transparent; 
+}
+body::-webkit-scrollbar-thumb {
+   background-color: #c60000;
+   border-radius: 20px;
+   max-height: 50px !important;
 }

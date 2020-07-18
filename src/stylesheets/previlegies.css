@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap');
+
+.previlegies-section__container{
+   min-width: 100%;
+   min-height: 600px;
+   justify-content: space-around !important;
+   align-items: space-around !important;
+}
+
+.previlegies-section__container .card-deck{
+   width: 100%;
+   height: 400px;
+   justify-content: center;
+}
+
+.previlegies-section__container .card{
+   max-width: 400px !important;
+   min-height: 500px !important;
+}
+
+.previlegies-section__container h1{
+   padding: 10px;
+}
+
+.previlegies-section__container .previlegies-card__top{
+   width: 100%;
+   height: 100px;
+   background-size: 100% 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.previlegies-section__container .card__top--1{
+   background-image: 
+   linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+   url('../img/card-bg.png');
+   background-size: 100% 120%;
+}
+
+.previlegies-card__top h2{
+   text-transform: uppercase;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;
+   font-size: 3em;
+   color: white !important;
+}
+
+.previlegies-section__container .card-text{
+   text-align: left;
+}
+
+.previlegies-card__text{
+   font-family: 'Montserrat', sans-serif;
+   font-weight: 300 !important;
+   line-height: 90%;
+   font-size: 1.5em;
+}
+
+.previlegies-section__container .card-body{
+   overflow: auto;
+   max-height: 350px !important;
+}
+
+.card-body::-webkit-scrollbar {
+   width: 7px !important;
+}
+.card-body::-webkit-scrollbar-track {
+   background: transparent !important;
+}
+.card-body::-webkit-scrollbar-thumb {
+   background-color: #7a7a7a !important; 
+   border-radius: 20px !important; 
+   max-height: 50px !important;
+}
+
+.feature__expl{
+   font-size: 0.3em;
+}
+
+.feature__icon{
+   color: #c60000;
+}
+
+.cardToggle{
+   width: 600px !important;
+}
+
+#switcher .btn-primary, #switcher .btn-danger{
+   border-radius: 20px !important;
+}
+
+#switcher .btn-light{
+   border-radius: 50%;
+   width: 35px;
+}
+
+#switcher{
+   border-top: none;
+}

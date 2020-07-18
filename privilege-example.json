@@ -1,0 +1,18 @@
+{
+   "name": "VIP",
+   "features": [
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"},
+      {"icon": "FaFireAlt", "description": "Огонь при ударе ножом", "tooltip": "Test"}
+   ],
+   "cost_month": 70,
+   "cost_lifetime": 300,
+   "link_month": "http://primearea.biz",
+   "link_lifetime": "http://primearea.biz"
+}

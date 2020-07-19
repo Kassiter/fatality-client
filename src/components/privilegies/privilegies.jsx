@@ -8,7 +8,6 @@ import supreme from '../../supreme.json'
 import admin_plus from '../../admin_plus.json'
 import ScrollableAnchor from 'react-scrollable-anchor';
 import axios from 'axios';
-
 import enviroment from '../../enviroment'
 
 class Privilegies extends React.Component {

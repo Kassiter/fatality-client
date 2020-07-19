@@ -6,6 +6,7 @@ import '../../stylesheets/navbar.css'
 import { FaSteamSymbol } from 'react-icons/fa';
 import axios from "axios";
 import PersonalPage from "../personal-page/personalPage";
+import enviroment from '../../enviroment'
 
 class Header extends React.Component {
     constructor(props){
@@ -29,7 +30,7 @@ class Header extends React.Component {
             );
         }
         return(
-            <Button variant="danger" className="navbar__pp" href="http://localhost:3000/auth/steam">
+            <Button variant="danger" className="navbar__pp" href={`${enviroment.backend_url}/auth/steam`}>
                 <FaSteamSymbol className="steam-icon"/> 
                 <div className="navbar__pp-text">войти<br/>через Steam</div>
             </Button>

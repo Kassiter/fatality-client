@@ -46,7 +46,7 @@ class IndividualsCard extends React.Component {
             <OverlayTrigger
                placement='top'
                delay={{ show: 250, hide: 400 }}
-               overlay={this.renderTooltip(this.props, 'Необходимо войти, чтобы преобрести данный товар')}
+               overlay={this.renderTooltip(this.props, 'Необходимо войти, чтобы приобрести данный товар')}
             >
                <div>
                <Button variant="success" disabled href={this.state.toggleChecked ? this.props.option_basic_link : this.props.option_advanced_link} className="btn-price">

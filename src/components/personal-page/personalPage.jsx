@@ -35,7 +35,7 @@ class PersonalPage extends React.Component {
            </p>
          </Modal.Body>
          <Modal.Footer>
-           <Button onClick={this.logout} variant="danger">Выход</Button>
+           <Button onClick={this.logout} variant="danger">Выход из учётной записи</Button>
          </Modal.Footer>
        </Modal>)
    }

@@ -11,6 +11,8 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 
 class App extends React.Component {
   componentDidMount(){
+    console.log(process.env.NODE_ENV)
+    
     if (window.location.search.includes('ref')){
       var url = new URL(window.location);
       localStorage.setItem('ref', url.searchParams.get("ref"));

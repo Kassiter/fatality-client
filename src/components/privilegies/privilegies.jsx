@@ -57,7 +57,6 @@ class Privilegies extends React.Component {
     render() {
         return(
             <div className="container previlegies-section__container">
-               <ScrollableAnchor id={'privilegies'}><div></div></ScrollableAnchor>
                <h1>Привилегии</h1>
                <CardDeck>
                   {this.renderCards()}

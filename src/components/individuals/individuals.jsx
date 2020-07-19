@@ -1,13 +1,42 @@
 import React from "react";
 import '../../stylesheets/individuals.css'
-import IndividualsCard from "./individualsCard"
+import IndividualsCard from "./individualsCard";
+import axios from 'axios';
 
 class Individuals extends React.Component {
    constructor(props){
       super(props);
       this.state = {
-         
+         personal_features: []
       }
+   }
+
+   componentDidMount(){
+      axios.get(`http://localhost:3000/personal_features`)
+      .then(res => {
+        this.setState({ personal_features: res.data });
+      })
+   }
+
+   renderPersonalFeatures = () => {
+      let result = []
+      this.state.personal_features.forEach(feature => {
+         result.push(<IndividualsCard 
+            name={feature.name}
+            tooltip={feature.tooltip}
+            login_locked={feature.login_locked}
+            tooltipPlacement={feature.name == 'Personal trail' ? 'left' : 'right'}
+            background="personal-skin"
+            img_url={feature.img_url}
+            option_basic_link={feature.option_basic_link}
+            option_advanced_link={feature.option_advanced_link}
+            option_basic_cost={feature.option_basic_cost}
+            option_advanced_cost={feature.option_advanced_cost}
+            option_basic_name={feature.option_name_basic}
+            option_advanced_name={feature.option_name_advanced}
+         />);
+      });
+      return result;
    }
 
     render() {
@@ -15,44 +44,7 @@ class Individuals extends React.Component {
             <div className="individuals-section__container">
                <h1>персональные товары</h1>
                <div className="individuals-section__cards-container">
-                  <IndividualsCard 
-                     name="Personal skin"
-                     tooltip="Персональный скин на Ваш выбор. доступен только Вам"
-                     background="personal-skin"
-                     link_month="http://google.com"
-                     link_lifetime="http://google.com"
-                     link_lifetime="http://google.com"
-                     cost_month="50"
-                     cost_lifetime="350"
-                     onlabel="Месяц"
-                     offlabel="Навсегда"
-                  />
-
-                  <IndividualsCard 
-                     name="Credits"
-                     background="credits"
-                     link_month="http://google.com"
-                     link_lifetime="http://google.com"
-                     link_lifetime="http://google.com"
-                     cost_month="50"
-                     cost_lifetime="350"
-                     onlabel="25k"
-                     offlabel="50k"
-                  />
-
-                  <IndividualsCard 
-                     name="Personal trail"
-                     tooltip="Персональный трейл на Ваш выбор. Доступен только Вам. Пердоставляется услуга создания из картинки"
-                     tooltipPlacement="left"
-                     background="trails"
-                     link_month="http://google.com"
-                     link_lifetime="http://google.com"
-                     link_lifetime="http://google.com"
-                     cost_month="50"
-                     cost_lifetime="350"
-                     onlabel="Месяц"
-                     offlabel="Навсегда"
-                  />
+                  {this.renderPersonalFeatures()}
                </div>
             </div>
         );

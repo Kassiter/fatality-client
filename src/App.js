@@ -22,7 +22,9 @@ class App extends React.Component {
       <div className="App d-flex flex-column">
         <Header />
         <Slider />
-        <Privilegies />
+        <ScrollableAnchor id={'privilegies'} >
+          <Privilegies />
+        </ScrollableAnchor>
         <div className='splitter'>
           <ScrollableAnchor id={'personal-stuff'}><div></div></ScrollableAnchor>
           <div className='splitter__clip'></div>

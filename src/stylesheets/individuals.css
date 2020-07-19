@@ -37,13 +37,6 @@
    background-size: 100% 100%;
 }
 
-.trails{
-   background-image:
-   linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-   url('../img/trails.jpg');
-   background-size: 100% 100%;
-}
-
 .individuals-card h2{
    line-height: 5px;
    color: white;

@@ -30,7 +30,7 @@ class Header extends React.Component {
             );
         }
         return(
-            <Button variant="danger" className="navbar__pp" href={`${enviroment.backend_url}/auth/steam`}>
+            <Button variant="danger" className="navbar__pp" href={`${enviroment.backend_url}auth/steam`}>
                 <FaSteamSymbol className="steam-icon"/> 
                 <div className="navbar__pp-text">войти<br/>через Steam</div>
             </Button>

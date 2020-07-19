@@ -8,7 +8,6 @@ import Privilegies from './components/privilegies/privilegies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './stylesheets/global.css'
 import ScrollableAnchor from 'react-scrollable-anchor';
-var steam = require('steamidconvert')()
 
 class App extends React.Component {
   componentDidMount(){
@@ -20,7 +19,7 @@ class App extends React.Component {
     if (window.location.search.includes('steam_data')){
       var url = new URL(window.location);
       let steamData = JSON.parse(url.searchParams.get("steam_data"));
-      localStorage.setItem('steam_id', steam.convertToText(steamData['steamid']));
+      localStorage.setItem('steam_id', steamData['steamID']);
       localStorage.setItem('steam_id64', steamData['steamid']);
       localStorage.setItem('nickname', steamData['personaname']);
       localStorage.setItem('profileurl', steamData['profileurl']);

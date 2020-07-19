@@ -2,6 +2,7 @@ import React from "react";
 import '../../stylesheets/individuals.css'
 import IndividualsCard from "./individualsCard";
 import axios from 'axios';
+import enviroment from '../../enviroment'
 
 class Individuals extends React.Component {
    constructor(props){
@@ -12,7 +13,7 @@ class Individuals extends React.Component {
    }
 
    componentDidMount(){
-      axios.get(`http://localhost:3000/personal_features`)
+      axios.get(`${enviroment.backend_url}/personal_features`)
       .then(res => {
         this.setState({ personal_features: res.data });
       })

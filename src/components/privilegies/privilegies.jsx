@@ -9,6 +9,8 @@ import admin_plus from '../../admin_plus.json'
 import ScrollableAnchor from 'react-scrollable-anchor';
 import axios from 'axios';
 
+import enviroment from '../../enviroment'
+
 class Privilegies extends React.Component {
    constructor(props){
       super(props);
@@ -20,7 +22,7 @@ class Privilegies extends React.Component {
    }
 
    componentDidMount(){
-    axios.get(`http://localhost:3000/privilieges_all`)
+    axios.get(`${enviroment.backend_url}/privilieges_all`)
     .then(res => {
       this.setState({ privilieges: res.data });
     })

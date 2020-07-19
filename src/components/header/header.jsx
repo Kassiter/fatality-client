@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Nav from 'react-bootstrap/Nav'
 import '../../stylesheets/navbar.css'
 import { FaSteamSymbol } from 'react-icons/fa';
+import { FaUserAlt } from 'react-icons/fa';
 import axios from "axios";
 import PersonalPage from "../personal-page/personalPage";
 import enviroment from '../../enviroment'
@@ -24,13 +25,13 @@ class Header extends React.Component {
         if(localStorage.getItem('steam_id')){
             return(
                 <Button variant="danger" className="navbar__pp" onClick={this.toggleModal}>
-                    <FaSteamSymbol className="steam-icon"/> 
+                    <FaUserAlt className="steam-icon"/> 
                     <div className="navbar__pp-text">Личный кабинет</div>
                 </Button>
             );
         }
         return(
-            <Button variant="danger" className="navbar__pp" href={`${enviroment.backend_url}auth/steam`}>
+            <Button variant="danger" className="navbar__pp" href={`${enviroment.backend_url}/auth/steam`}>
                 <FaSteamSymbol className="steam-icon"/> 
                 <div className="navbar__pp-text">войти<br/>через Steam</div>
             </Button>

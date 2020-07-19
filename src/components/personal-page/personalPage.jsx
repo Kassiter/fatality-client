@@ -1,6 +1,8 @@
 import React from "react";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import { FiLogOut } from 'react-icons/fi';
+import '../../stylesheets/personal_page.css'
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -20,10 +22,10 @@ class PersonalPage extends React.Component {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            id="personal-page"
          >
-         <Modal.Header closeButton>
+         <Modal.Header closeButton className='personal-page__header'>
            <Modal.Title id="contained-modal-title-vcenter">
-             Modal heading
            </Modal.Title>
          </Modal.Header>
          <Modal.Body>
@@ -35,7 +37,7 @@ class PersonalPage extends React.Component {
            </p>
          </Modal.Body>
          <Modal.Footer>
-           <Button onClick={this.logout} variant="danger">Выход из учётной записи</Button>
+           <Button onClick={this.logout} variant="danger"><FiLogOut className="h5 mt-2"/> Выход из учётной записи</Button>
          </Modal.Footer>
        </Modal>)
    }

@@ -21,7 +21,7 @@ class App extends React.Component {
     if (window.location.search.includes('steam_data')){
       var url = new URL(window.location);
       let steamData = JSON.parse(url.searchParams.get("steam_data"));
-      localStorage.setItem('steam_id', steamData['steamID']);
+      localStorage.setItem('steam_id', steamData['steamID'].replace('STEAM_0', 'STEAM_1'));
       localStorage.setItem('steam_id64', steamData['steamid']);
       localStorage.setItem('nickname', steamData['personaname']);
       localStorage.setItem('profileurl', steamData['profileurl']);

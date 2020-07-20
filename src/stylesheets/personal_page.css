@@ -18,3 +18,24 @@
 #personal-page .personal-page__header span{
    color: white;
 }
+
+#personal-page .navbar-nav{
+   flex-direction: row;
+   justify-content: space-around;
+   width: 400px;
+}
+
+#personal-page .nav-link.active{
+   background-color: #c60000;
+   padding-left: 2px;
+   padding-right: 2px;
+}
+
+#personal-page .nav-link.active:hover{
+   background-color: #920000;
+   color: white !important;
+}
+
+#personal-page .tab-pane{
+   margin-top: 10px;
+}

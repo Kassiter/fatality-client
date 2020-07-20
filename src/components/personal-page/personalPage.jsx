@@ -2,7 +2,11 @@ import React from "react";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import { FiLogOut } from 'react-icons/fi';
+import PersonalItemForm from './personalItemForm'
 import '../../stylesheets/personal_page.css'
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
+import TabContainer from 'react-bootstrap/TabContainer'
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -24,20 +28,31 @@ class PersonalPage extends React.Component {
             centered
             id="personal-page"
          >
-         <Modal.Header closeButton className='personal-page__header'>
-           <Modal.Title id="contained-modal-title-vcenter">
-           </Modal.Title>
-         </Modal.Header>
+         {/* <Modal.Header closeButton className='personal-page__header'>
+         </Modal.Header> */}
          <Modal.Body>
-           <h4>Centered Modal</h4>
-           <p>
-             Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-             dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-             consectetur ac, vestibulum at eros.
-           </p>
+
+            <Tabs >
+               <Tab eventKey="home" title="Главная">
+                  <h4>Centered Modal</h4>
+                  <p>
+                     Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                     dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                     consectetur ac, vestibulum at eros.
+                  </p>
+               </Tab>
+               <Tab eventKey="profile" title="Персональный товар">
+                  <PersonalItemForm />
+               </Tab>
+               <Tab eventKey="contact" title="Contact" disabled>
+
+               </Tab>
+            </Tabs>
+           
          </Modal.Body>
-         <Modal.Footer>
+         <Modal.Footer className='justify-content-between'>
            <Button onClick={this.logout} variant="danger"><FiLogOut className="h5 mt-2"/> Выход из учётной записи</Button>
+           <Button onClick={this.props.onHide} variant="light">Закрыть</Button>
          </Modal.Footer>
        </Modal>)
    }

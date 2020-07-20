@@ -17,6 +17,14 @@ class Header extends React.Component {
         }
     }
 
+    componentDidUpdate(){
+        if (this.state.modalToggled){
+            document.getElementById('root').classList.add("blurred");
+        }else{
+            document.getElementById('root').classList.remove("blurred");
+        }
+    }
+
     componentDidMount(){
         require('dotenv').config()
     }

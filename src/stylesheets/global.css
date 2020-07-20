@@ -6,6 +6,10 @@
    border-color: #c60000;
 }
 
+.blurred{
+   filter: blur(2px);
+}
+
 .btn-danger:hover{
    background-color: #9b0000;
 }

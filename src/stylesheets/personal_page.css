@@ -39,3 +39,18 @@
 #personal-page .tab-pane{
    margin-top: 10px;
 }
+
+.giveaway__main-content .gift-icon{
+   width: 250px;
+   height: 250px;
+   margin: 40px;
+   background-image: url('../img/gift.svg');
+   background-size: 100% 100%;
+}
+
+.giveaway__main-content{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}

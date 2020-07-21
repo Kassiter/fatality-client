@@ -8,9 +8,34 @@ import Privilegies from './components/privilegies/privilegies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './stylesheets/global.css'
 import ScrollableAnchor from 'react-scrollable-anchor';
+import OpenTestModal from './components/openTestModal/openTestModal'
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      modalToggled: true
+    }
+  }
+
+  toggleModal = () =>{
+    this.setState({modalToggled: !this.state.modalToggled})
+  }
+  
+  componentDidUpdate(){
+    if (this.state.modalToggled){
+      document.getElementById('root').classList.add("blurred");
+    }else{
+        document.getElementById('root').classList.remove("blurred");
+    }
+  }
+
   componentDidMount(){
+    if (this.state.modalToggled){
+      document.getElementById('root').classList.add("blurred");
+    }else{
+        document.getElementById('root').classList.remove("blurred");
+    }
     console.log(process.env.NODE_ENV)
     
     if (window.location.search.includes('ref')){
@@ -33,6 +58,10 @@ class App extends React.Component {
   render(){
     return (
       <div className="App d-flex flex-column">
+        <OpenTestModal
+                  show={this.state.modalToggled}
+                  onHide={() => this.toggleModal(false)}
+              />
         <Header />
         <Slider />
         <ScrollableAnchor id={'privilegies'} >

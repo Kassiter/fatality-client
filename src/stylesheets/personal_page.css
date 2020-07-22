@@ -22,7 +22,7 @@
 #personal-page .navbar-nav{
    flex-direction: row;
    justify-content: space-around;
-   width: 5200px;
+   width: 520px;
 }
 
 #personal-page .nav-link.active{

@@ -44,10 +44,17 @@ class PersonalPage extends React.Component {
                <Tab eventKey="profile" title="Персональный товар">
                   <PersonalItemForm />
                </Tab>
-               <Tab eventKey="contact" title="Розыгрыши">
+               <Tab eventKey="giveaway" title="Розыгрыши">
                   <div className="giveaway__main-content">
-                     <div className="gift-icon"></div>
+                     <div className="peronal-page__icon gift-icon"></div>
                      <h4>На данный момент нет розгрышей</h4>
+                  </div>
+               </Tab>
+
+               <Tab eventKey="moderators" title="Заявка на пост модератора">
+                  <div className="giveaway__main-content">
+                     <div className="peronal-page__icon shield-icon"></div>
+                     <h4>На данный момент набор не проводится</h4>
                   </div>
                </Tab>
             </Tabs>

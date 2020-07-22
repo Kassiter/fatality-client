@@ -40,12 +40,20 @@
    margin-top: 10px;
 }
 
-.giveaway__main-content .gift-icon{
+.giveaway__main-content .peronal-page__icon{
    width: 250px;
    height: 250px;
    margin: 40px;
    background-image: url('../img/gift.svg');
    background-size: 100% 100%;
+}
+
+.gift-icon{
+   background-image: url('../img/gift.svg');
+}
+
+.shield-icon{
+   background-image: url('../img/shield.svg');
 }
 
 .giveaway__main-content{

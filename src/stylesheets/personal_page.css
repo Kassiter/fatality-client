@@ -22,7 +22,7 @@
 #personal-page .navbar-nav{
    flex-direction: row;
    justify-content: space-around;
-   width: 400px;
+   width: 5200px;
 }
 
 #personal-page .nav-link.active{
@@ -44,7 +44,6 @@
    width: 250px;
    height: 250px;
    margin: 40px;
-   background-image: url('../img/gift.svg');
    background-size: 100% 100%;
 }
 

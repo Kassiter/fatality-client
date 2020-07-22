@@ -51,7 +51,7 @@ class PersonalPage extends React.Component {
                   </div>
                </Tab>
 
-               <Tab eventKey="moderators" title="Заявка на пост модератора">
+               <Tab eventKey="moderators" title="Модерация">
                   <div className="giveaway__main-content">
                      <div className="peronal-page__icon shield-icon"></div>
                      <h4>На данный момент набор не проводится</h4>

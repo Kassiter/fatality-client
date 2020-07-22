@@ -10,7 +10,7 @@ class Slider extends React.Component {
             <Carousel.Item>
             <div className="carousel__slide carousel__slide--1"></div>
             <Carousel.Caption>
-               <h3>First slide label</h3>
+               <h3>Legendary Maniac</h3>
             </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -19,13 +19,13 @@ class Slider extends React.Component {
                <h3>Лучшее комьюнити</h3>
             </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            {/* <Carousel.Item>
             <div className="carousel__slide carousel__slide--3"></div>
             <Carousel.Caption>
                <h3>Third slide label</h3>
                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
             </Carousel.Caption>
-            </Carousel.Item>
+            </Carousel.Item> */}
          </Carousel>
         );
     }

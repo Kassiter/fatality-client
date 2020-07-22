@@ -21,6 +21,24 @@
    .individuals-section__container{
       height: fit-content !important;
    }
+
+   .carousel__slide{
+      background-size: 300% 100% !important;
+      background-position: 50%;
+   }
+
+   .carousel-main h3{
+      font-size: 4em;
+   }
+
+   .navbar__pp{
+      margin-left: 30% !important;
+   }
+
+   .previlegies-section__container .card{
+      margin-left: 12%;
+   }
+
    .individuals-section__cards-container{
       flex-direction: column;
       align-items: center;

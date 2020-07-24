@@ -7,11 +7,33 @@ import '../../stylesheets/personal_page.css'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import TabContainer from 'react-bootstrap/TabContainer'
+import axios from 'axios';
+import enviroment from '../../enviroment'
 
 class PersonalPage extends React.Component {
    constructor(props){
       super(props);
+      this.state = {
+         vip_group: '-233',
+      }
    }
+
+   componentDidMount(){
+      let nickname = localStorage.getItem('nickname')
+      if(nickname){
+
+         axios.get(`${enviroment.backend_url}/users/vip_data?nickname=${nickname}`)
+         .then(res => {
+            this.setState({
+               vip_group: res.data.vip_group,
+               vip_expires: res.data.expires,
+               nickname: nickname,
+               avatar: localStorage.getItem('avatarfull')
+            })
+          })
+          
+      }
+     }
 
    logout = () => {
       localStorage.clear();
@@ -34,12 +56,22 @@ class PersonalPage extends React.Component {
 
             <Tabs >
                <Tab eventKey="home" title="Главная">
-                  <h4>Centered Modal</h4>
-                  <p>
-                     Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                     dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                     consectetur ac, vestibulum at eros.
-                  </p>
+                  <div className="col align-items-center profile">
+                     <div className="row profile__feature"><div className="profile__avatar" style={{backgroundImage: `url(${this.state.avatar})`}}></div></div>
+                     <div className="row profile__feature"><h2>{this.state.nickname}</h2></div>
+                     <div className="row profile__feature--point">
+                        <h3 className="text-left">
+                           <span className="text-muted">Привилегия: </span>
+                           {this.state.vip_group}
+                        </h3>
+                     </div>
+                     <div className="row profile__feature--point">
+                        <h3 className="text-left">
+                           <span className="text-muted">Истекает: </span>
+                           {this.state.vip_expires}
+                        </h3>
+                     </div>
+                 </div>
                </Tab>
                <Tab eventKey="profile" title="Персональный товар">
                   <PersonalItemForm />

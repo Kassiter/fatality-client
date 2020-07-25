@@ -70,6 +70,7 @@ class PersonalPage extends React.Component {
 
       return(
          <Contest 
+            id={this.state.contest.id}
             img_url={this.state.contest.image}
             description={this.state.contest.description}
             description={this.state.contest.description}

@@ -8,7 +8,9 @@ import Privilegies from './components/privilegies/privilegies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './stylesheets/global.css'
 import ScrollableAnchor from 'react-scrollable-anchor';
-import OpenTestModal from './components/openTestModal/openTestModal'
+import OpenTestModal from './components/openTestModal/openTestModal';
+import axios from 'axios';
+import enviroment from './enviroment';
 
 class App extends React.Component {
   constructor(props){
@@ -36,7 +38,6 @@ class App extends React.Component {
     }else{
         document.getElementById('root').classList.remove("blurred");
     }
-    console.log(process.env.NODE_ENV)
     
     if (window.location.search.includes('ref')){
       var url = new URL(window.location);

@@ -55,6 +55,13 @@
    background-image: url('../img/shield.svg');
 }
 
+.peronal-page__contest-icon{
+   width: 200px;
+   height: 200px;
+   border-radius: 100%;
+   background-size: 100% 100%;
+}
+
 .giveaway__main-content{
    display: flex;
    flex-direction: column;
@@ -74,7 +81,16 @@
    margin-left: 35% !important;
 }
 
+.profile__nickname{
+   width: 400px;
+   margin-left: 34.5% !important;
+}
+
 .profile__feature--point{
    width: 400px;
    margin-left: 30% !important;
+}
+
+.giveaway__contest h1{
+   padding: 10px;
 }

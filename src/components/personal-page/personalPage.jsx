@@ -7,6 +7,7 @@ import '../../stylesheets/personal_page.css'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import TabContainer from 'react-bootstrap/TabContainer'
+import Contest from './contest'
 import axios from 'axios';
 import enviroment from '../../enviroment'
 
@@ -14,14 +15,22 @@ class PersonalPage extends React.Component {
    constructor(props){
       super(props);
       this.state = {
-         vip_group: '-233',
+         vip_group: '-',
+         contest: null
       }
    }
 
    componentDidMount(){
-      let nickname = localStorage.getItem('nickname')
-      if(nickname){
+      if (localStorage.getItem('steam_id64')){
+         axios.get(`${enviroment.backend_url}/users/refresh?steam_id64=${localStorage.getItem('steam_id64')}`)
+         .then(res => {
+           localStorage.setItem('nickname', res.data.name)
+         })
+      }
 
+      let nickname = localStorage.getItem('nickname')
+      let steam_id = localStorage.getItem('steam_id')
+      if(nickname){
          axios.get(`${enviroment.backend_url}/users/vip_data?nickname=${nickname}`)
          .then(res => {
             this.setState({
@@ -31,13 +40,44 @@ class PersonalPage extends React.Component {
                avatar: localStorage.getItem('avatarfull')
             })
           })
-          
+
+          axios.get(`${enviroment.backend_url}/contests?steam_id=${steam_id}`)
+         .then(res => {
+            if(res.data.contest){
+               console.log(res.data.contest)
+               this.setState({
+                  contest: res.data.contest
+               })
+            }
+          })
       }
      }
 
    logout = () => {
       localStorage.clear();
       window.location.href = window.location.origin
+   }
+
+   renderContest = () =>{
+      if (!this.state.contest){
+         return(
+            <div className="giveaway__main-content">
+               <div className="peronal-page__icon gift-icon"></div>
+               <h4>На данный момент нет розгрышей</h4>
+            </div>
+         )
+      }
+
+      return(
+         <Contest 
+            img_url={this.state.contest.image}
+            description={this.state.contest.description}
+            description={this.state.contest.description}
+            title={this.state.contest.title}
+            due_date={this.state.contest.due_date}
+            participating={this.state.contest.participating}
+         />
+      )
    }
 
    render(){
@@ -58,7 +98,7 @@ class PersonalPage extends React.Component {
                <Tab eventKey="home" title="Главная">
                   <div className="col align-items-center profile">
                      <div className="row profile__feature"><div className="profile__avatar" style={{backgroundImage: `url(${this.state.avatar})`}}></div></div>
-                     <div className="row profile__feature"><h2>{this.state.nickname}</h2></div>
+                     <div className="row profile__nickname"><h2>{this.state.nickname}</h2></div>
                      <div className="row profile__feature--point">
                         <h3 className="text-left">
                            <span className="text-muted">Привилегия: </span>
@@ -77,10 +117,7 @@ class PersonalPage extends React.Component {
                   <PersonalItemForm />
                </Tab>
                <Tab eventKey="giveaway" title="Розыгрыши">
-                  <div className="giveaway__main-content">
-                     <div className="peronal-page__icon gift-icon"></div>
-                     <h4>На данный момент нет розгрышей</h4>
-                  </div>
+                  {this.renderContest()}
                </Tab>
 
                <Tab eventKey="moderators" title="Модерация">

@@ -86,3 +86,7 @@ body::-webkit-scrollbar-thumb {
    justify-content: center;
    align-items: center;
 }
+
+.participating{
+   color: #61c753;
+}

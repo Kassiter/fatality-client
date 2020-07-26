@@ -10,6 +10,7 @@ import TabContainer from 'react-bootstrap/TabContainer'
 import Contest from './contest'
 import axios from 'axios';
 import enviroment from '../../enviroment'
+import ModerContest from "./moderContest";
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -41,15 +42,24 @@ class PersonalPage extends React.Component {
             })
           })
 
-          axios.get(`${enviroment.backend_url}/contests?steam_id=${steam_id}`)
+         axios.get(`${enviroment.backend_url}/contests?steam_id=${steam_id}`)
          .then(res => {
             if(res.data.contest){
-               console.log(res.data.contest)
                this.setState({
                   contest: res.data.contest
                })
             }
-          })
+         })
+
+         axios.get(`${enviroment.backend_url}/moder_contests?steam_id=${steam_id}`)
+         .then(res => {
+            if(res.data.contest){
+               console.log(res.data.contest)
+               this.setState({
+                  moder_contest: res.data.contest
+               })
+            }
+         })
       }
      }
 
@@ -77,6 +87,25 @@ class PersonalPage extends React.Component {
             title={this.state.contest.title}
             due_date={this.state.contest.due_date}
             participating={this.state.contest.participating}
+         />
+      )
+   }
+
+   renderModerContest = () =>{
+      if(!this.state.moder_contest){
+         return(
+            <div className="giveaway__main-content">
+               <div className="peronal-page__icon shield-icon"></div>
+               <h4>На данный момент набор не проводится</h4>
+            </div>
+         )
+      }
+
+      return(
+         <ModerContest
+            id={this.state.moder_contest.id}
+            participating={this.state.moder_contest.participating}
+            due_date={this.state.moder_contest.due_date}
          />
       )
    }
@@ -122,10 +151,7 @@ class PersonalPage extends React.Component {
                </Tab>
 
                <Tab eventKey="moderators" title="Модерация">
-                  <div className="giveaway__main-content">
-                     <div className="peronal-page__icon shield-icon"></div>
-                     <h4>На данный момент набор не проводится</h4>
-                  </div>
+                  {this.renderModerContest()}
                </Tab>
             </Tabs>
            

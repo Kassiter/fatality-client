@@ -11,6 +11,7 @@ import Contest from './contest'
 import axios from 'axios';
 import enviroment from '../../enviroment'
 import ModerContest from "./moderContest";
+import Refund from "./refund";
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -59,6 +60,14 @@ class PersonalPage extends React.Component {
                   moder_contest: res.data.contest
                })
             }
+         })
+
+         axios.get(`${enviroment.backend_url}/refund/participating?steam_id=${steam_id}`)
+         .then(res => {
+            console.log(res)
+            this.setState({
+               refund_participating: res.data.participating
+            })
          })
       }
      }
@@ -152,6 +161,12 @@ class PersonalPage extends React.Component {
 
                <Tab eventKey="moderators" title="Модерация">
                   {this.renderModerContest()}
+               </Tab>
+
+               <Tab eventKey="refund" title="Возврат привелегий">
+                  <Refund 
+                     participating={this.state.refund_participating}
+                  />
                </Tab>
             </Tabs>
            

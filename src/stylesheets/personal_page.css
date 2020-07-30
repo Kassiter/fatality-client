@@ -55,6 +55,10 @@
    background-image: url('../img/shield.svg');
 }
 
+.confetti-icon{
+   background-image: url('../img/confetti.svg');
+}
+
 .shield-icon--back{
    background-image: 
       linear-gradient(rgba(27,27,27,0.6), rgba(27,27,27,0.6)),

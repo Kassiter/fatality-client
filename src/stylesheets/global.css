@@ -90,3 +90,7 @@ body::-webkit-scrollbar-thumb {
 .participating{
    color: #61c753;
 }
+
+.btn-primary{
+   background-color: #0555ab !important;
+}

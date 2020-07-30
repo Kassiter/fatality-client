@@ -1,0 +1,16 @@
+.rule__body{
+   height: 700px !important;
+   overflow: auto;
+}
+
+.rule__body::-webkit-scrollbar {
+   width: 7px !important;
+}
+.rule__body::-webkit-scrollbar-track {
+   background: transparent !important;
+}
+.rule__body::-webkit-scrollbar-thumb {
+   background-color: #7a7a7a !important; 
+   border-radius: 20px !important; 
+   max-height: 50px !important;
+}

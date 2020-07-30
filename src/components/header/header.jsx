@@ -59,7 +59,7 @@ class Header extends React.Component {
                     <Nav className="mr-auto">
                         <Nav.Link href="#privilegies">Привилегии</Nav.Link>
                         <Nav.Link href="#personal-stuff">Персональные товары</Nav.Link>
-                        <Nav.Link href="#home">Акции</Nav.Link>
+                        <Nav.Link href="#rules" onClick={this.props.toggleModal}>Правила</Nav.Link>
                         <Nav.Link href="#home">Розыгрыши</Nav.Link>
                         <Nav.Link href="#home">Администрация</Nav.Link>
                     </Nav>

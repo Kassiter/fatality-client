@@ -16,7 +16,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      modalToggled: true
+      modalToggled: false
     }
   }
 
@@ -25,20 +25,25 @@ class App extends React.Component {
   }
   
   componentDidUpdate(){
-    if (this.state.modalToggled){
-      document.getElementById('root').classList.add("blurred");
-    }else{
-        document.getElementById('root').classList.remove("blurred");
+    if(window.location.hash == "#rules"){
+      if (this.state.modalToggled){
+        document.getElementById('root').classList.add("blurred");
+      }else{
+          document.getElementById('root').classList.remove("blurred");
+      }
     }
   }
 
   componentDidMount(){
-    if (this.state.modalToggled){
-      document.getElementById('root').classList.add("blurred");
-    }else{
-        document.getElementById('root').classList.remove("blurred");
+    if(window.location.hash == "#rules"){
+      this.setState({modalToggled: true})
+      if (this.state.modalToggled){
+        document.getElementById('root').classList.add("blurred");
+      }else{
+          document.getElementById('root').classList.remove("blurred");
+      }
     }
-    
+
     if (window.location.search.includes('ref')){
       var url = new URL(window.location);
       localStorage.setItem('ref', url.searchParams.get("ref"));
@@ -63,7 +68,9 @@ class App extends React.Component {
                   show={this.state.modalToggled}
                   onHide={() => this.toggleModal(false)}
               />
-        <Header />
+        <Header
+          toggleModal={this.toggleModal}
+        />
         <Slider />
         <ScrollableAnchor id={'privilegies'} >
           <Privilegies />

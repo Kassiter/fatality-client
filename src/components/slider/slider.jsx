@@ -19,13 +19,12 @@ class Slider extends React.Component {
                <h3>Лучшее комьюнити</h3>
             </Carousel.Caption>
             </Carousel.Item>
-            {/* <Carousel.Item>
+            <Carousel.Item>
             <div className="carousel__slide carousel__slide--3"></div>
             <Carousel.Caption>
-               <h3>Third slide label</h3>
-               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+               <h3>Частые розыгрыши</h3>
             </Carousel.Caption>
-            </Carousel.Item> */}
+            </Carousel.Item>
          </Carousel>
         );
     }

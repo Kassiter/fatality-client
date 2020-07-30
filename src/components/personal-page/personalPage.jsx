@@ -18,7 +18,8 @@ class PersonalPage extends React.Component {
       super(props);
       this.state = {
          vip_group: '-',
-         contest: null
+         contest: null,
+         moder_contest_winner: false
       }
    }
 
@@ -54,17 +55,15 @@ class PersonalPage extends React.Component {
 
          axios.get(`${enviroment.backend_url}/moder_contests?steam_id=${steam_id}`)
          .then(res => {
-            if(res.data.contest){
-               console.log(res.data.contest)
-               this.setState({
-                  moder_contest: res.data.contest
-               })
-            }
+            console.log(res)
+            this.setState({
+               moder_contest: res.data.contest,
+               moder_contest_winner: res.data.winner
+            })
          })
 
          axios.get(`${enviroment.backend_url}/refund/participating?steam_id=${steam_id}`)
          .then(res => {
-            console.log(res)
             this.setState({
                refund_participating: res.data.participating
             })
@@ -102,10 +101,12 @@ class PersonalPage extends React.Component {
 
    renderModerContest = () =>{
       if(!this.state.moder_contest){
+         let phrase = this.state.moder_contest_winner ? <h4 className="participating">Вы приняты! Ожидайте дополнительную информацию</h4> : <h4>На данный момент набор не проводится</h4>
+         let cl = this.state.moder_contest_winner ? "peronal-page__icon confetti-icon" : "peronal-page__icon shield-icon"
          return(
             <div className="giveaway__main-content">
-               <div className="peronal-page__icon shield-icon"></div>
-               <h4>На данный момент набор не проводится</h4>
+               <div className={cl}></div>
+               {phrase}
             </div>
          )
       }
@@ -118,6 +119,8 @@ class PersonalPage extends React.Component {
          />
       )
    }
+
+   moderContestPhrase = () =>{}
 
    render(){
       return(

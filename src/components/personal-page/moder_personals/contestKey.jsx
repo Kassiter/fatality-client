@@ -14,23 +14,8 @@ class ContestKey extends React.Component {
       this.state = {
          report: null,
          form_shown: false,
-         submitted: this.props.submitt || false
+         submitted: this.props.submitt
       }
-   }
-   
-   report = (e) =>{
-      e.preventDefault()
-      axios.post(`${enviroment.backend_url}/contest_keys/submit_report`,
-      {
-         steamID: localStorage.getItem('steam_id'),
-         auth_token: localStorage.getItem('auth_token'),
-         report: this.state.report,
-         id: this.props.id
-      })
-      .then(res => {
-         this.setState({submitted: true})
-         
-       })
    }
 
    updateReport = (e) =>{
@@ -48,7 +33,7 @@ class ContestKey extends React.Component {
                      <Form.Label>Отчёт</Form.Label>
                      <Form.Control as="textarea" rows="3" onChange={(e) => {this.updateReport(e)}} />
                   </Form.Group>
-                  <Button variant="primary" size="sm" onClick={(e) => {this.report(e)}}>
+                  <Button variant="primary" size="sm" onClick={(e) => {this.props.report(e, this.state.report, this.props.id)}}>
                      Отправить
                   </Button>
                </Form>
@@ -57,7 +42,7 @@ class ContestKey extends React.Component {
    }
 
    renderAll = () =>{
-      if (!this.state.submitted){
+      if (!this.props.submitt){
          return(
             <div className="d-flex flex-column">
                <div className="d-flex mt-1 w-50">

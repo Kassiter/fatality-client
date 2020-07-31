@@ -63,6 +63,10 @@
    background-image: url('../img/key.svg');
 }
 
+.check-icon{
+   background-image: url('../img/tick.svg');
+}
+
 .shield-icon--back{
    background-image: 
       linear-gradient(rgba(27,27,27,0.6), rgba(27,27,27,0.6)),

@@ -15,7 +15,8 @@ class ContestModerPage extends React.Component {
       this.state = {
          keys: [],
          requestFailed: false,
-         errorText: ''
+         errorText: '',
+         all_done: false
       }
    }
 
@@ -29,13 +30,29 @@ class ContestModerPage extends React.Component {
       .then(res => {
          console.log(res)
          this.setState({
-            keys: res.data.keys
+            keys: res.data.keys,
+            all_done: res.data.all_done
          })
        })
    }
 
    updateAge = (e) =>{
       this.setState({age: e.target.value})
+   }
+
+   report = (e, report, id) =>{
+      e.preventDefault()
+      axios.post(`${enviroment.backend_url}/contest_keys/submit_report`,
+      {
+         steamID: localStorage.getItem('steam_id'),
+         auth_token: localStorage.getItem('auth_token'),
+         report: report,
+         id: id
+      })
+      .then(res => {
+         this.getKeys()
+         
+       })
    }
 
 
@@ -57,6 +74,15 @@ class ContestModerPage extends React.Component {
    }
 
    renderBase = () =>{
+      if(this.state.all_done){
+         return(
+            <div className="giveaway__main-content">
+               <div className="peronal-page__icon check-icon"></div>
+               <h4 className="participating">На сегодня всё. Хорошая работа!</h4> 
+            </div>
+         )
+      }
+
       if(this.state.keys.length > 0){
          return(
             <div className="d-flex flex-column w-100">
@@ -82,7 +108,8 @@ class ContestModerPage extends React.Component {
       let result = []
       this.state.keys.forEach(key_entity => {
          let reported = key_entity.report.length > 0
-         result.push(<ContestKey id={key_entity.id} key_name={key_entity.key} submitt={reported} />)
+         console.log('reported: '+reported)
+         result.push(<ContestKey id={key_entity.id} key_name={key_entity.key} submitt={reported} report = {this.report}/>)
       });
       return result;
    }

@@ -123,3 +123,11 @@
 .giveaway__contest h1{
    padding: 10px;
 }
+
+#contests-moder .progress{
+   background-color: #e9ecef2e;
+   height: 25px;
+   color: black !important;
+   font-family: 'Roboto', sans-serif;
+   font-size: 1.1em;
+}

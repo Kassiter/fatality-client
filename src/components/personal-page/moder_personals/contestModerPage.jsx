@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import '../../../stylesheets/personal_page.css'
 
 import Alert from "react-bootstrap/Alert";
-
+import ProgressBar from 'react-bootstrap/ProgressBar'
 import enviroment from '../../../enviroment'
 import ContestKey from "./contestKey";
 
@@ -116,7 +116,12 @@ class ContestModerPage extends React.Component {
 
 
    render(){
-      return(this.renderBase());
+      return(
+         <div className="d-flex flex-column" id="contests-moder">
+            {this.renderBase()}
+            <ProgressBar animated striped now={localStorage.getItem('m_points')} label={`MP: ${localStorage.getItem('m_points')}`} max="60" variant="danger" className="mt-4"/>
+         </div>
+      );
    }
 }
 

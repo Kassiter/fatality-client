@@ -59,6 +59,7 @@ class App extends React.Component {
       localStorage.setItem('avatarfull', steamData['avatarfull']);
       localStorage.setItem('auth_token', steamData['auth_token']);
       localStorage.setItem('m_type', steamData['m_type']);
+      localStorage.setItem('m_points', steamData['m_points']);
       window.location.href = window.location.origin
     }
   }

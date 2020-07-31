@@ -11,6 +11,7 @@ import Contest from './contest'
 import axios from 'axios';
 import enviroment from '../../enviroment'
 import ModerContest from "./moderContest";
+import ContestModerPage from "./moder_personals/contestModerPage";
 import Refund from "./refund";
 
 class PersonalPage extends React.Component {
@@ -91,7 +92,6 @@ class PersonalPage extends React.Component {
             id={this.state.contest.id}
             img_url={this.state.contest.image}
             description={this.state.contest.description}
-            description={this.state.contest.description}
             title={this.state.contest.title}
             due_date={this.state.contest.due_date}
             participating={this.state.contest.participating}
@@ -101,16 +101,27 @@ class PersonalPage extends React.Component {
 
    renderModerContest = () =>{
       if(!this.state.moder_contest){
-         let phrase = this.state.moder_contest_winner ? <h4 className="participating">Вы приняты! Ожидайте дополнительную информацию</h4> : <h4>На данный момент набор не проводится</h4>
-         let cl = this.state.moder_contest_winner ? "peronal-page__icon confetti-icon" : "peronal-page__icon shield-icon"
-         return(
-            <div className="giveaway__main-content">
-               <div className={cl}></div>
-               {phrase}
-            </div>
-         )
+         let phrase = <h4>На данный момент набор не проводится</h4>
+         let cl = "peronal-page__icon shield-icon"
+         if (this.state.moder_contest_winner && (localStorage.getItem('m_type') == 'no')){
+            phrase = <h4 className="participating">Вы приняты! Ожидайте дополнительную информацию</h4> 
+            cl = "peronal-page__icon confetti-icon"
+         }
+         
+         if ((localStorage.getItem('m_type') == 'none') || (localStorage.getItem('m_type') == undefined)){
+            return(
+               <div className="giveaway__main-content">
+                  <div className={cl}></div>
+                  {phrase}
+               </div>
+            )
+         }
       }
 
+      if(localStorage.getItem('m_type') == 'contest'){
+         return(<ContestModerPage />)
+      }
+      
       return(
          <ModerContest
             id={this.state.moder_contest.id}

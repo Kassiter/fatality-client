@@ -24,11 +24,16 @@ class Contest extends React.Component {
    }
 
    renderParticipant(){
-      if(this.state.participating){
+      if(this.state.participating && !this.props.winner){
          return(
             <h3 className='participating'>Вы участвуете</h3>
          )
       }
+
+      if (this.props.winner){
+         return(<h3 className='participating'>Поздравляем! Ваш ключ: <b>{this.props.con_key}</b></h3>);
+      }
+
       return(
          <Button variant="danger" onClick={this.takePart}>Участвовать</Button>
       )

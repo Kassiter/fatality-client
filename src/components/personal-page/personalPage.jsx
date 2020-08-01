@@ -55,6 +55,7 @@ class PersonalPage extends React.Component {
          axios.get(`${enviroment.backend_url}/contests?steam_id=${steam_id}`)
          .then(res => {
             if(res.data.contest){
+               console.log(res)
                this.setState({
                   contest: res.data.contest
                })
@@ -63,7 +64,6 @@ class PersonalPage extends React.Component {
 
          axios.get(`${enviroment.backend_url}/moder_contests?steam_id=${steam_id}`)
          .then(res => {
-            console.log(res)
             this.setState({
                moder_contest: res.data.contest,
                moder_contest_winner: res.data.winner
@@ -85,7 +85,8 @@ class PersonalPage extends React.Component {
    }
 
    renderContest = () =>{
-      if (!this.state.contest){
+      // debugger;
+      if (!this.state.contest || !this.state.contest.winner){
          return(
             <div className="giveaway__main-content">
                <div className="peronal-page__icon gift-icon"></div>
@@ -98,6 +99,8 @@ class PersonalPage extends React.Component {
          <Contest 
             id={this.state.contest.id}
             img_url={this.state.contest.image}
+            winner = {this.state.contest.winner}
+            con_key={this.state.contest.con_key}
             description={this.state.contest.description}
             title={this.state.contest.title}
             due_date={this.state.contest.due_date}

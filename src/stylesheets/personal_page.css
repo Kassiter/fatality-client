@@ -67,6 +67,10 @@
    background-image: url('../img/tick.svg');
 }
 
+.log-icon{
+   background-image: url('../img/logs.svg');
+}
+
 .shield-icon--back{
    background-image: 
       linear-gradient(rgba(27,27,27,0.6), rgba(27,27,27,0.6)),
@@ -130,4 +134,42 @@
    color: black !important;
    font-family: 'Roboto', sans-serif;
    font-size: 1.1em;
+}
+
+.logs__container{
+   overflow: auto;
+   max-height: 500px !important;
+}
+
+.logs__container::-webkit-scrollbar {
+   width: 7px !important;
+}
+.logs__container::-webkit-scrollbar-track {
+   background: transparent !important;
+}
+.logs__container::-webkit-scrollbar-thumb {
+   background-color: #7a7a7a !important; 
+   border-radius: 20px !important; 
+   max-height: 50px !important;
+}
+
+.row--reported{
+   background-color: #d606063b;
+}
+
+.report__icon{
+   color: #c60000;;
+}
+
+.report__icon:hover{
+   cursor: pointer;
+}
+
+.log-row{
+   padding: 2px;
+   border-bottom: 0.3px solid #4b4b4b;
+}
+
+.log-report__submit{
+   width: 120px;
 }

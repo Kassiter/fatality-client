@@ -12,6 +12,7 @@ import axios from 'axios';
 import enviroment from '../../enviroment'
 import ModerContest from "./moderContest";
 import ContestModerPage from "./moder_personals/contestModerPage";
+import RulesModerPage from "./moder_personals/rulesModerPage";
 import Refund from "./refund";
 
 class PersonalPage extends React.Component {
@@ -85,7 +86,6 @@ class PersonalPage extends React.Component {
    }
 
    renderContest = () =>{
-      // debugger;
       if (!this.state.contest || !this.state.contest.winner){
          return(
             <div className="giveaway__main-content">
@@ -131,14 +131,20 @@ class PersonalPage extends React.Component {
       if(localStorage.getItem('m_type') == 'contest'){
          return(<ContestModerPage />)
       }
+
+      if(localStorage.getItem('m_type') == 'ruler'){
+         return(<RulesModerPage />)
+      }
       
-      return(
-         <ModerContest
-            id={this.state.moder_contest.id}
-            participating={this.state.moder_contest.participating}
-            due_date={this.state.moder_contest.due_date}
-         />
-      )
+      if(this.state.moder_contest){
+         return(
+            <ModerContest
+               id={this.state.moder_contest.id}
+               participating={this.state.moder_contest.participating}
+               due_date={this.state.moder_contest.due_date}
+            />
+         )   
+      }
    }
 
    moderContestPhrase = () =>{}

@@ -27,10 +27,10 @@ class RulesModerPage extends React.Component {
    }
 
    componentDidMount(){
-      let ukrainian_time = moment().tz("Ukraine").format('HH');
+      let ukrainian_time = moment().tz("Europe/Kiev").format('HH');
       let now = moment().format('HH');
       let diff = +now - +ukrainian_time
-      let log_time = 15 + diff
+      let log_time = 20 + diff
       this.setState({hrs_till: +log_time - +now})
       if (localStorage.getItem('m_type') == 'ruler'){
          if (new Date().getHours() >= log_time){
@@ -124,7 +124,7 @@ class RulesModerPage extends React.Component {
          <div>
             <div className="giveaway__main-content">
                <div className="peronal-page__icon log-icon"></div>
-               <h4>Логи будут доступны через {this.state.hrs_till} часов</h4> 
+               <h4>Логи будут доступны через {this.state.hrs_till} ч.</h4> 
             </div>
          </div>
       );

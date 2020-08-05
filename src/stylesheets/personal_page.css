@@ -173,3 +173,50 @@
 .log-report__submit{
    width: 120px;
 }
+
+.help__body{
+   height: 700px !important;
+   overflow: auto;
+}
+
+.help__body::-webkit-scrollbar {
+   width: 7px !important;
+}
+.help__body::-webkit-scrollbar-track {
+   background: transparent !important;
+}
+.help__body::-webkit-scrollbar-thumb {
+   background-color: #7a7a7a !important; 
+   border-radius: 20px !important; 
+   max-height: 50px !important;
+}
+
+.help__command{
+   font-weight: 600 !important;
+   color: rgb(163, 235, 163);
+}
+
+.help__group{
+   border-radius: 100%;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   width: 25px !important;
+}
+
+.help__group--a{
+   background-color: rgb(201, 68, 68);
+}
+
+.help__group--b{
+   background-color: rgb(83, 201, 68);
+}
+
+.help__group--c{
+   background-color: rgb(99, 99, 99);
+}
+
+.help__target{
+   font-weight: 600 !important;
+   color: rgb(240, 240, 73);
+}

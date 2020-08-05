@@ -94,3 +94,11 @@ body::-webkit-scrollbar-thumb {
 .btn-primary{
    background-color: #0555ab !important;
 }
+
+.mr-50px{
+   margin-right: 50px !important;
+}
+
+h5{
+   font-family: 'Montserrat', sans-serif;
+}

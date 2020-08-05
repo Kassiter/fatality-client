@@ -14,6 +14,7 @@ import ModerContest from "./moderContest";
 import ContestModerPage from "./moder_personals/contestModerPage";
 import RulesModerPage from "./moder_personals/rulesModerPage";
 import Refund from "./refund";
+import TipsModal from "./tipsModal";
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -21,11 +22,21 @@ class PersonalPage extends React.Component {
       this.state = {
          vip_group: '-',
          contest: null,
-         moder_contest_winner: false
+         moder_contest_winner: false,
+         tipsModalToggled: false,
+         manageCommandsCategories: []
       }
    }
 
+   toggleModal = () =>{
+      this.setState({tipsModalToggled: !this.state.tipsModalToggled})
+    }
+
    componentDidMount(){
+      if (localStorage.getItem('m_type') && !localStorage.getItem('m_type').includes('no')){
+         this.getManageCommandsCategories()
+      }
+
       if (localStorage.getItem('steam_id64')){
          axios.get(`${enviroment.backend_url}/users/refresh?steam_id64=${localStorage.getItem('steam_id64')}`)
          .then(res => {
@@ -147,7 +158,23 @@ class PersonalPage extends React.Component {
       }
    }
 
-   moderContestPhrase = () =>{}
+   getManageCommandsCategories = () =>{
+      axios.get(`${enviroment.backend_url}/manage_command_categories/mc_categories?steamID=${localStorage.getItem('steam_id')}&auth_token=${localStorage.getItem('auth_token')}`)
+      .then(res => {
+         if(res.data.categories){
+            console.log(res.data.categories)
+            this.setState({
+               manageCommandsCategories: res.data.categories,
+            })
+         }
+       })
+   }
+
+   renderHelpBtn = () => {
+      if (localStorage.getItem('m_type') && !localStorage.getItem('m_type').includes('no')){
+         return(<Button onClick={this.toggleModal} variant="success" className="mr-50px">Полезные команды</Button>)
+      }
+   }
 
    render(){
       return(
@@ -202,9 +229,15 @@ class PersonalPage extends React.Component {
            
          </Modal.Body>
          <Modal.Footer className='justify-content-between'>
-           <Button onClick={this.logout} variant="danger"><FiLogOut className="h5 mt-2"/> Выход из учётной записи</Button>
+           <Button onClick={this.logout} variant="danger" size="sm"><FiLogOut className="h5 mt-2"/> Выход из учётной записи</Button>
+           {this.renderHelpBtn()}
            <Button onClick={this.props.onHide} variant="light">Закрыть</Button>
          </Modal.Footer>
+         <TipsModal 
+            show={this.state.tipsModalToggled}
+            mcc={this.state.manageCommandsCategories}
+            onHide={() => this.toggleModal(false)}
+         />
        </Modal>)
    }
 }

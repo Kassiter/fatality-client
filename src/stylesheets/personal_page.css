@@ -220,3 +220,15 @@
    font-weight: 600 !important;
    color: rgb(240, 240, 73);
 }
+
+.log__nickname{
+   color: #5ca6e2 !important;
+}
+
+.log__steam-id{
+   color: #d63a3a;
+}
+
+.log__command{
+   color: #ece362;
+}

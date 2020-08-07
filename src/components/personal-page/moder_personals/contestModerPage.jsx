@@ -110,7 +110,7 @@ class ContestModerPage extends React.Component {
       this.state.keys.forEach(key_entity => {
          let reported = key_entity.report == null
          console.log('reported: '+reported)
-         result.push(<ContestKey id={key_entity.id} key_name={key_entity.key} submitt={reported} report = {this.report}/>)
+         result.push(<ContestKey id={key_entity.id} key_name={key_entity.key} submitt={!reported} report = {this.report}/>)
       });
       return result;
    }

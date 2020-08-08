@@ -84,6 +84,7 @@ class App extends React.Component {
           <div className='splitter__clip'></div>
         </div>
         <Individuals/>
+        <ScrollableAnchor id={'admins'}><div></div></ScrollableAnchor>
         <Admins/>
       </div>
     );

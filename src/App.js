@@ -11,6 +11,7 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 import OpenTestModal from './components/openTestModal/openTestModal';
 import axios from 'axios';
 import enviroment from './enviroment';
+import Admins from './components/admins';
 
 class App extends React.Component {
   constructor(props){
@@ -83,6 +84,7 @@ class App extends React.Component {
           <div className='splitter__clip'></div>
         </div>
         <Individuals/>
+        <Admins/>
       </div>
     );
   }

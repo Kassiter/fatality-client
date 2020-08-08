@@ -19,6 +19,7 @@
 
 .admins__avatar{
    width: 210px;
+   height: 210px;
    align-self: center;
    transition-duration: 0.3s;
 }

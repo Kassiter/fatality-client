@@ -31,7 +31,7 @@ class ContestKey extends React.Component {
          return(<Form>
                   <Form.Group controlId="exampleForm.ControlTextarea1">
                      <Form.Label>Отчёт</Form.Label>
-                     <Form.Control as="textarea" rows="3" onChange={(e) => {this.updateReport(e)}} />
+                     <Form.Control as="textarea" rows="3" onChange={(e) => {this.updateReport(e)}} className="custom-input--transparent" />
                   </Form.Group>
                   <Button variant="primary" size="sm" onClick={(e) => {this.props.report(e, this.state.report, this.props.id)}}>
                      Отправить

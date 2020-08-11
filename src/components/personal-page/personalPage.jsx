@@ -15,6 +15,7 @@ import ContestModerPage from "./moder_personals/contestModerPage";
 import RulesModerPage from "./moder_personals/rulesModerPage";
 import Refund from "./refund";
 import TipsModal from "./tipsModal";
+import PrimeModerPage from "./moder_personals/primeModerPage";
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -129,7 +130,7 @@ class PersonalPage extends React.Component {
             cl = "peronal-page__icon confetti-icon"
          }
          
-         if ((localStorage.getItem('m_type') == 'none') || (localStorage.getItem('m_type') == undefined)){
+         if ((localStorage.getItem('m_type') == undefined) || (localStorage.getItem('m_type').includes('no'))){
             return(
                <div className="giveaway__main-content">
                   <div className={cl}></div>
@@ -145,6 +146,10 @@ class PersonalPage extends React.Component {
 
       if(localStorage.getItem('m_type') == 'ruler'){
          return(<RulesModerPage />)
+      }
+
+      if(localStorage.getItem('m_type') == 'main'){
+         return(<PrimeModerPage />)
       }
       
       if(this.state.moder_contest){

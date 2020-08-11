@@ -71,6 +71,10 @@
    background-image: url('../img/logs.svg');
 }
 
+.tasks-icon{
+   background-image: url('../img/tasks-done.svg');
+}
+
 .shield-icon--back{
    background-image: 
       linear-gradient(rgba(27,27,27,0.6), rgba(27,27,27,0.6)),
@@ -193,7 +197,7 @@
 
 .help__command{
    font-weight: 600 !important;
-   color: rgb(163, 235, 163);
+   color: rgb(163, 194, 235);
 }
 
 .help__group{
@@ -213,12 +217,16 @@
 }
 
 .help__group--c{
-   background-color: rgb(99, 99, 99);
+   background-color: rgb(55, 102, 204);
+}
+
+.help__group--d{
+   background-color: rgb(92, 92, 92);
 }
 
 .help__target{
    font-weight: 600 !important;
-   color: rgb(240, 240, 73);
+   color: rgb(252, 252, 182);
 }
 
 .log__nickname{
@@ -231,4 +239,9 @@
 
 .log__command{
    color: #ece362;
+}
+
+.help__param{
+   font-weight: 300;
+   font-family: 'Montserrat', sans-serif;
 }

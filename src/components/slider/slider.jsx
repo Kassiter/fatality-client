@@ -5,9 +5,10 @@ import '../../stylesheets/carousel.css'
 
 class Slider extends React.Component {
    componentDidMount(){
-      setTimeout(() => {
-         this.props.clearp()
-      }, 10000);
+      // setTimeout(() => {
+      //    this.props.clearp()
+      // }, 10000);
+      window.addEventListener('load', this.props.clearp);
    }
 
     render() {

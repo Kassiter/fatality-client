@@ -151,6 +151,22 @@ class PersonalPage extends React.Component {
       if(localStorage.getItem('m_type') == 'main'){
          return(<PrimeModerPage />)
       }
+
+      if(localStorage.getItem('m_type') == 'ceo'){
+         return(
+            <Tabs >
+               <Tab eventKey="home" title="Main">
+                  <PrimeModerPage />
+               </Tab>
+               <Tab eventKey="profile" title="Contest">
+                  <ContestModerPage />
+               </Tab>
+               <Tab eventKey="logs" title="Logs">
+                  <RulesModerPage />
+               </Tab>
+            </Tabs>
+         )
+      }
       
       if(this.state.moder_contest){
          return(

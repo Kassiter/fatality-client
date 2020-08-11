@@ -4,6 +4,12 @@ import '../../stylesheets/carousel.css'
 //import { FaSteamSymbol } from 'react-icons/fa';
 
 class Slider extends React.Component {
+   componentDidMount(){
+      setTimeout(() => {
+         this.props.clearp()
+      }, 1000);
+   }
+
     render() {
         return(
          <Carousel className="carousel-main">

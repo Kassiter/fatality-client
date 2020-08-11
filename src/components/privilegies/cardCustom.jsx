@@ -87,6 +87,12 @@ class CardCustom extends React.Component {
       </OverlayTrigger>);
     }
 
+    renderInstructionButton = () => {
+       if(this.props.instructable){
+         return(<Button variant="outline-secondary" onClick={this.props.instruct} className="ml-2">Как купить?</Button>)
+       }
+    }
+
     render() {
         return(
          <Card>
@@ -98,6 +104,7 @@ class CardCustom extends React.Component {
             </Card.Body>
             <Card.Footer>
                <Button variant="success" id="vip-buy" href={this.state.toggleChecked ? this.props.previliege.link_month : this.props.previliege.link_lifetime} className="btn-price">{this.state.amountMonth}₽</Button>
+               {this.renderInstructionButton()}
             </Card.Footer>
             <Card.Footer id="switcher">
                <BootstrapSwitchButton 

@@ -12,12 +12,14 @@ import OpenTestModal from './components/openTestModal/openTestModal';
 import axios from 'axios';
 import enviroment from './enviroment';
 import Admins from './components/admins';
+import Preloader from './components/personal-page/preloader';
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      modalToggled: false
+      modalToggled: false,
+      pageLoaded: false
     }
   }
 
@@ -65,6 +67,10 @@ class App extends React.Component {
     }
   }
 
+  clearPreloader = () =>{
+    this.setState({pageLoaded: true})
+  }
+
   render(){
     return (
       <div className="App d-flex flex-column">
@@ -75,7 +81,9 @@ class App extends React.Component {
         <Header
           toggleModal={this.toggleModal}
         />
-        <Slider />
+        <Slider 
+          clearp={this.clearPreloader}
+        />
         <ScrollableAnchor id={'privilegies'} >
           <Privilegies />
         </ScrollableAnchor>
@@ -86,6 +94,7 @@ class App extends React.Component {
         <Individuals/>
         <ScrollableAnchor id={'admins'}><div></div></ScrollableAnchor>
         <Admins/>
+        {this.state.pageLoaded ? '' : <Preloader/>}
       </div>
     );
   }

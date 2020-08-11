@@ -9,6 +9,7 @@ import admin_plus from '../../admin_plus.json'
 import ScrollableAnchor from 'react-scrollable-anchor';
 import axios from 'axios';
 import enviroment from '../../enviroment'
+import InstructionsModal from './instructionsModal';
 
 class Privilegies extends React.Component {
    constructor(props){
@@ -16,7 +17,8 @@ class Privilegies extends React.Component {
       this.state = {
          toggleChecked: true,
          amountMonth: 70,
-         privilieges: []
+         privilieges: [],
+         instructionShown: false
       }
    }
 
@@ -47,10 +49,15 @@ class Privilegies extends React.Component {
       this.setState({ toggleChecked: !this.state.toggleChecked, amountMonth: !this.state.toggleChecked ? 70 : 300 })
     }
 
+    showInstructionModal = () =>{
+      this.setState({instructionShown: !this.state.instructionShown})
+    }
+
     renderCards= () => {
       const result = []
-      this.state.privilieges.forEach(priviliege => {
-        result.push(<CardCustom previliege={priviliege} />)
+      this.state.privilieges.forEach(priviliege => { 
+        let instructable = priviliege.name.includes('Admin')
+        result.push(<CardCustom previliege={priviliege} instructable={instructable} instruct={this.showInstructionModal} />)
       });
       return result;
     }
@@ -62,6 +69,7 @@ class Privilegies extends React.Component {
                <CardDeck>
                   {this.renderCards()}
                </CardDeck>
+               <InstructionsModal show={this.state.instructionShown} onHide={this.showInstructionModal} />
             </div>
         );
     }

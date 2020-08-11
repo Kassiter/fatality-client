@@ -21,7 +21,7 @@ class ContestModerPage extends React.Component {
    }
 
    componentDidMount(){
-      if (localStorage.getItem('m_type') == 'contest')
+      if (localStorage.getItem('m_type') == 'contest' || localStorage.getItem('m_type') == 'ceo')
          this.getKeys();
    }
    

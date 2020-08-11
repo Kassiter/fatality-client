@@ -32,7 +32,7 @@ class RulesModerPage extends React.Component {
       let diff = +now - +ukrainian_time
       let log_time = 20 + diff
       this.setState({hrs_till: +log_time - +now})
-      if (localStorage.getItem('m_type') == 'ruler'){
+      if (localStorage.getItem('m_type') == 'ruler' || localStorage.getItem('m_type') == 'contest'){
          if (new Date().getHours() >= log_time){
             this.pullLog();
             this.getLog()

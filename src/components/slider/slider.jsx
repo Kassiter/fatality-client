@@ -7,7 +7,7 @@ class Slider extends React.Component {
    componentDidMount(){
       setTimeout(() => {
          this.props.clearp()
-      }, 1000);
+      }, 2000);
    }
 
     render() {

@@ -23,7 +23,7 @@ class PrimeModerPage extends React.Component {
    componentDidMount(){
       this.getTask()
       if (localStorage.getItem('m_type') != 'no'){
-         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}`)
+         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}?m_type=main`)
          .then(res => {
             localStorage.setItem('m_points', res.data.m_points)
          })

@@ -148,13 +148,13 @@ class PersonalPage extends React.Component {
       if(localStorage.getItem('m_type') == 'ceo'){
          return(
             <Tabs >
-               <Tab eventKey="home" title="Main">
+               <Tab eventKey="home" title="Main" >
                   <PrimeModerPage />
                </Tab>
-               <Tab eventKey="profile" title="Contest">
+               <Tab eventKey="profile" title="Contest" >
                   <ContestModerPage />
                </Tab>
-               <Tab eventKey="logs" title="Logs">
+               <Tab eventKey="logs" title="Logs" >
                   <RulesModerPage />
                </Tab>
             </Tabs>
@@ -183,6 +183,15 @@ class PersonalPage extends React.Component {
          }
        })
    }
+
+   // getMPoints = (m_type) =>{
+      
+   //    axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=${m_type}`)
+   //       .then(res => {
+   //          console.log(m_type + ": " + res.data.m_points)
+   //          localStorage.setItem('m_points', res.data.m_points)
+   //       })
+   // }
 
    renderHelpBtn = () => {
       if (localStorage.getItem('m_type') && !localStorage.getItem('m_type').includes('no')){

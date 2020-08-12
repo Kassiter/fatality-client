@@ -16,7 +16,8 @@ class ContestModerPage extends React.Component {
          keys: [],
          requestFailed: false,
          errorText: '',
-         all_done: false
+         all_done: false,
+         m_points: 0
       }
    }
 
@@ -26,9 +27,9 @@ class ContestModerPage extends React.Component {
       }
          
       if (localStorage.getItem('m_type') != 'no'){
-         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}?m_type=contest`)
+         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=contest`)
          .then(res => {
-            localStorage.setItem('m_points', res.data.m_points)
+            this.setState({m_points: res.data.m_points})
          })
       }
    }
@@ -56,7 +57,8 @@ class ContestModerPage extends React.Component {
          steamID: localStorage.getItem('steam_id'),
          auth_token: localStorage.getItem('auth_token'),
          report: report,
-         id: id
+         id: id,
+         m_points: this.state.m_points 
       })
       .then(res => {
          this.getKeys()
@@ -124,7 +126,7 @@ class ContestModerPage extends React.Component {
    }
 
    moderPointsBarStyle = () =>{
-      let points = localStorage.getItem('m_points');
+      let points = this.state.m_points;
       let result = ""
       result = (points >= 45 && points <= 60) ? "warning" : "success"
       if (points < 45){
@@ -138,7 +140,7 @@ class ContestModerPage extends React.Component {
       return(
          <div className="d-flex flex-column" id="contests-moder">
             {this.renderBase()}
-            <ProgressBar animated striped now={localStorage.getItem('m_points')} label={`MP: ${localStorage.getItem('m_points')}`} max="60" variant={this.moderPointsBarStyle()} className="mt-4"/>
+            <ProgressBar animated striped now={this.state.m_points} label={`MP: ${this.state.m_points}`} max="60" variant={this.moderPointsBarStyle()} className="mt-4"/>
          </div>
       );
    }

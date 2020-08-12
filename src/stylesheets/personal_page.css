@@ -245,3 +245,11 @@
    font-weight: 300;
    font-family: 'Montserrat', sans-serif;
 }
+
+.progress-bar{
+   background-color: transparent !important;
+}
+
+h2.rect-progress-bar-percent{
+   margin: 0em !important;
+}

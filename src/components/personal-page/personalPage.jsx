@@ -45,13 +45,6 @@ class PersonalPage extends React.Component {
          })
       }
 
-      if (localStorage.getItem('m_type') != 'no'){
-         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}`)
-         .then(res => {
-           localStorage.setItem('m_points', res.data.m_points)
-         })
-      }
-
       let nickname = localStorage.getItem('nickname')
       let steam_id = localStorage.getItem('steam_id')
       if(nickname){

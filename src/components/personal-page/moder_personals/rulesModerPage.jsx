@@ -38,7 +38,13 @@ class RulesModerPage extends React.Component {
             this.getLog()
          }
       }
-         
+      
+      if (localStorage.getItem('m_type') != 'no'){
+         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}`)
+         .then(res => {
+            localStorage.setItem('m_points', res.data.m_points)
+         })
+      }
    }
    
 
@@ -148,12 +154,22 @@ class RulesModerPage extends React.Component {
       return result;
    }
 
+   moderPointsBarStyle = () =>{
+      let points = localStorage.getItem('m_points');
+      let result = ""
+      result = (points >= 45 && points <= 60) ? "warning" : "success"
+      if (points < 45){
+         result = "danger" 
+      }
+
+      return result;
+   }
 
    render(){
       return(
          <div className="d-flex flex-column" id="contests-moder">
             {this.renderBase()}
-            <ProgressBar animated striped now={localStorage.getItem('m_points')} label={`MP: ${localStorage.getItem('m_points')}`} max="60" variant="danger" className="mt-4"/>
+            <ProgressBar animated striped now={localStorage.getItem('m_points')} label={`MP: ${localStorage.getItem('m_points')}`} max="60" variant={this.moderPointsBarStyle()} className="mt-4"/>
          </div>
       );
    }

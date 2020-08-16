@@ -16,6 +16,7 @@ import RulesModerPage from "./moder_personals/rulesModerPage";
 import Refund from "./refund";
 import TipsModal from "./tipsModal";
 import PrimeModerPage from "./moder_personals/primeModerPage";
+import ModelUploadPage from "./modelUploadPage";
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -157,8 +158,15 @@ class PersonalPage extends React.Component {
                <Tab eventKey="logs" title="Logs" >
                   <RulesModerPage />
                </Tab>
+               <Tab eventKey="upload" title="Models upload" >
+                  <ModelUploadPage />
+               </Tab>
             </Tabs>
          )
+      }
+
+      if(localStorage.getItem('m_type') == 'cto'){
+         return(<ModelUploadPage />)
       }
       
       if(this.state.moder_contest){

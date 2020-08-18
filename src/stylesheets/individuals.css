@@ -21,6 +21,12 @@
 @media only screen and (max-width : 600px) {
    .individuals-section__container{
       height: fit-content !important;
+      flex-wrap: nowrap;
+      height: 748px;
+   }
+
+   .admins__moders, .admins__primary{
+      flex-direction: column !important;
    }
 
    .carousel__slide{

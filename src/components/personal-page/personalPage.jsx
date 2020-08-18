@@ -17,6 +17,7 @@ import Refund from "./refund";
 import TipsModal from "./tipsModal";
 import PrimeModerPage from "./moder_personals/primeModerPage";
 import ModelUploadPage from "./modelUploadPage";
+import MapUploadPage from "./mapUploadPage";
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -158,15 +159,27 @@ class PersonalPage extends React.Component {
                <Tab eventKey="logs" title="Logs" >
                   <RulesModerPage />
                </Tab>
-               <Tab eventKey="upload" title="Models upload" >
+               <Tab eventKey="upload_s" title="Models upload" >
                   <ModelUploadPage />
+               </Tab>
+               <Tab eventKey="upload" title="Maps upload" >
+                  <MapUploadPage />
                </Tab>
             </Tabs>
          )
       }
 
       if(localStorage.getItem('m_type') == 'cto'){
-         return(<ModelUploadPage />)
+         return(
+            <Tabs >
+               <Tab eventKey="upload_s" title="Models upload" >
+                  <ModelUploadPage />
+               </Tab>
+               <Tab eventKey="upload" title="Maps upload" >
+                  <MapUploadPage />
+               </Tab>
+            </Tabs>
+         )
       }
       
       if(this.state.moder_contest){

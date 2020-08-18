@@ -3,6 +3,7 @@ import '../../stylesheets/individuals.css'
 import IndividualsCard from "./individualsCard";
 import axios from 'axios';
 import enviroment from '../../enviroment'
+import RouletteCard from './rouletteCard'
 
 class Individuals extends React.Component {
    constructor(props){
@@ -46,6 +47,7 @@ class Individuals extends React.Component {
                <h1>персональные товары</h1>
                <div className="individuals-section__cards-container">
                   {this.renderPersonalFeatures()}
+                  <RouletteCard />
                </div>
             </div>
         );

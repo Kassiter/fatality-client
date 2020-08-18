@@ -93,7 +93,7 @@ class PersonalPage extends React.Component {
    }
 
    renderContest = () =>{
-      if (!this.state.contest || !this.state.contest.winner){
+      if (!this.state.contest){
          return(
             <div className="giveaway__main-content">
                <div className="peronal-page__icon gift-icon"></div>

@@ -27,7 +27,8 @@ class PersonalPage extends React.Component {
          contest: null,
          moder_contest_winner: false,
          tipsModalToggled: false,
-         manageCommandsCategories: []
+         manageCommandsCategories: [],
+         strikes: 0
       }
    }
 
@@ -69,6 +70,13 @@ class PersonalPage extends React.Component {
                })
             }
          })
+
+         axios.get(`${enviroment.backend_url}/users/strikes?steamID=${steam_id}`)
+         .then(res => {
+            this.setState({
+               strikes: res.data.strikes
+            })
+          })
 
          axios.get(`${enviroment.backend_url}/moder_contests?steam_id=${steam_id}`)
          .then(res => {
@@ -205,18 +213,22 @@ class PersonalPage extends React.Component {
        })
    }
 
-   // getMPoints = (m_type) =>{
-      
-   //    axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=${m_type}`)
-   //       .then(res => {
-   //          console.log(m_type + ": " + res.data.m_points)
-   //          localStorage.setItem('m_points', res.data.m_points)
-   //       })
-   // }
-
    renderHelpBtn = () => {
       if (localStorage.getItem('m_type') && !localStorage.getItem('m_type').includes('no')){
          return(<Button onClick={this.toggleModal} variant="success" className="mr-50px">Полезные команды</Button>)
+      }
+   }
+
+   renderStrikes = () => {
+      if(this.state.strikes > 0){
+         return(
+         <div className="row profile__feature--point">
+            <h3 className="text-left">
+               <span className="text-muted">Страйки: </span>
+               {this.state.strikes}/3
+            </h3>
+         </div>
+         )
       }
    }
 
@@ -251,6 +263,7 @@ class PersonalPage extends React.Component {
                            {this.state.vip_expires}
                         </h3>
                      </div>
+                     {this.renderStrikes()}
                  </div>
                </Tab>
                <Tab eventKey="profile" title="Персональный товар">

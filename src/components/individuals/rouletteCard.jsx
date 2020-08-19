@@ -6,13 +6,23 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { AiFillLock } from 'react-icons/ai';
+import CaseModal from './caseModal'
 
 class RouletteCard extends React.Component {
    constructor(props){
       super(props);
       this.state = {
          toggleChecked: true,
-         amountMonth: this.props.option_basic_cost
+         amountMonth: this.props.option_basic_cost,
+         caseModalToggled: false
+      }
+   }
+
+   componentDidUpdate(){
+      if (this.state.caseModalToggled){
+         document.getElementById('root').classList.add("blurred");
+      }else{
+         document.getElementById('root').classList.remove("blurred");
       }
    }
 
@@ -36,6 +46,10 @@ class RouletteCard extends React.Component {
       }
     }
 
+    toggleCaseModal = () => {
+      this.setState({caseModalToggled: !this.state.caseModalToggled})
+    }
+
    renderButton = () =>{
          return(
                <div>
@@ -52,10 +66,11 @@ class RouletteCard extends React.Component {
                <h2>Random{this.renderTooltipBase('Рандом')}</h2>
                {this.renderButton()}
                <div>
-               <Button variant="success" href="http://google.com" className="btn-price">
+               <Button variant="success" onClick={this.toggleCaseModal} className="btn-price">
                   Открыть
                </Button>
                </div>
+               <CaseModal show={this.state.caseModalToggled} onHide={this.toggleCaseModal}/>
             </div>
         );
     }

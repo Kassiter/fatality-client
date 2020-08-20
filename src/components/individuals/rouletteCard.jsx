@@ -53,7 +53,7 @@ class RouletteCard extends React.Component {
    renderButton = () =>{
          return(
                <div>
-               <Button variant="success" href="http://google.com" className="btn-price">
+               <Button variant="success" href="https://primearea.biz/buy/234194/" className="btn-price">
                   100₽
                </Button>
                </div>

@@ -1,10 +1,15 @@
 import React from "react";
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Alert from 'react-bootstrap/Alert'
 import { FiLogOut } from 'react-icons/fi';
 import '../../stylesheets/personal_page.css'
 import '../../stylesheets/global.css'
 import '../../stylesheets/case.css'
+import enviroment from '../../enviroment'
+import axios from 'axios'
+import { AiFillLock } from 'react-icons/ai';
 
 class CaseModal extends React.Component {
    constructor(props){
@@ -13,7 +18,15 @@ class CaseModal extends React.Component {
       this.state ={ 
          seeds: [],
          margin: 0,
-         spin_allowed: true
+         spin_allowed: false,
+         key_invalid: false,
+         key: '',
+         email_empty: true,
+         email: '',
+         key_valid: false,
+         requestFailed: false,
+         requestSucceed: false,
+         errorText: '',
       }
    }
 
@@ -25,23 +38,23 @@ class CaseModal extends React.Component {
       let seed = []
 
       for (var k = 0; k < 501; k++) {
-         seed.push({name: 'Кредиты [25k]', _class: 'milspec_blue', pic: 'https://i.imgur.com/IC2TS45.jpg', bid: 'k-25'})
+         seed.push({name: 'Кредиты [25k]', _class: 'milspec_blue', pic: 'https://i.imgur.com/IC2TS45.jpg', type: 'shop_credits', param1: '25000', param2: ''})
       }
 
       for (var k = 0; k < 75; k++) {
-         seed.push({name: 'VIP [Месяц]', _class: 'restricted_purple', pic: 'https://i.imgur.com/dsz1Cqa.jpg', bid: 'vip-m'})
+         seed.push({name: 'VIP [Месяц]', _class: 'restricted_purple', pic: 'https://i.imgur.com/dsz1Cqa.jpg', type: 'vip_add', param1: '[VIP]', param2: 2592000})
       }
 
       for (var k = 0; k < 125; k++) {
-         seed.push({name: 'Кредиты [50k]', _class: 'restricted_purple', pic: 'https://i.imgur.com/IC2TS45.jpg', bid: 'k-50'})
+         seed.push({name: 'Кредиты [50k]', _class: 'restricted_purple', pic: 'https://i.imgur.com/IC2TS45.jpg', type: 'shop_credits', param1: '50000', param2: ''})
       }
 
       for (var k = 0; k < 40; k++) {
-         seed.push({name: 'Supreme [Месяц]', _class: 'classified_pink', pic: 'https://i.imgur.com/Pqlhamd.jpg', bid: 'supreme-m'})
+         seed.push({name: 'Supreme [Месяц]', _class: 'classified_pink', pic: 'https://i.imgur.com/Pqlhamd.jpg', type: 'vip_add', param1: '[Supreme]', param2: 2592000})
       }
 
       for (var k = 0; k < 5; k++) {
-         seed.push({name: 'Admin+ [Месяц]', _class: 'coverted_red', pic: 'https://i.imgur.com/LLDJYzh.png', bid: 'admin-m'})
+         seed.push({name: 'Admin+ [Месяц]', _class: 'coverted_red', pic: 'https://i.imgur.com/LLDJYzh.png', param1: 'admin-m'})
       }
       
       for (var k = 0; k < 5; k++) {
@@ -64,11 +77,39 @@ class CaseModal extends React.Component {
       return arra1;
    }
 
+   requestItem = (item) => {
+      axios.post(`${enviroment.backend_url}/personal_items/request_random_item`,
+      {
+         key: this.state.key,
+         email: this.state.email,
+         prize: item,
+      })
+      .then(res => {
+         this.setState({key_invalid: false, key_valid: true, requestFailed: false, requestSucceed: true}, this.clearMessages);
+      })
+      .catch(error => {
+         let err = error.response.data.error;
+         this.setState({ errorText: err, requestFailed: true, requestSucceed: false}, this.clearMessages);
+      });
+   }
+
+   clearMessages = () =>{
+      setTimeout(() => {
+         this.clearFails()
+      }, 4000);
+   }
+
+   clearFails = () =>{
+      this.setState({ errorText: '', requestFailed: false, requestSucceed: false});
+   }
+
    spinUp = () => {
       let seed = this.state.seeds
       seed = this.shuffle(seed)
-      let prize = seed[385].bid
-      console.log(prize)
+      let prize = seed[385]
+      setTimeout(() => {
+         this.requestItem(prize)
+      }, 1000);
       this.setState({seeds: seed, margin: 0, spin_allowed: false}, this.spin)
    }
 
@@ -125,10 +166,45 @@ class CaseModal extends React.Component {
          }
 
          if(marg < 5 && flag1){
-            this.setState({spin_allowed: true})
             clearInterval(i)
          }
       }, 0.1);
+      this.setState({spin_allowed: false})
+   }
+
+   renderLock = () =>{
+      if (!this.state.spin_allowed){
+         return(<AiFillLock className="mb-1"/>)
+      }
+   }
+
+   validateKey = (e) =>{
+      if (e.target.value.length > 40){
+         let keyy = e.target.value
+         axios.post(`${enviroment.backend_url}/personal_items/validate_random_key`,
+         {
+            key: keyy
+         })
+         .then(res => {
+            console.log('heeeyee, I wann ashoot babe')
+            this.setState({key_invalid: false, key_valid: true, key: keyy});
+            if (this.state.email.length > 0){
+               this.setState({spin_allowed: true})
+            }
+         })
+         .catch(error => {
+            this.setState({ key_invalid: true, spin_allowed: false, key_valid: false});
+         });
+      }
+   }
+
+   changeEmail = (e) => {
+      if (e.target.value.length > 0 && this.state.key_valid){
+         this.setState({email: e.target.value, spin_allowed: true})
+      }else if(e.target.value.length < 1){
+         this.setState({spin_allowed: false})
+      }
+         
    }
 
 
@@ -145,6 +221,12 @@ class CaseModal extends React.Component {
          <Modal.Header closeButton className='personal-page__header case__header'>
          </Modal.Header>
          <Modal.Body className="case__body">
+            <Alert variant='danger' hidden={!this.state.requestFailed } className="case__alert">
+               Произошла ошибка:&nbsp; {this.state.errorText}
+            </Alert>
+            <Alert variant='success' hidden={!this.state.requestSucceed } className="case__alert">
+               На адрес <strong>{this.state.email}</strong> отправлено письмо с ключом.
+            </Alert>
             <div className="d-flex flex-column align-items-center">
                <div className="radial d-flex flex-column justify-content-center align-items-center">
                   <div className="radial-inner d-flex justify-content-center align-items-center">
@@ -153,7 +235,16 @@ class CaseModal extends React.Component {
                   <div className="rollin-cards" style={{marginRight: `${this.state.margin}px`}}>
                      {this.renderPrizes()}
                   </div>
-                  <Button variant="success" size='lg' disabled={!this.state.spin_allowed} onClick={this.spinUp} className="spin__btn">Открыть</Button>
+                  <div className="case__contols">
+                     <Form.Control type="text" placeholder="Ключ" className={this.state.key_invalid ? 'input--error case__input' : 'case__input'} onChange={this.validateKey} />
+                     <Form className="case__form" onSubmit={e => { e.preventDefault(); }}>
+                        <Form.Control type="email" placeholder="Email" onChange={this.changeEmail} className={this.state.email_empty ? 'case__input' : 'case__input'} />
+                        <Button variant="success" size='lg' disabled={!this.state.spin_allowed} onClick={this.spinUp} className="spin__btn" type="button">
+                           {this.renderLock()}
+                           Открыть
+                        </Button>
+                     </Form>
+                  </div>
                </div>
 
                <div className="all-prizes">

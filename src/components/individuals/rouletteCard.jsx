@@ -62,7 +62,7 @@ class RouletteCard extends React.Component {
 
     render() {
         return(
-            <div className="individuals-card" id="ind-card" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://lh4.googleusercontent.com/j8_oY8Z9dfMMPi071wUejDi3EZOIXBMYtb3LaS0uqzap7zrg0YzWwhC-I51cr2_p8_xsa6zO_UvLrqU=w1848-h1020-rw)`}}>
+            <div className="individuals-card" id="ind-card" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(https://i.imgur.com/rR6TjXd.jpg)`}}>
                <h2>Random{this.renderTooltipBase('Рандом')}</h2>
                {this.renderButton()}
                <div>
@@ -70,7 +70,7 @@ class RouletteCard extends React.Component {
                   Открыть
                </Button>
                </div>
-               <CaseModal show={this.state.caseModalToggled} onHide={this.toggleCaseModal}/>
+               <CaseModal show={this.state.caseModalToggled} onHide={this.toggleCaseModal} requestSucceed={false} requestFailed={false} />
             </div>
         );
     }

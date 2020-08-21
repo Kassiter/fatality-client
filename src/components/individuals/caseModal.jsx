@@ -105,17 +105,17 @@ class CaseModal extends React.Component {
 
    spinUp = () => {
       this.generateSeed()
-      let prize = this.state.seeds[325]
+      let prize = this.state.seeds[342]
 
       setTimeout(() => {
          this.requestItem(prize)
-      }, 1000);
+      }, 1500);
       this.setState({margin: 0, spin_allowed: false}, this.spin)
    }
 
    addUltra = (seed) =>{
       for (let i = 0; i < 9; i++) {
-         seed[Math.floor(Math.random() * (323 - 0 + 1) + 0)] = {name: 'Ultra Admin [Месяц]', _class: 'extremly_rare', pic: 'https://i.imgur.com/f4FS2yE.png'}
+         seed[Math.floor(Math.random() * (340 - 0 + 1) + 0)] = {name: 'Ultra Admin [Месяц]', _class: 'extremly_rare', pic: 'https://i.imgur.com/f4FS2yE.png'}
       }
       this.setState({seeds: seed})
    }
@@ -170,7 +170,7 @@ class CaseModal extends React.Component {
          }else {
             flag1 = true
             flag = false
-            marg-= 5
+            marg-= 3
             this.setState({margin: this.state.margin+marg})
          }
 

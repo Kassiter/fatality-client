@@ -126,7 +126,7 @@ class CaseModal extends React.Component {
         res.push(
            <div className="rollin_prize" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${prize.pic})`}}>
             <div className={`class_label ${prize._class}`}>
-            <div className="prize__name">{prize.name} {index}</div> 
+            <div className="prize__name">{prize.name}</div> 
             </div>   
            </div>
         )

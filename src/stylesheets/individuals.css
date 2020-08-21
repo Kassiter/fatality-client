@@ -1,7 +1,8 @@
 .individuals-section__container{
    width: 100%;
-   height: 800px;
+   height: fit-content !important;
    background-color: #131313;
+   padding-bottom: 10px !important;
 }
 
 .individuals-section__container h1{

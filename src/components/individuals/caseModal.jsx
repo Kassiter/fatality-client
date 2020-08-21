@@ -37,11 +37,11 @@ class CaseModal extends React.Component {
    generateSeed = () =>{
       let seed = []
 
-      for (var k = 0; k < 501; k++) {
+      for (var k = 0; k < 333; k++) {
          seed.push({name: 'Кредиты [25k]', _class: 'milspec_blue', pic: 'https://i.imgur.com/jrGwVvX.png', type: 'shop_credits', param1: '25000', param2: ''})
       }
 
-      for (var k = 0; k < 75; k++) {
+      for (var k = 0; k < 97; k++) {
          seed.push({name: 'VIP [Месяц]', _class: 'restricted_purple', pic: 'https://i.imgur.com/dsz1Cqa.jpg', type: 'vip_add', param1: '[VIP]', param2: 2592000})
       }
 
@@ -61,7 +61,7 @@ class CaseModal extends React.Component {
          seed = this.shuffle(seed)
       }
 
-      this.setState({seeds: seed})
+      this.addUltra(seed)
    }
 
    shuffle = (arra1) => {
@@ -104,13 +104,20 @@ class CaseModal extends React.Component {
    }
 
    spinUp = () => {
-      let seed = this.state.seeds
-      seed = this.shuffle(seed)
-      let prize = seed[385]
+      this.generateSeed()
+      let prize = this.state.seeds[325]
+
       setTimeout(() => {
          this.requestItem(prize)
       }, 1000);
-      this.setState({seeds: seed, margin: 0, spin_allowed: false}, this.spin)
+      this.setState({margin: 0, spin_allowed: false}, this.spin)
+   }
+
+   addUltra = (seed) =>{
+      for (let i = 0; i < 9; i++) {
+         seed[Math.floor(Math.random() * (323 - 0 + 1) + 0)] = {name: 'Ultra Admin [Месяц]', _class: 'extremly_rare', pic: 'https://i.imgur.com/f4FS2yE.png'}
+      }
+      this.setState({seeds: seed})
    }
 
    renderPrizes = () =>{
@@ -119,7 +126,7 @@ class CaseModal extends React.Component {
         res.push(
            <div className="rollin_prize" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${prize.pic})`}}>
             <div className={`class_label ${prize._class}`}>
-               <div className="prize__name">{prize.name}</div> 
+            <div className="prize__name">{prize.name} {index}</div> 
             </div>   
            </div>
         )
@@ -133,7 +140,8 @@ class CaseModal extends React.Component {
          {name: 'VIP [Месяц]', _class: 'restricted_purple', pic: 'https://i.imgur.com/dsz1Cqa.jpg'},
          {name: 'Кредиты [50k]', _class: 'restricted_purple', pic: 'https://i.imgur.com/jrGwVvX.png'},
          {name: 'Supreme [Месяц]', _class: 'classified_pink', pic: 'https://i.imgur.com/Pqlhamd.jpg'},
-         {name: 'Admin+ [Месяц]', _class: 'coverted_red', pic: 'https://i.imgur.com/LLDJYzh.png'}
+         {name: 'Admin+ [Месяц]', _class: 'coverted_red', pic: 'https://i.imgur.com/LLDJYzh.png'},
+         {name: 'Ultra Admin [Месяц]', _class: 'extremly_rare', pic: 'https://i.imgur.com/f4FS2yE.png'}
       ]
       let cards = []
 
@@ -150,18 +158,19 @@ class CaseModal extends React.Component {
    }
 
    spin = () => {
+      debugger;
       let marg = 400
       let flag = true
       let flag1 = false
       
       let i = setInterval(() => {
          if(marg < 5 && flag){
-            marg+=400
+            marg+=100
             this.setState({margin: this.state.margin+marg})
          }else {
             flag1 = true
             flag = false
-            marg-= 10
+            marg-= 5
             this.setState({margin: this.state.margin+marg})
          }
 

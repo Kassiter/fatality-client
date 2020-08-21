@@ -134,6 +134,17 @@
    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#021da6', endColorstr='#021da6', GradientType=0 );
 }
 
+.extremly_rare{
+   background: rgba(250, 213, 7, 0.719);
+   background: -moz-linear-gradient(bottom, rgba(250, 213, 7, 0.719) 0%, rgba(250, 213, 7, 0.719) 52%, rgba(2,29,166,0) 100%);
+   background: -webkit-gradient(left bottom, left bottom, color-stop(0%, rgba(250, 213, 7, 0.719)), color-stop(52%, rgba(250, 213, 7, 0.719)), color-stop(100%, rgba(2,29,166,0)));
+   background: -webkit-linear-gradient(bottom, rgba(250, 213, 7, 0.719) 0%, rgba(250, 213, 7, 0.719) 52%, rgba(2,29,166,0) 100%);
+   background: -o-linear-gradient(bottom, rgba(250, 213, 7, 0.719) 0%, rgba(250, 213, 7, 0.719) 52%, rgba(2,29,166,0) 100%);
+   background: -ms-linear-gradient(bottom, rgba(250, 213, 7, 0.719) 0%, rgba(250, 213, 7, 0.719) 52%, rgba(2,29,166,0) 100%);
+   background: linear-gradient(to top, rgba(250, 213, 7, 0.719) 0%, rgba(250, 213, 7, 0.719) 52%, rgba(2,29,166,0) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#021da6', endColorstr='#021da6', GradientType=0 );
+}
+
 .class_label{
    width: 100%;
    height: 75px;

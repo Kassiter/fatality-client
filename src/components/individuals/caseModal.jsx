@@ -46,7 +46,7 @@ class CaseModal extends React.Component {
       }
 
       for (var k = 0; k < 125; k++) {
-         seed.push({name: 'Кредиты [50k]', _class: 'restricted_purple', pic: 'https://i.imgur.com/jrGwVvX.png', type: 'shop_credits', param1: '50000', param2: ''})
+         seed.push({name: 'Кредиты [50k]', _class: 'restricted_purple', pic: 'https://i.imgur.com/EH4f8Yo.png', type: 'shop_credits', param1: '50000', param2: ''})
       }
 
       for (var k = 0; k < 40; k++) {
@@ -138,7 +138,7 @@ class CaseModal extends React.Component {
       let items = [
          {name: 'Кредиты [25k]', _class: 'milspec_blue', pic: 'https://i.imgur.com/jrGwVvX.png'},
          {name: 'VIP [Месяц]', _class: 'restricted_purple', pic: 'https://i.imgur.com/dsz1Cqa.jpg'},
-         {name: 'Кредиты [50k]', _class: 'restricted_purple', pic: 'https://i.imgur.com/jrGwVvX.png'},
+         {name: 'Кредиты [50k]', _class: 'restricted_purple', pic: 'https://i.imgur.com/EH4f8Yo.png'},
          {name: 'Supreme [Месяц]', _class: 'classified_pink', pic: 'https://i.imgur.com/Pqlhamd.jpg'},
          {name: 'Admin+ [Месяц]', _class: 'coverted_red', pic: 'https://i.imgur.com/LLDJYzh.png'},
          {name: 'Ultra Admin [Месяц]', _class: 'extremly_rare', pic: 'https://i.imgur.com/f4FS2yE.png'}

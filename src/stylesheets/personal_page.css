@@ -47,6 +47,13 @@
    background-size: 100% 100%;
 }
 
+.peronal-page__icon{
+   width: 250px;
+   height: 250px;
+   margin: 40px;
+   background-size: 100% 100%;
+}
+
 .gift-icon{
    background-image: url('../img/gift.svg');
 }

@@ -18,6 +18,7 @@ import TipsModal from "./tipsModal";
 import PrimeModerPage from "./moder_personals/primeModerPage";
 import ModelUploadPage from "./modelUploadPage";
 import MapUploadPage from "./mapUploadPage";
+import KeyGenPage from "./keyGenPage";
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -167,11 +168,14 @@ class PersonalPage extends React.Component {
                <Tab eventKey="logs" title="Logs" >
                   <RulesModerPage />
                </Tab>
-               <Tab eventKey="upload_s" title="Models upload" >
+               <Tab eventKey="upload_s" title="Загрузка моделей" >
                   <ModelUploadPage />
                </Tab>
-               <Tab eventKey="upload" title="Maps upload" >
+               <Tab eventKey="upload" title="Загрузка карт" >
                   <MapUploadPage />
+               </Tab>
+               <Tab eventKey="keygen" title="Генерация ключей" >
+                  <KeyGenPage />
                </Tab>
             </Tabs>
          )

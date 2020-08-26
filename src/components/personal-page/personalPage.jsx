@@ -19,6 +19,7 @@ import PrimeModerPage from "./moder_personals/primeModerPage";
 import ModelUploadPage from "./modelUploadPage";
 import MapUploadPage from "./mapUploadPage";
 import KeyGenPage from "./keyGenPage";
+import ReportPage from "./reportPage";
 
 class PersonalPage extends React.Component {
    constructor(props){
@@ -285,6 +286,9 @@ class PersonalPage extends React.Component {
                   <Refund 
                      participating={this.state.refund_participating}
                   />
+               </Tab>
+               <Tab eventKey="report" title="Репорт">
+                  <ReportPage />
                </Tab>
             </Tabs>
            

@@ -11,6 +11,10 @@
    color: rgb(161, 161, 161);
 }
 
+#personal-page .modal-content{
+   width: fit-content !important;
+}
+
 #personal-page .modal-footer{
    border-top: 1px solid rgb(27, 27, 27);
 }
@@ -19,10 +23,14 @@
    color: white;
 }
 
+#personal-page .modal-body{
+   width: fit-content !important;
+}
+
 #personal-page .navbar-nav{
    flex-direction: row;
    justify-content: space-around;
-   width: 700px;
+   width: 823px;
 }
 
 #personal-page .nav-link.active{
@@ -251,4 +259,13 @@
 .help__param{
    font-weight: 300;
    font-family: 'Montserrat', sans-serif;
+}
+
+.modal__link{
+   color: rgb(177, 177, 177);
+   text-decoration: underline;
+}
+
+.modal__link:hover{
+   color: white;
 }

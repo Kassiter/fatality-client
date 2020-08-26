@@ -57,7 +57,7 @@ class KeyGenPage extends React.Component {
     let res = []
 
     stuff.forEach(priviliege => {
-      res.push(<Button variant="success" onClick={() => this.submit(priviliege.req_data)} size='lg' className="spin__btn" type="button" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${priviliege.img_url})`}}>
+      res.push(<Button variant="success" onClick={() => this.submit(priviliege.req_data)} size='lg' className="gen__btn" type="button" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${priviliege.img_url})`}}>
                 {priviliege.name}
                </Button>)
     });

@@ -22,12 +22,12 @@
    z-index: 100;
    display: flex;
    flex-wrap: wrap;
-   /* justify-content: space-around; */
+   justify-content: center;
    align-items: center;
 }
 
-.spin__btn{
-   margin-left: 5px;
+.gen__btn{
+   margin: 5px;
    flex-shrink: unset;
    flex-grow: unset;
    width: 173px !important;
@@ -37,6 +37,6 @@
    background-size: 100% 100%;
 }
 
-.spin__btn:hover{
+.gen__btn:hover{
    border-color: rgb(165, 14, 97) !important;
 }

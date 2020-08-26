@@ -3,6 +3,7 @@ import '../../stylesheets/personal_page.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 import axios from 'axios';
 import enviroment from '../../enviroment'
 
@@ -16,7 +17,8 @@ class ReportPage extends React.Component {
          email: '',
          requestSucceed: false,
          requestFailed: false,
-         errorText: ''
+         errorText: '',
+         loading: false
       }
    }
 
@@ -45,7 +47,7 @@ class ReportPage extends React.Component {
 
    validateForm = () =>{
       if (this.state.email.length < 4 || this.state.suspect_nickname.length < 2 || !this.state.email.includes('@') || this.state.details.length < 5){
-         this.setState({ errorText: 'Пожалуйста, заполните форму правильно', requestFailed: true, requestSucceed: false });
+         this.setState({ errorText: 'Пожалуйста, заполните форму правильно', requestFailed: true, requestSucceed: false, loading: false });
          return false;
       }else{
          return true;
@@ -54,7 +56,11 @@ class ReportPage extends React.Component {
 
    send = (e) =>{
       e.preventDefault()
+      this.setState({loading: true}, this.query)
+      
+   }
 
+   query = () =>{
       if(this.validateForm()){
          axios.post(`${enviroment.backend_url}/reports/submit_report`,
          {
@@ -66,12 +72,26 @@ class ReportPage extends React.Component {
             }
          })
          .then(res => {
-            this.setState({ requestSucceed: true, requestFailed: false });
+            this.setState({ requestSucceed: true, requestFailed: false, loading: false });
          })
          .catch(error => {
             let err = error.response.data.error;
-            this.setState({ errorText: err, requestFailed: true, requestSucceed: false });
+            this.setState({ errorText: err, requestFailed: true, requestSucceed: false, loading: false });
          });
+      }
+   }
+
+   renderSpinner = () =>{
+      if (this.state.loading){
+         return(<Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            variant="light"
+            aria-hidden="true"
+            style={{marginRight: "4px", marginBottom: "2px"}}
+         />)
       }
    }
 
@@ -103,6 +123,7 @@ class ReportPage extends React.Component {
                </Form.Text>
             </Form.Group>
             <Button variant="success" type="submit" onClick={(e) => this.send(e)}>
+               {this.renderSpinner()}
                Отправить
             </Button>
             </Form>

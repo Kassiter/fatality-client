@@ -24,7 +24,7 @@ class KeyGenPage extends React.Component {
     axios.get(`${enviroment.backend_url}/priviliege/generate_key?lifetime=${this.state.lifetime}&auth_token=${auth_token}&steamID=${steamID}&priviliege=${priviliege}`)
     .then(res => {
       let lt = this.state.lifetime ? "lifetime" : "month"
-      let file_name = `tmp/${priviliege}_${lt}_${moment().format("DD_MM_YYYY-mm-ss")}.txt`
+      let file_name = `tmp/${priviliege}_${lt}_${moment().format("DD_MM_YYYY-hh-mm-ss")}.txt`
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const link = document.createElement('a');
       link.href = url;
@@ -51,6 +51,7 @@ class KeyGenPage extends React.Component {
       {name: 'Random', img_url: 'https://i.imgur.com/rR6TjXd.jpg', req_data: 'RANDOM'},
       {name: 'Trail', img_url: 'https://imgur.com/k568djw.jpg', req_data: 'TRAIL'},
       {name: 'Skin', img_url: 'https://i.imgur.com/g7A8alM.jpg', req_data: 'SKIN'},
+      {name: 'Credits', img_url: 'https://i.imgur.com/EH4f8Yo.png', req_data: 'SHOP_CREDITS'},
       {name: 'Facehugger', img_url: 'https://i.ebayimg.com/images/g/5egAAOSwdJJbaVJ-/s-l300.jpg', req_data: 'FACEHUGGER'}
     ]
     let res = []
@@ -73,9 +74,9 @@ class KeyGenPage extends React.Component {
         </div>
         <BootstrapSwitchButton 
                   checked={this.state.lifetime}
-                  offlabel='Месяц'
+                  offlabel='Месяц (25k)'
                   onstyle='success'
-                  onlabel='Навсегда'
+                  onlabel='Навсегда (50k)'
                   //size="m"
                   className="key__duration"
                   offstyle='danger'

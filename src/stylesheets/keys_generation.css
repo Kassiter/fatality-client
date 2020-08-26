@@ -1,13 +1,13 @@
 .keys-share__icon{
-   background-image: 
+   /* background-image: 
    linear-gradient(rgba(19, 19, 19, 0.7), rgba(19,19,19,0.7)),
-   url("../img/key_share.svg");
+   url("../img/key_share.svg"); */
    width: 300px !important;
    height: 300px !important;
 }
 
 .keys-generation__container{
-   height: 500px;
+   height: 550px;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -15,18 +15,19 @@
 }
 
 .keys__buttons{
-   margin-top: 0px;
+   margin-top: -52px;
    width: 90%;
    height: 350px;
    position: absolute;
    z-index: 100;
    display: flex;
    flex-wrap: wrap;
-   justify-content: space-around;
+   /* justify-content: space-around; */
    align-items: center;
 }
 
 .spin__btn{
+   margin-left: 5px;
    flex-shrink: unset;
    flex-grow: unset;
    width: 173px !important;

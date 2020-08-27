@@ -127,15 +127,15 @@ class PersonalPage extends React.Component {
    }
 
    renderModerContest = () =>{
-      if(!this.state.moder_contest){
+      console.log('MODER_CONTEST: '+this.state.moder_contest)
+      if(this.state.moder_contest == null){
          let phrase = <h4>На данный момент набор не проводится</h4>
          let cl = "peronal-page__icon shield-icon"
          if (this.state.moder_contest_winner && (localStorage.getItem('m_type') == 'no')){
             phrase = <h4 className="participating">Вы приняты! Ожидайте дополнительную информацию</h4> 
             cl = "peronal-page__icon confetti-icon"
          }
-         
-         if ((localStorage.getItem('m_type') == undefined) || (localStorage.getItem('m_type').includes('no'))){
+         if ((localStorage.getItem('m_type') == 'undefined') || (localStorage.getItem('m_type').includes('no'))){
             return(
                <div className="giveaway__main-content">
                   <div className={cl}></div>

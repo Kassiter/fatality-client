@@ -21,6 +21,7 @@ import { GiBeamsAura } from 'react-icons/gi'
 import { GiJumpAcross } from 'react-icons/gi'
 import { IoMdFlashOff } from 'react-icons/io'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import div from 'react-bootstrap/Badge'
 import Tooltip from 'react-bootstrap/Tooltip'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 
@@ -30,7 +31,7 @@ class CardCustom extends React.Component {
       super(props);
       this.state = {
          toggleChecked: true,
-         amountMonth: this.props.previliege.cost_month,
+         amountMonth: this.countDiscount(this.props.previliege.cost_month, this.props.previliege.discount),
          BsArrowClockwise: BsArrowClockwise,
          FaHeartbeat: FaHeartbeat,
          AiOutlineQuestionCircle: AiOutlineQuestionCircle, 
@@ -60,7 +61,17 @@ class CardCustom extends React.Component {
     }
 
     handleCheckedPress = () => {
-      this.setState({ toggleChecked: !this.state.toggleChecked, amountMonth: !this.state.toggleChecked ? this.props.previliege.cost_month : this.props.previliege.cost_lifetime })
+      this.setState({ toggleChecked: !this.state.toggleChecked, amountMonth: !this.state.toggleChecked ? this.countDiscount(this.props.previliege.cost_month, this.props.previliege.discount) : this.countDiscount(this.props.previliege.cost_lifetime, this.props.previliege.discount) })
+    }
+
+    countDiscount = (price, discount) =>{
+      return ((discount != undefined && discount != null && discount > 0) ? price-(price*(discount/100)) : price)    
+    }
+
+    renderDiscount = () =>{
+       if(this.props.previliege.discount != null && this.props.previliege.discount != undefined && this.props.previliege.discount > 0){
+         return(<div variant="danger" className="discount__badge">-{this.props.previliege.discount}%</div>)
+       }
     }
 
     parseFeatures = () =>{
@@ -97,7 +108,7 @@ class CardCustom extends React.Component {
         return(
          <Card>
             <div className="previlegies-card__top card__top--1">
-               <h2>{this.props.previliege.name}</h2>
+            <div className="d-flex align-items-center"><h2>{this.props.previliege.name}</h2>{this.renderDiscount()}</div>
             </div>
             <Card.Body>
                {this.parseFeatures()}

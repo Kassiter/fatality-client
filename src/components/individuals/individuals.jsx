@@ -32,13 +32,18 @@ class Individuals extends React.Component {
             img_url={feature.img_url}
             option_basic_link={feature.option_basic_link}
             option_advanced_link={feature.option_advanced_link}
-            option_basic_cost={feature.option_basic_cost}
-            option_advanced_cost={feature.option_advanced_cost}
+            discount={feature.discount}
+            option_basic_cost={this.countDiscount(feature.option_basic_cost, feature.discount)}
+            option_advanced_cost={this.countDiscount(feature.option_advanced_cost, feature.discount)}
             option_basic_name={feature.option_name_basic}
             option_advanced_name={feature.option_name_advanced}
          />);
       });
       return result;
+   }
+
+   countDiscount = (price, discount) =>{
+      return ((discount != undefined && discount != null && discount > 0) ? price-(price*(discount/100)) : price)    
    }
 
     render() {

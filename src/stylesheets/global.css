@@ -110,3 +110,19 @@ h5{
    font-family: 'Roboto', sans-serif;
    font-weight: 300;
 }
+
+.discount__badge{
+   width: 58px;
+   height: 40px;
+   font-size: 1.3em !important;
+   background-color: #cc4343;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: white;
+   clip-path: polygon(20% 0, 100% 0, 100% 100%, 20% 100%, 0 50%);
+}
+
+.pl-60px{
+   padding-left: 60px !important;
+}

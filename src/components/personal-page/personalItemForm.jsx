@@ -3,6 +3,7 @@ import '../../stylesheets/personal_page.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
+import Spinner from "react-bootstrap/Spinner";
 import axios from 'axios';
 import enviroment from '../../enviroment'
 
@@ -16,7 +17,8 @@ class PersonalItemForm extends React.Component {
          email: null,
          requestSucceed: false,
          requestFailed: false,
-         errorText: ''
+         errorText: '',
+         loading: false
       }
    }
 
@@ -45,6 +47,10 @@ class PersonalItemForm extends React.Component {
 
    send = (e) =>{
       e.preventDefault()
+      this.setState({loading: true}, this.query)
+   }
+
+   query = () =>{
       axios.post(`${enviroment.backend_url}/personal_items/request_item`,
       {
          key: this.state.key,
@@ -55,12 +61,26 @@ class PersonalItemForm extends React.Component {
          }
       })
       .then(res => {
-         this.setState({ requestSucceed: true, requestFailed: false });
+         this.setState({ requestSucceed: true, requestFailed: false, loading: false });
       })
       .catch(error => {
          let err = error.response.data.error;
-         this.setState({ errorText: err, requestFailed: true, requestSucceed: false });
+         this.setState({ errorText: err, requestFailed: true, requestSucceed: false, loading: false });
       });
+   }
+
+   renderSpinner = () =>{
+      if (this.state.loading){
+         return(<Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            variant="light"
+            aria-hidden="true"
+            style={{marginRight: "4px", marginBottom: "2px"}}
+         />)
+      }
    }
 
    render(){
@@ -94,6 +114,7 @@ class PersonalItemForm extends React.Component {
                <Form.Control required type="email" placeholder="Введите email" onChange={(e) => this.updateEmail(e)}/>
             </Form.Group>
             <Button variant="success" type="submit" onClick={(e) => this.send(e)}>
+               {this.renderSpinner()}
                Отправить
             </Button>
             </Form>

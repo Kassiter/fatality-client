@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import '../../stylesheets/personal_page.css'
 
 import Alert from "react-bootstrap/Alert";
@@ -19,7 +20,8 @@ class ModerContest extends React.Component {
          requestSucceed: false,
          requestFailed: false,
          errorText: '',
-         participating: this.props.participating
+         participating: this.props.participating,
+         loading: false
       }
    }
 
@@ -49,6 +51,10 @@ class ModerContest extends React.Component {
 
    send = (e) =>{
       e.preventDefault()
+      this.setState({loading: true}, this.query)
+   }
+
+   query = () =>{
       axios.post(`${enviroment.backend_url}/moder_contest/take_part`,
       {
          age: this.state.age,
@@ -60,12 +66,26 @@ class ModerContest extends React.Component {
          }
       })
       .then(res => {
-         this.setState({ requestSucceed: true, requestFailed: false, participating: true });
+         this.setState({ requestSucceed: true, requestFailed: false, participating: true, loading: false });
       })
       .catch(error => {
          let err = error.response.data.error;
-         this.setState({ errorText: err, requestFailed: true, requestSucceed: false });
+         this.setState({ errorText: err, requestFailed: true, requestSucceed: false, loading: false });
       });
+   }
+
+   renderSpinner = () =>{
+      if (this.state.loading){
+         return(<Spinner
+            as="span"
+            animation="border"
+            size="sm"
+            role="status"
+            variant="light"
+            aria-hidden="true"
+            style={{marginRight: "4px", marginBottom: "2px"}}
+         />)
+      }
    }
 
    renderPart = () =>{
@@ -107,6 +127,7 @@ class ModerContest extends React.Component {
                <Form.Control as="textarea" rows="3" onChange={(e) => this.updateReason(e)}/>
             </Form.Group>
             <Button variant="success" type="submit" onClick={(e) => this.send(e)} disabled={this.state.participating}>
+               {this.renderSpinner()}
                Отправить
             </Button>
             </Form>

@@ -1,5 +1,6 @@
 import React from "react";
 import '../../stylesheets/individuals.css';
+import '../../stylesheets/global.css';
 import Button from 'react-bootstrap/Button';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -38,7 +39,20 @@ class IndividualsCard extends React.Component {
 
    handleCheckedPress = () => {
       this.setState({ toggleChecked: !this.state.toggleChecked, amountMonth: !this.state.toggleChecked ? this.props.option_basic_cost : this.props.option_advanced_cost })
-    }
+   }
+
+   renderDiscount = () =>{
+      if(this.props.discount != null && this.props.discount != undefined && this.props.discount > 0){
+        return(
+         <div className="d-flex align-items-center pl-60px">
+            {this.renderButton()}
+            <div variant="danger" className="discount__badge">-{this.props.discount}%</div>
+         </div>
+        )
+      }else{
+         return(this.renderButton())
+      }
+   }
 
    renderButton = () =>{
       if (this.props.login_locked && !localStorage.getItem('steam_id')){
@@ -49,7 +63,7 @@ class IndividualsCard extends React.Component {
                overlay={this.renderTooltip(this.props, 'Необходимо войти, чтобы приобрести данный товар')}
             >
                <div>
-               <Button variant="success" disabled href={this.state.toggleChecked ? this.props.option_basic_link : this.props.option_advanced_link} className="btn-price">
+               <Button block variant="success" disabled href={this.state.toggleChecked ? this.props.option_basic_link : this.props.option_advanced_link} className="btn-price">
                   <AiFillLock className="mb-1"/>
                   {this.state.amountMonth}₽
                </Button>
@@ -65,7 +79,7 @@ class IndividualsCard extends React.Component {
         return(
             <div className="individuals-card" id="ind-card" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${this.props.img_url})`}}>
                <h2>{this.props.name}{this.renderTooltipBase(this.props.tooltip)}</h2>
-               {this.renderButton()}
+               {this.renderDiscount()}
                <BootstrapSwitchButton 
                   checked={this.state.toggleChecked}
                   onlabel={this.props.option_basic_name}

@@ -129,18 +129,21 @@
 }
 
 .profile__feature{
-   width: 400px;
-   margin-left: 35% !important;
+   width: 100%;
+   justify-content: center;
+   align-items: center;
 }
 
 .profile__nickname{
-   width: 400px;
-   margin-left: 34.5% !important;
+   width: 100%;
+   justify-content: center;
+   align-items: center;
 }
 
 .profile__feature--point{
-   width: 400px;
-   margin-left: 30% !important;
+   width: 100%;
+   justify-content: center;
+   align-items: center;
 }
 
 .giveaway__contest h1{

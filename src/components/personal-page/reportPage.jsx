@@ -57,7 +57,6 @@ class ReportPage extends React.Component {
    send = (e) =>{
       e.preventDefault()
       this.setState({loading: true}, this.query)
-      
    }
 
    query = () =>{

@@ -48,10 +48,10 @@ class KeyGenPage extends React.Component {
       {name: '', img_url: 'https://i.imgur.com/Pqlhamd.jpg', req_data: '[Supreme]'},
       {name: '', img_url: 'https://i.imgur.com/LLDJYzh.png', req_data: 'ADMIN'},
       {name: '', img_url: 'https://i.imgur.com/f4FS2yE.png', req_data: 'ULTRA-ADMIN'},
-      {name: 'Random', img_url: 'https://i.imgur.com/rR6TjXd.jpg', req_data: 'RANDOM'},
+      {name: 'Credits', img_url: 'https://i.imgur.com/EH4f8Yo.png', req_data: 'SHOP_CREDITS'},
       {name: 'Trail', img_url: 'https://imgur.com/k568djw.jpg', req_data: 'TRAIL'},
       {name: 'Skin', img_url: 'https://i.imgur.com/g7A8alM.jpg', req_data: 'SKIN'},
-      {name: 'Credits', img_url: 'https://i.imgur.com/EH4f8Yo.png', req_data: 'SHOP_CREDITS'},
+      {name: 'Random', img_url: 'https://i.imgur.com/rR6TjXd.jpg', req_data: 'RANDOM'},
       {name: 'Facehugger', img_url: 'https://i.ebayimg.com/images/g/5egAAOSwdJJbaVJ-/s-l300.jpg', req_data: 'FACEHUGGER'}
     ]
     let res = []

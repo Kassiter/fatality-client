@@ -31,7 +31,7 @@
     "react-scripts": "3.4.1",
     "react-scrollable-anchor": "^0.6.1",
     "steamidconvert": "^0.2.4",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0"
   },
   "scripts": {
     "start": "react-scripts start && node server.js",
@@ -56,6 +56,16 @@
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.10.1",
-    "eslint": "^7.7.0"
+    "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.2.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-json": "^2.1.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "prettier": "^2.1.1"
   }
 }

@@ -7,9 +7,32 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { AiFillLock } from 'react-icons/ai';
+import { Placement } from "react-bootstrap/esm/Overlay";
 
-class IndividualsCard extends React.Component {
-   constructor(props){
+export interface Props{
+   name: string,
+   tooltip: string,
+   login_locked: boolean,
+   tooltipPlacement: string,
+   background: string,
+   img_url: string,
+   option_basic_link: string,
+   option_advanced_link: string,
+   discount: number,
+   option_basic_cost: number,
+   option_advanced_cost: number,
+   option_basic_name: string,
+   option_advanced_name: string
+}
+
+export interface State{
+   toggleChecked: boolean,
+   amountMonth: number
+}
+
+
+class IndividualsCard extends React.Component<Props, State> {
+   constructor(props: Props){
       super(props);
       this.state = {
          toggleChecked: true,
@@ -17,7 +40,7 @@ class IndividualsCard extends React.Component {
       }
    }
 
-   renderTooltip = (props, text) => {
+   renderTooltip = (props: Props, text: string) => {
       return (
       <Tooltip id="nofall-tooltip" {...props}>
          {text}
@@ -25,10 +48,10 @@ class IndividualsCard extends React.Component {
       );
     }
 
-    renderTooltipBase = (text) => {
+    renderTooltipBase = (text: string) => {
       if (text){
          return (<OverlayTrigger
-            placement={this.props.tooltipPlacement || 'right'}
+            placement={this.props.tooltipPlacement as Placement || 'right'}
             delay={{ show: 250, hide: 400 }}
             overlay={this.renderTooltip(this.props, text)}
          >
@@ -46,7 +69,7 @@ class IndividualsCard extends React.Component {
         return(
          <div className="d-flex align-items-center pl-60px">
             {this.renderButton()}
-            <div variant="danger" className="discount__badge">-{this.props.discount}%</div>
+            <div className="discount__badge">-{this.props.discount}%</div>
          </div>
         )
       }else{

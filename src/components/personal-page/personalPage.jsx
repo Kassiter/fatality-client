@@ -135,7 +135,7 @@ class PersonalPage extends React.Component {
             phrase = <h4 className="participating">Вы приняты! Ожидайте дополнительную информацию</h4> 
             cl = "peronal-page__icon confetti-icon"
          }
-         if ((localStorage.getItem('m_type') == 'undefined') || (localStorage.getItem('m_type').includes('no'))){
+         if ((localStorage.getItem('m_type') == 'undefined') || (localStorage.getItem('m_type') != undefined && localStorage.getItem('m_type').includes('no'))){
             return(
                <div className="giveaway__main-content">
                   <div className={cl}></div>

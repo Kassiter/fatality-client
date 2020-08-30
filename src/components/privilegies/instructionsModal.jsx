@@ -25,7 +25,7 @@ class InstructionsModal extends React.Component {
          <Modal.Body className="help__body">
             <div className="d-flex flex-column">
                <h5 className="text-left text-muted">Внимание! Данная инструкция предназначена только для покупки Admin+</h5>
-      <h5 className="text-left text-muted">Если вы приобритаете VIP/Supreme, после получения ключа зайдите на сервер и впишите в консоль: key {"<ключ>"}</h5>
+               <h5 className="text-left text-muted">Если вы приобритаете VIP/Supreme, после получения ключа зайдите на сервер и впишите в консоль: key {"<ключ>"}</h5>
                <h4 className="text-left">1. Необходимо перейти к покупке ключа, нажав на кнопку с ценой внизу карточки.</h4>
                <div className="instruction__buy-btn align-self-center"></div>
                <h4 className="text-left">2. Приобрести товар, указав ВАШ РЕАЛЬНЫЙ email. (На него придёт ключ)</h4>

@@ -7,8 +7,16 @@ import Spinner from "react-bootstrap/Spinner";
 import axios from 'axios';
 import enviroment from '../../enviroment'
 
-class PersonalItemForm extends React.Component {
-   constructor(props){
+interface Props{
+   [key: string]: any
+}
+
+interface State{
+   [key: string]: any
+}
+
+class PersonalItemForm extends React.Component<Props, State> {
+   constructor(props: Props){
       super(props);
 
       this.state = {
@@ -22,15 +30,15 @@ class PersonalItemForm extends React.Component {
       }
    }
 
-   updateKey = (e) =>{
+   updateKey = (e: any) =>{
       this.setState({key: e.target.value})
    }
 
-   updateEmail = (e) =>{
+   updateEmail = (e: any) =>{
       this.setState({email: e.target.value})
    }
 
-   updateDescription = (e) =>{
+   updateDescription = (e: any) =>{
       this.setState({description: e.target.value})
    }
    
@@ -45,7 +53,7 @@ class PersonalItemForm extends React.Component {
       })
    }
 
-   send = (e) =>{
+   send = (e: any) =>{
       e.preventDefault()
       this.setState({loading: true}, this.query)
    }

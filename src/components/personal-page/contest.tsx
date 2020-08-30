@@ -3,8 +3,23 @@ import Button from 'react-bootstrap/Button'
 import axios from 'axios';
 import enviroment from '../../enviroment'
 
-class Contest extends React.Component {
-   constructor(props){
+interface Props{
+   id: number,
+   img_url: string,
+   winner: boolean,
+   con_key: string,
+   description: string,
+   title: string,
+   due_date: string | any,
+   participating: boolean
+}
+
+interface State{
+   participating: boolean
+}
+
+class Contest extends React.Component<Props, State> {
+   constructor(props: Props){
       super(props);
       this.state = {
          participating: this.props.participating
@@ -23,7 +38,7 @@ class Contest extends React.Component {
        })
    }
 
-   renderParticipant(){
+   renderParticipant = () => {
       if(this.state.participating && !this.props.winner){
          return(
             <h3 className='participating'>Вы участвуете</h3>

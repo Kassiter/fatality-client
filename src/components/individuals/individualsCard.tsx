@@ -9,7 +9,7 @@ import { AiOutlineQuestionCircle, AiFillLock } from 'react-icons/ai';
 
 import { Placement } from 'react-bootstrap/esm/Overlay';
 
-export interface Props {
+interface Props {
   name: string;
   tooltip: string;
   login_locked: boolean;
@@ -25,7 +25,7 @@ export interface Props {
   option_advanced_name: string;
 }
 
-export interface State {
+interface State {
   toggleChecked: boolean;
   amountMonth: number;
 }

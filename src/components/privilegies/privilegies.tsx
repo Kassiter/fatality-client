@@ -3,16 +3,20 @@ import CardCustom from './cardCustom';
 import React from "react";
 import '../../stylesheets/previlegies.css'
 import Tooltip from 'react-bootstrap/Tooltip'
-import vip1 from '../../vip1.json'
-import supreme from '../../supreme.json'
-import admin_plus from '../../admin_plus.json'
-import ScrollableAnchor from 'react-scrollable-anchor';
 import axios from 'axios';
 import enviroment from '../../enviroment'
 import InstructionsModal from './instructionsModal';
 
-class Privilegies extends React.Component {
-   constructor(props){
+interface Props{
+  zalupa: null
+}
+
+interface State{
+  [key: string]: any
+}
+
+class Privilegies extends React.Component<Props, State> {
+   constructor(props: Props){
       super(props);
       this.state = {
          toggleChecked: true,
@@ -29,7 +33,7 @@ class Privilegies extends React.Component {
     })
    }
 
-   renderTooltip = (props) => {
+   renderTooltip = (props: Props) => {
       return (
         <Tooltip id="nofall-tooltip" {...props}>
           Не будет стоппить при получении урона
@@ -37,7 +41,7 @@ class Privilegies extends React.Component {
       );
     }
 
-    renderTooltipEndur = (props) => {
+    renderTooltipEndur = (props: Props) => {
       return (
         <Tooltip id="nofall-tooltip" {...props}>
           10HP/Минута
@@ -54,8 +58,8 @@ class Privilegies extends React.Component {
     }
 
     renderCards= () => {
-      const result = []
-      this.state.privilieges.forEach(priviliege => { 
+      const result: JSX.Element[] = []
+      this.state.privilieges.forEach((priviliege: any) => { 
         let instructable = priviliege.name.includes('Admin')
         result.push(<CardCustom previliege={priviliege} instructable={instructable} instruct={this.showInstructionModal} />)
       });

@@ -7,11 +7,14 @@ import '../stylesheets/admins.css'
 import Image from 'react-bootstrap/Image'
 import Alert from "react-bootstrap/Alert";
 import Admin from './admin'
-
 import enviroment from '../enviroment'
 
-class Admins extends React.Component {
-   constructor(props){
+interface Props{ [key: string]: any }
+
+interface State{ admins: Object[], moders: Object[] }
+
+class Admins extends React.Component<Props, State> {
+   constructor(props: Props){
       super(props);
       this.state = {
          admins: [],
@@ -35,9 +38,9 @@ class Admins extends React.Component {
    }
 
    renderAdmins = () => {
-      let admins = []
+      let admins: JSX.Element[] = []
       if (this.state.admins.length > 0 ){
-         this.state.admins.forEach(admin => {
+         this.state.admins.forEach((admin: any) => {
             if (admin != null){
                admins.push(<Admin 
                   avatar_base = {admin.avatar_url}
@@ -52,9 +55,9 @@ class Admins extends React.Component {
    }
 
    renderModers = () => {
-      let moders = []
+      let moders: JSX.Element[] = []
       if (this.state.moders.length > 0 ){
-         this.state.moders.forEach(moder => {
+         this.state.moders.forEach((moder: any) => {
             if (moder != null){
                moders.push(<Admin 
                   avatar_base = {moder.avatar_url}

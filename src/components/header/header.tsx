@@ -9,11 +9,11 @@ import axios from 'axios';
 import PersonalPage from '../personal-page/personalPage';
 import enviroment from '../../enviroment';
 
-export interface Props {
+interface Props {
   toggleModal(): void
 }
 
-export interface State {
+interface State {
   modalToggled: boolean
 }
 

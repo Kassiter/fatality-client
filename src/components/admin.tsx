@@ -9,16 +9,20 @@ import Alert from "react-bootstrap/Alert";
 
 import enviroment from '../enviroment'
 
-class Admin extends React.Component {
-   constructor(props){
-      super(props);
+interface Props{
+   avatar_base: string,
+   avatar_hov: string,
+   nickname: string,
+   position: string
+}
 
-      // props = {
-      //    avatar_base: "",
-      //    avatar_hov: "",
-      //    nickname: '',
-      //    position: ''
-      // }
+interface State{
+   hov_: boolean
+}
+
+class Admin extends React.Component<Props, State> {
+   constructor(props: Props){
+      super(props);
 
       this.state = {
          hov_: false

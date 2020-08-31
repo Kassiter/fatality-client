@@ -8,25 +8,31 @@ import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { AiFillLock } from 'react-icons/ai';
 import CaseModal from './caseModal'
 
-class RouletteCard extends React.Component {
-   constructor(props){
+interface Props{}
+
+interface State{
+   toggleChecked: boolean,
+   caseModalToggled: boolean
+}
+
+class RouletteCard extends React.Component<Props, State>{
+   constructor(props: Props){
       super(props);
       this.state = {
          toggleChecked: true,
-         amountMonth: this.props.option_basic_cost,
          caseModalToggled: false
       }
    }
 
    componentDidUpdate(){
       if (this.state.caseModalToggled){
-         document.getElementById('root').classList.add("blurred");
+         document.getElementById('root')!.classList.add("blurred");
       }else{
-         document.getElementById('root').classList.remove("blurred");
+         document.getElementById('root')!.classList.remove("blurred");
       }
    }
 
-   renderTooltip = (props, text) => {
+   renderTooltip = (props: Props, text: string) => {
       return (
       <Tooltip id="nofall-tooltip" {...props}>
          {text}
@@ -34,10 +40,10 @@ class RouletteCard extends React.Component {
       );
     }
 
-    renderTooltipBase = (text) => {
+    renderTooltipBase = (text: string) => {
       if (text){
          return (<OverlayTrigger
-            placement={this.props.tooltipPlacement || 'right'}
+            placement={'right'}
             delay={{ show: 250, hide: 400 }}
             overlay={this.renderTooltip(this.props, text)}
          >

@@ -5,8 +5,14 @@ import IndividualsCard from './individualsCard';
 import environment from '../../environment';
 import RouletteCard from './rouletteCard';
 
-class Individuals extends React.Component {
-  constructor(props) {
+interface Props{}
+
+interface State{
+  personal_features: Array<any>
+}
+
+class Individuals extends React.Component<Props, State>{
+  constructor(props: Props) {
     super(props);
     this.state = {
       personal_features: [],
@@ -21,7 +27,7 @@ class Individuals extends React.Component {
   }
 
   renderPersonalFeatures = () => {
-    const result = [];
+    const result: Array<JSX.Element> = [];
     this.state.personal_features.forEach((feature) => {
       result.push(<IndividualsCard
         name={feature.name}
@@ -42,7 +48,9 @@ class Individuals extends React.Component {
     return result;
   }
 
-  countDiscount = (price, discount) => ((discount != undefined && discount != null && discount > 0) ? price - (price * (discount / 100)) : price)
+  countDiscount = (price: number, discount: number): number => {
+    return (discount != undefined && discount != null && discount > 0) ? price - (price * (discount / 100)) : price
+  }
 
   render() {
     return (

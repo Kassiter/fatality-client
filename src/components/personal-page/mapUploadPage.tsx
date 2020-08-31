@@ -24,7 +24,6 @@ class MapUploadPage extends React.Component<Props, State>{
   submit = (e: any) => {
     e.preventDefault() // Stop form submit
     this.fileUpload(this.state.file).then((response)=>{
-      console.log(response.data);
     })
   }
 

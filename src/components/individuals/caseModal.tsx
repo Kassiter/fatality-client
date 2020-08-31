@@ -11,8 +11,29 @@ import environment from '../../environment'
 import axios from 'axios'
 import { AiFillLock } from 'react-icons/ai';
 
-class CaseModal extends React.Component {
-   constructor(props){
+interface Props{
+   show: boolean,
+   onHide(): void,
+   requestSucceed: boolean,
+   requestFailed: boolean
+}
+
+interface State{
+   seeds: Array<any>,
+   margin: number,
+   spin_allowed: boolean,
+   key_invalid: boolean,
+   key: string,
+   email_empty: boolean,
+   email: string,
+   key_valid: boolean,
+   requestFailed: boolean,
+   requestSucceed: boolean,
+   errorText: string,
+}
+
+class CaseModal extends React.Component<Props, State>{
+   constructor(props: Props){
       super(props);
 
       this.state ={ 
@@ -26,7 +47,7 @@ class CaseModal extends React.Component {
          key_valid: false,
          requestFailed: false,
          requestSucceed: false,
-         errorText: '',
+         errorText: ''
       }
    }
 
@@ -64,7 +85,7 @@ class CaseModal extends React.Component {
       this.addUltra(seed)
    }
 
-   shuffle = (arra1) => {
+   shuffle = (arra1: Array<any>) => {
       var ctr = arra1.length, temp, index;
   
       while (ctr > 0) {
@@ -77,7 +98,7 @@ class CaseModal extends React.Component {
       return arra1;
    }
 
-   requestItem = (item) => {
+   requestItem = (item: any) => {
       axios.post(`${environment.backend_url}/personal_items/request_random_item`,
       {
          key: this.state.key,
@@ -113,7 +134,7 @@ class CaseModal extends React.Component {
       this.setState({margin: 0, spin_allowed: false}, this.spin)
    }
 
-   addUltra = (seed) =>{
+   addUltra = (seed: any) =>{
       for (let i = 0; i < 9; i++) {
          seed[Math.floor(Math.random() * (340 - 0 + 1) + 0)] = {name: 'Ultra Admin [Месяц]', _class: 'extremly_rare', pic: 'https://i.imgur.com/f4FS2yE.png'}
       }
@@ -121,7 +142,7 @@ class CaseModal extends React.Component {
    }
 
    renderPrizes = () =>{
-     let res = []
+     let res: Array<JSX.Element> = []
      this.state.seeds.forEach((prize, index) => {
         res.push(
            <div className="rollin_prize" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${prize.pic})`}}>
@@ -143,7 +164,7 @@ class CaseModal extends React.Component {
          {name: 'Admin+ [Месяц]', _class: 'coverted_red', pic: 'https://i.imgur.com/LLDJYzh.png'},
          {name: 'Ultra Admin [Месяц]', _class: 'extremly_rare', pic: 'https://i.imgur.com/f4FS2yE.png'}
       ]
-      let cards = []
+      let cards: Array<JSX.Element> = []
 
       items.forEach(prize => {
          cards.push(
@@ -187,7 +208,7 @@ class CaseModal extends React.Component {
       }
    }
 
-   validateKey = (e) =>{
+   validateKey = (e: any) =>{
       if (e.target.value.length > 40){
          let keyy = e.target.value
          axios.post(`${environment.backend_url}/personal_items/validate_random_key`,
@@ -195,7 +216,6 @@ class CaseModal extends React.Component {
             key: keyy
          })
          .then(res => {
-            console.log('heeeyee, I wann ashoot babe')
             this.setState({key_invalid: false, key_valid: true, key: keyy});
             if (this.state.email.length > 0){
                this.setState({spin_allowed: true})
@@ -207,7 +227,7 @@ class CaseModal extends React.Component {
       }
    }
 
-   changeEmail = (e) => {
+   changeEmail = (e: any) => {
       if (e.target.value.length > 0 && this.state.key_valid){
          this.setState({email: e.target.value, spin_allowed: true})
       }else if(e.target.value.length < 1){

@@ -9,8 +9,18 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import environment from '../../../environment'
 import ContestKey from "./contestKey";
 
-class ContestModerPage extends React.Component {
-   constructor(props){
+interface Props{}
+
+interface State{
+   keys: Array<any>,
+   requestFailed: boolean,
+   errorText: string,
+   all_done: boolean,
+   m_points: number
+}
+
+class ContestModerPage extends React.Component<Props, State>{
+   constructor(props: Props){
       super(props);
       this.state = {
          keys: [],
@@ -38,7 +48,6 @@ class ContestModerPage extends React.Component {
    getKeys = () =>{
       axios.get(`${environment.backend_url}/contest_keys/index_keys?steamID=${localStorage.getItem('steam_id')}&auth_token=${localStorage.getItem('auth_token')}`)
       .then(res => {
-         console.log(res)
          this.setState({
             keys: res.data.keys,
             all_done: res.data.all_done
@@ -46,11 +55,7 @@ class ContestModerPage extends React.Component {
        })
    }
 
-   updateAge = (e) =>{
-      this.setState({age: e.target.value})
-   }
-
-   report = (e, report, id) =>{
+   report = (e: any, report: string, id: number | string) =>{
       e.preventDefault()
       axios.post(`${environment.backend_url}/contest_keys/submit_report`,
       {
@@ -67,7 +72,7 @@ class ContestModerPage extends React.Component {
    }
 
 
-   genKeys = (e) =>{
+   genKeys = (e: any) =>{
       e.preventDefault()
       axios.post(`${environment.backend_url}/contest_keys/generate_keys`,
       {
@@ -116,7 +121,7 @@ class ContestModerPage extends React.Component {
    }
 
    renderKeys = () =>{
-      let result = []
+      let result: Array<JSX.Element> = []
       this.state.keys.forEach(key_entity => {
          let reported = key_entity.report == null
          result.push(<ContestKey id={key_entity.id} key_name={key_entity.key} submitt={!reported} report = {this.report}/>)
@@ -139,7 +144,7 @@ class ContestModerPage extends React.Component {
       return(
          <div className="d-flex flex-column" id="contests-moder">
             {this.renderBase()}
-            <ProgressBar animated striped now={this.state.m_points} label={`MP: ${this.state.m_points}`} max="60" variant={this.moderPointsBarStyle()} className="mt-4"/>
+            <ProgressBar animated striped now={this.state.m_points} label={`MP: ${this.state.m_points}`} max={60} variant={this.moderPointsBarStyle()} className="mt-4"/>
          </div>
       );
    }

@@ -101,7 +101,6 @@ class PersonalPage extends React.Component<Props, State> {
         .get(`${environment.backend_url}/contests?steam_id=${steam_id}`)
         .then((res) => {
           if (res.data.contest) {
-            console.log(res);
             this.setState({
               contest: res.data.contest,
             });
@@ -167,7 +166,6 @@ class PersonalPage extends React.Component<Props, State> {
   };
 
   renderModerContest = () => {
-    console.log('MODER_CONTEST: ' + this.state.moder_contest);
     if (this.state.moder_contest == null) {
       let phrase = <h4>На данный момент набор не проводится</h4>;
       let cl = 'peronal-page__icon shield-icon';
@@ -268,7 +266,6 @@ class PersonalPage extends React.Component<Props, State> {
       )
       .then((res) => {
         if (res.data.categories) {
-          console.log(res.data.categories);
           this.setState({
             manageCommandsCategories: res.data.categories,
           });

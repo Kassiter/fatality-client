@@ -30,7 +30,6 @@ class ModelUploadPage extends React.Component<Props, State>{
   submit = (e: any) => {
     e.preventDefault() // Stop form submit
     this.fileUpload(this.state.file).then((response: any)=>{
-      console.log(response.data);
     })
   }
 

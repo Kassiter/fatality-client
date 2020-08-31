@@ -11,13 +11,21 @@ import ContestKey from "./contestKey";
 import moment from 'moment-timezone';
 import LogRow from "./logRow";
 
-class PrimeModerPage extends React.Component {
-   constructor(props){
+interface Props{}
+
+interface State{
+   task: any,
+   report: string,
+   m_points: number
+}
+
+class PrimeModerPage extends React.Component<Props, State>{
+   constructor(props: Props){
       super(props);
       this.state = {
          task: null,
          report: '',
-         m_points: 100
+         m_points: 0
       }
    }
 
@@ -41,11 +49,11 @@ class PrimeModerPage extends React.Component {
        })
    }
 
-   reportTask = (e) => {
+   reportTask = (e: any) => {
       this.setState({report: e.target.value})
    }
 
-   report = (e) =>{
+   report = (e: any) =>{
       e.preventDefault()
 
       axios.post(`${environment.backend_url}/prime_moder_tasks/submit_report`,
@@ -56,7 +64,6 @@ class PrimeModerPage extends React.Component {
          report: this.state.report
       })
       .then(res => {
-         console.log('SUCEEEDEDEDED')
          this.getTask();
        })
    }
@@ -80,7 +87,7 @@ class PrimeModerPage extends React.Component {
                <h2>{this.state.task.name}</h2>
                <Form>
                   <Form.Group>
-                     <Form.Control as="textarea" rows="3" onChange={(e) => this.reportTask(e)} className="custom-input--transparent" />
+                     <Form.Control as="textarea" rows={3} onChange={(e) => this.reportTask(e)} className="custom-input--transparent" />
                   </Form.Group>
                   </Form>
                </div>
@@ -103,7 +110,7 @@ class PrimeModerPage extends React.Component {
       return(
          <div className="d-flex flex-column" id="contests-moder">
             {this.renderBase()}
-            <ProgressBar animated striped now={this.state.m_points} label={`MP: ${this.state.m_points}`} max="60" variant={this.moderPointsBarStyle()} className="mt-4"/>
+            <ProgressBar animated striped now={this.state.m_points} label={`MP: ${this.state.m_points}`} max={60} variant={this.moderPointsBarStyle()} className="mt-4"/>
          </div>
       );
    }

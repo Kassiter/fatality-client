@@ -11,8 +11,22 @@ import ContestKey from "./contestKey";
 import moment from 'moment-timezone';
 import LogRow from "./logRow";
 
-class RulesModerPage extends React.Component {
-   constructor(props){
+interface Props{}
+
+interface State{
+   log: null | string,
+   log_rows: Array<any>,
+   requestFailed: boolean,
+   errorText: string,
+   all_done: boolean,
+   early: boolean,
+   hrs_till: number,
+   reported_rows: Array<any>,
+   m_points: number
+}
+
+class RulesModerPage extends React.Component<Props, State>{
+   constructor(props: Props){
       super(props);
       this.state = {
          log: null,
@@ -72,27 +86,19 @@ class RulesModerPage extends React.Component {
        })
    }
 
-   reportRow = (row_id) => {
+   reportRow = (row_id: number | string) => {
       let row_ids = this.state.reported_rows
-      row_ids.includes(row_id) ? row_ids.pop(row_id) : row_ids.push(row_id)
+      row_ids.includes(row_id) ? row_ids.filter((row, ind) => ind != row_id) : row_ids.push(row_id)
       this.setState({reported_rows: row_ids})
    }
 
-   // updateAge = (e) =>{
-   //    this.setState({age: e.target.value})
-   // }
-
-   report = (e) =>{
+   report = (e: any) =>{
       e.preventDefault()
       var logs = [...this.state.log_rows]
       logs.forEach((log_row, i) => {
          let new_row = this.state.reported_rows.includes(i) ? `<R>${logs[i].text}</R>` : logs[i].text
          logs[i] = new_row
       });
-      // this.state.reported_rows.forEach(reported_row => {
-      //    let new_row = `<R>${logs[reported_row].text}</R>`
-      //    logs[reported_row] = new_row
-      // });
 
       axios.post(`${environment.backend_url}/logs/report`,
       {
@@ -138,7 +144,7 @@ class RulesModerPage extends React.Component {
    }
 
    renderLogRows = () =>{
-      let result = []
+      let result: Array<JSX.Element> = []
       this.state.log_rows.forEach(log_row => {
          let reported = this.state.reported_rows.includes(log_row.id)
          result.push(<LogRow id={log_row.id} text={log_row.text} reported={reported} report = {this.reportRow} />)
@@ -146,9 +152,9 @@ class RulesModerPage extends React.Component {
       return result;
    }
 
-   parseRows = (rows_array) => {
-      let result = []
-      rows_array.forEach(row => {
+   parseRows = (rows_array: any) => {
+      let result: Array<any> = []
+      rows_array.forEach((row: any) => {
          if (!row.includes("Console<0>") && !row.includes("STEAM_1:1:153969439"))
             result.push({id: rows_array.indexOf(row), text: row})
       });
@@ -170,7 +176,7 @@ class RulesModerPage extends React.Component {
       return(
          <div className="d-flex flex-column" id="contests-moder">
             {this.renderBase()}
-            <ProgressBar animated striped now={this.state.m_points} label={`MP: ${this.state.m_points}`} max="60" variant={this.moderPointsBarStyle()} className="mt-4"/>
+            <ProgressBar animated striped now={this.state.m_points} label={`MP: ${this.state.m_points}`} max={60} variant={this.moderPointsBarStyle()} className="mt-4"/>
          </div>
       );
    }

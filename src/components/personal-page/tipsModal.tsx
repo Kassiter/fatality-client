@@ -5,8 +5,14 @@ import { FiLogOut } from 'react-icons/fi';
 import '../../stylesheets/personal_page.css';
 import '../../stylesheets/global.css';
 
-class TipsModal extends React.Component {
-  constructor(props) {
+interface Props{
+  show: boolean,
+  mcc: Object[],
+  onHide(): void
+}
+
+class TipsModal extends React.Component<Props> {
+  constructor(props: Props) {
     super(props);
   }
 
@@ -16,11 +22,11 @@ class TipsModal extends React.Component {
   };
 
   renderMCC = () => {
-    let res = [];
+    let res: Array<JSX.Element> = [];
     if (this.props.mcc.length > 0 && this.props.mcc != undefined) {
-      this.props.mcc.forEach((category) => {
+      this.props.mcc.forEach((category: any) => {
         res.push(<h2>{category.name}:</h2>);
-        category.commands.forEach((command) => {
+        category.commands.forEach((command: any) => {
           res.push(
             <h5 className="w-100">
               <div className={this.commandClass(command.group)}>
@@ -38,7 +44,7 @@ class TipsModal extends React.Component {
     return res;
   };
 
-  commandClass = (group) => {
+  commandClass = (group: string) => {
     return `help__group help__group--${group.toLowerCase()}`;
   };
 

@@ -7,9 +7,7 @@ import axios from 'axios';
 import enviroment from '../../enviroment'
 import InstructionsModal from './instructionsModal';
 
-interface Props{
-  zalupa: null
-}
+interface Props{}
 
 interface State{
   [key: string]: any

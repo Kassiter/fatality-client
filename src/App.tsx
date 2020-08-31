@@ -14,8 +14,15 @@ import enviroment from './enviroment';
 import Admins from './components/admins';
 import Preloader from './components/personal-page/preloader';
 
-class App extends React.Component {
-  constructor(props){
+interface Props{}
+
+interface State{
+  modalToggled: boolean,
+  pageLoaded: boolean
+}
+
+class App extends React.Component<Props, State>{
+  constructor(props: Props){
     super(props);
     this.state = {
       modalToggled: false,
@@ -30,9 +37,9 @@ class App extends React.Component {
   componentDidUpdate(){
     if(window.location.hash == "#rules"){
       if (this.state.modalToggled){
-        document.getElementById('root').classList.add("blurred");
+        document.getElementById('root')!.classList.add("blurred");
       }else{
-          document.getElementById('root').classList.remove("blurred");
+          document.getElementById('root')!.classList.remove("blurred");
       }
     }
   }
@@ -41,20 +48,20 @@ class App extends React.Component {
     if(window.location.hash == "#rules"){
       this.setState({modalToggled: true})
       if (this.state.modalToggled){
-        document.getElementById('root').classList.add("blurred");
+        document.getElementById('root')!.classList.add("blurred");
       }else{
-          document.getElementById('root').classList.remove("blurred");
+          document.getElementById('root')!.classList.remove("blurred");
       }
     }
 
     if (window.location.search.includes('ref')){
-      var url = new URL(window.location);
-      localStorage.setItem('ref', url.searchParams.get("ref"));
+      var url = new URL(window.location.href);
+      localStorage.setItem('ref', url.searchParams.get("ref")!);
     }
 
     if (window.location.search.includes('steam_data')){
-      var url = new URL(window.location);
-      let steamData = JSON.parse(url.searchParams.get("steam_data"));
+      var url = new URL(window.location.href);
+      let steamData = JSON.parse(url.searchParams.get("steam_data")!);
       localStorage.setItem('steam_id', steamData['steamID'].replace('STEAM_0', 'STEAM_1'));
       localStorage.setItem('steam_id64', steamData['steamid']);
       localStorage.setItem('nickname', steamData['personaname']);
@@ -76,7 +83,7 @@ class App extends React.Component {
       <div className="App d-flex flex-column">
         <OpenTestModal
                   show={this.state.modalToggled}
-                  onHide={() => this.toggleModal(false)}
+                  onHide={() => this.toggleModal()}
               />
         <Header
           toggleModal={this.toggleModal}

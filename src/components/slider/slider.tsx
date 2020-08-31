@@ -3,7 +3,11 @@ import React from "react";
 import '../../stylesheets/carousel.css'
 //import { FaSteamSymbol } from 'react-icons/fa';
 
-class Slider extends React.Component {
+interface Props{
+   clearp(): void
+}
+
+class Slider extends React.Component<Props>{
    componentDidMount(){
       // setTimeout(() => {
       //    this.props.clearp()

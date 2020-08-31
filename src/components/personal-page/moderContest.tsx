@@ -4,13 +4,28 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import '../../stylesheets/personal_page.css'
-
 import Alert from "react-bootstrap/Alert";
-
 import enviroment from '../../enviroment'
 
-class ModerContest extends React.Component {
-   constructor(props){
+interface State{
+   participating: boolean | null,
+   age: string | null,
+   experience: string | null,
+   reason: string | null,
+   requestSucceed: boolean,
+   requestFailed: boolean,
+   errorText: string | any,
+   loading: boolean
+}
+
+interface Props{
+   id: number,
+   participating: boolean,
+   due_date: string | any
+}
+
+class ModerContest extends React.Component<Props, State>{
+   constructor(props: Props){
       super(props);
       this.state = {
          participating: this.props.participating,
@@ -20,7 +35,6 @@ class ModerContest extends React.Component {
          requestSucceed: false,
          requestFailed: false,
          errorText: '',
-         participating: this.props.participating,
          loading: false
       }
    }
@@ -37,19 +51,19 @@ class ModerContest extends React.Component {
        })
    }
 
-   updateAge = (e) =>{
+   updateAge = (e: any) =>{
       this.setState({age: e.target.value})
    }
 
-   updateExperience = (e) =>{
+   updateExperience = (e: any) =>{
       this.setState({experience: e.target.value})
    }
 
-   updateReason = (e) =>{
+   updateReason = (e: any) =>{
       this.setState({reason: e.target.value})
    }
 
-   send = (e) =>{
+   send = (e: any) =>{
       e.preventDefault()
       this.setState({loading: true}, this.query)
    }
@@ -114,7 +128,7 @@ class ModerContest extends React.Component {
 
             <Form.Group controlId="formBasicPassword">
                <Form.Label>Опыт работы в качестве модератора</Form.Label>
-               <Form.Control as="textarea" rows="3" onChange={(e) => this.updateExperience(e)}/>
+               <Form.Control as="textarea" rows={3} onChange={(e) => this.updateExperience(e)}/>
                <Form.Text className="text-muted">
                   Опишите, были ли Вы модератором/админом ранее на каком-либо сервере.
                   Опыт работы с админ-меню.
@@ -124,9 +138,9 @@ class ModerContest extends React.Component {
             </Form.Group>
             <Form.Group controlId="formBasicPassword">
                <Form.Label>Почему именно Вы должны стать модератором?</Form.Label>
-               <Form.Control as="textarea" rows="3" onChange={(e) => this.updateReason(e)}/>
+               <Form.Control as="textarea" rows={3} onChange={(e) => this.updateReason(e)}/>
             </Form.Group>
-            <Button variant="success" type="submit" onClick={(e) => this.send(e)} disabled={this.state.participating}>
+            <Button variant="success" type="submit" onClick={(e) => this.send(e)} disabled={this.state.participating as boolean}>
                {this.renderSpinner()}
                Отправить
             </Button>

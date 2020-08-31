@@ -25,9 +25,21 @@ import div from 'react-bootstrap/Badge'
 import Tooltip from 'react-bootstrap/Tooltip'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 
-class CardCustom extends React.Component {
+interface Props{
+   previliege: any,
+   instructable: boolean,
+   instruct(): void 
+}
 
-   constructor(props){
+interface State{
+   toggleChecked: boolean,
+   amountMonth: number,
+   [key: string]: any
+}
+
+class CardCustom extends React.Component<Props, State>{
+
+   constructor(props: Props){
       super(props);
       this.state = {
          toggleChecked: true,
@@ -52,7 +64,7 @@ class CardCustom extends React.Component {
       }
    }
 
-   renderTooltip = (props, text) => {
+   renderTooltip = (props: Props, text: string) => {
       return (
         <Tooltip id="nofall-tooltip" {...props}>
           {text}
@@ -64,19 +76,19 @@ class CardCustom extends React.Component {
       this.setState({ toggleChecked: !this.state.toggleChecked, amountMonth: !this.state.toggleChecked ? this.countDiscount(this.props.previliege.cost_month, this.props.previliege.discount) : this.countDiscount(this.props.previliege.cost_lifetime, this.props.previliege.discount) })
     }
 
-    countDiscount = (price, discount) =>{
+    countDiscount = (price: number, discount: number) =>{
       return ((discount != undefined && discount != null && discount > 0) ? price-(price*(discount/100)) : price)    
     }
 
     renderDiscount = () =>{
        if(this.props.previliege.discount != null && this.props.previliege.discount != undefined && this.props.previliege.discount > 0){
-         return(<div variant="danger" className="discount__badge">-{this.props.previliege.discount}%</div>)
+         return(<div className="discount__badge">-{this.props.previliege.discount}%</div>)
        }
     }
 
     parseFeatures = () =>{
-       let privilieges_features = [];
-       this.props.previliege.privilieges_features.forEach(feature => {
+       let privilieges_features: Array<JSX.Element> = [];
+       this.props.previliege.privilieges_features.forEach((feature: any) => {
           privilieges_features.push( 
             <Card.Text className="previlegies-card__text">
                {React.createElement(this.state[feature.icon], null)}&nbsp;
@@ -88,7 +100,7 @@ class CardCustom extends React.Component {
        return(privilieges_features);
     }
 
-    renderTooltipBase = (text) => {
+    renderTooltipBase = (text: string) => {
       return (<OverlayTrigger
          placement="right"
          delay={{ show: 250, hide: 400 }}

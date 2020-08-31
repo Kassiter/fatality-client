@@ -7,8 +7,20 @@ import Spinner from "react-bootstrap/Spinner";
 import axios from 'axios';
 import enviroment from '../../enviroment'
 
-class ReportPage extends React.Component {
-   constructor(props){
+interface Props{}
+
+interface State{
+   suspect_nickname: string,
+   details: string,
+   email: string,
+   requestSucceed: boolean,
+   requestFailed: boolean,
+   errorText: string,
+   loading: boolean
+}
+
+class ReportPage extends React.Component<Props, State> {
+   constructor(props: Props){
       super(props);
 
       this.state = {
@@ -22,15 +34,15 @@ class ReportPage extends React.Component {
       }
    }
 
-   updateSuspectNickname = (e) =>{
+   updateSuspectNickname = (e: any) =>{
       this.setState({suspect_nickname: e.target.value})
    }
 
-   updateEmail = (e) =>{
+   updateEmail = (e: any) =>{
       this.setState({email: e.target.value})
    }
 
-   updateDetails = (e) =>{
+   updateDetails = (e: any) =>{
       this.setState({details: e.target.value})
    }
    
@@ -54,7 +66,7 @@ class ReportPage extends React.Component {
       }
    }
 
-   send = (e) =>{
+   send = (e: any) =>{
       e.preventDefault()
       this.setState({loading: true}, this.query)
    }
@@ -115,7 +127,7 @@ class ReportPage extends React.Component {
 
             <Form.Group controlId="formBasicPassword">
                <Form.Label>Детали</Form.Label>
-               <Form.Control as="textarea" rows="3" required onChange={(e) => {this.updateDetails(e)}} className="custom-input--transparent" maxlength="500" />
+               <Form.Control as="textarea" rows={3} required onChange={(e) => {this.updateDetails(e)}} className="custom-input--transparent" />
                <Form.Text className="text-muted">
                   Укажите приблизительную дату и время, <a target="_blank" href="https://imgur.com/upload" className="modal__link">ссылку на скриншоты</a>.<br/>
                   Дополнительная информация на Ваше усмотрение.

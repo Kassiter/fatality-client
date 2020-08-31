@@ -5,8 +5,13 @@ import { FiLogOut } from 'react-icons/fi';
 import '../../stylesheets/personal_page.css'
 import '../../stylesheets/global.css'
 
-class InstructionsModal extends React.Component {
-   constructor(props){
+interface Props{
+   show: boolean,
+   onHide(): void
+}
+
+class InstructionsModal extends React.Component<Props>{
+   constructor(props: Props){
       super(props);
    }
 

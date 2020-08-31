@@ -3,22 +3,33 @@ import axios from 'axios';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import '../../../stylesheets/personal_page.css'
-
 import Alert from "react-bootstrap/Alert";
+import environment from '../../../environment'
 
-import enviroment from '../../../enviroment'
+interface Props{
+   id: number,
+   key_name: string,
+   submitt: boolean, 
+   report(e: any, report: string, id: number | string): void
+}
 
-class ContestKey extends React.Component {
-   constructor(props){
+interface State{
+   report: string,
+   form_shown: boolean,
+   submitted: boolean
+}
+
+class ContestKey extends React.Component<Props, State>{
+   constructor(props: Props){
       super(props);
       this.state = {
-         report: null,
+         report: '',
          form_shown: false,
          submitted: this.props.submitt
       }
    }
 
-   updateReport = (e) =>{
+   updateReport = (e: any) =>{
       this.setState({report: e.target.value})
    }
 
@@ -31,7 +42,7 @@ class ContestKey extends React.Component {
          return(<Form>
                   <Form.Group controlId="exampleForm.ControlTextarea1">
                      <Form.Label>Отчёт</Form.Label>
-                     <Form.Control as="textarea" rows="3" onChange={(e) => {this.updateReport(e)}} className="custom-input--transparent" />
+                     <Form.Control as="textarea" rows={3} onChange={(e) => {this.updateReport(e)}} className="custom-input--transparent" />
                   </Form.Group>
                   <Button variant="primary" size="sm" onClick={(e) => {this.props.report(e, this.state.report, this.props.id)}}>
                      Отправить

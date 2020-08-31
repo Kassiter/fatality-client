@@ -7,7 +7,7 @@ import '../stylesheets/admins.css'
 import Image from 'react-bootstrap/Image'
 import Alert from "react-bootstrap/Alert";
 import Admin from './admin'
-import enviroment from '../enviroment'
+import environment from '../environment'
 
 interface Props{ [key: string]: any }
 
@@ -27,7 +27,7 @@ class Admins extends React.Component<Props, State> {
    }
 
    getAdmins = () =>{
-      axios.get(`${enviroment.backend_url}/users/admins`)
+      axios.get(`${environment.backend_url}/users/admins`)
       .then(res => {
          this.setState({ admins: res.data.admins, moders: res.data.moders});
       })

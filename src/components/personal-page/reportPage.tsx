@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
 import axios from 'axios';
-import enviroment from '../../enviroment'
+import environment from '../../environment'
 
 interface Props{}
 
@@ -73,7 +73,7 @@ class ReportPage extends React.Component<Props, State> {
 
    query = () =>{
       if(this.validateForm()){
-         axios.post(`${enviroment.backend_url}/reports/submit_report`,
+         axios.post(`${environment.backend_url}/reports/submit_report`,
          {
             suspect_nickname: this.state.suspect_nickname,
             details: this.state.details,

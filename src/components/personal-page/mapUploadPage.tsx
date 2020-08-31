@@ -1,12 +1,18 @@
 import React from 'react'
-import axios, { post } from 'axios';
-import enviroment from '../../enviroment'
+import axios from 'axios';
+import environment from '../../environment'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class MapUploadPage extends React.Component {
+interface Props{}
 
-  constructor(props) {
+interface State{
+  file: any
+}
+
+class MapUploadPage extends React.Component<Props, State>{
+
+  constructor(props: Props) {
     super(props);
     this.state ={
       file:null
@@ -15,27 +21,23 @@ class MapUploadPage extends React.Component {
     this.fileUpload = this.fileUpload.bind(this)
   }
 
-  submit = (e) => {
+  submit = (e: any) => {
     e.preventDefault() // Stop form submit
     this.fileUpload(this.state.file).then((response)=>{
       console.log(response.data);
     })
   }
 
-  onChange(e) {
+  onChange(e: any) {
     this.setState({file:e.target.files[0]})
   }
 
-  changeTeam = (e) => {
-    this.setState({team: e.target.value})
-  }
-
-  fileUpload(file){
-    const url = `${enviroment.backend_url}/prime_moder_tasks/upload_map`;
+  fileUpload(file: any){
+    const url = `${environment.backend_url}/prime_moder_tasks/upload_map`;
     const formData = new FormData();
     formData.append('file',file)
-    formData.append('steamID', localStorage.getItem('steam_id'))
-    formData.append('auth_token', localStorage.getItem('auth_token'))
+    formData.append('steamID', localStorage.getItem('steam_id') as string)
+    formData.append('auth_token', localStorage.getItem('auth_token') as string)
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
@@ -47,13 +49,13 @@ class MapUploadPage extends React.Component {
        steamID: localStorage.getItem('steam_id'),
        auth_token: localStorage.getItem('auth_token')
     }
-    return  post(url, formData,config)
+    return axios.post(url, formData,config)
   }
 
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <form>
         <h2 className="text-center">Загрузить карту</h2>
         <Form>
           <Form.File 

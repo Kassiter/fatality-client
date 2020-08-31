@@ -6,7 +6,7 @@ import '../../../stylesheets/personal_page.css'
 import { BsExclamationDiamondFill } from 'react-icons/bs';
 import Alert from "react-bootstrap/Alert";
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import enviroment from '../../../enviroment'
+import environment from '../../../environment'
 import ContestKey from "./contestKey";
 import parse from 'html-react-parser';
 import moment from 'moment-timezone';

@@ -6,7 +6,7 @@ import '../../../stylesheets/personal_page.css'
 
 import Alert from "react-bootstrap/Alert";
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import enviroment from '../../../enviroment'
+import environment from '../../../environment'
 import ContestKey from "./contestKey";
 import moment from 'moment-timezone';
 import LogRow from "./logRow";
@@ -24,7 +24,7 @@ class PrimeModerPage extends React.Component {
    componentDidMount(){
       this.getTask()
       if (localStorage.getItem('m_type') != 'no'){
-         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=main`)
+         axios.get(`${environment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=main`)
          .then(res => {
             this.setState({m_points: res.data.m_points})
          })
@@ -33,7 +33,7 @@ class PrimeModerPage extends React.Component {
    
 
    getTask = () =>{
-      axios.get(`${enviroment.backend_url}/prime_moder_tasks/task?steamID=${localStorage.getItem('steam_id')}&auth_token=${localStorage.getItem('auth_token')}`)
+      axios.get(`${environment.backend_url}/prime_moder_tasks/task?steamID=${localStorage.getItem('steam_id')}&auth_token=${localStorage.getItem('auth_token')}`)
       .then(res => {
          this.setState({
             task: res.data.task
@@ -48,7 +48,7 @@ class PrimeModerPage extends React.Component {
    report = (e) =>{
       e.preventDefault()
 
-      axios.post(`${enviroment.backend_url}/prime_moder_tasks/submit_report`,
+      axios.post(`${environment.backend_url}/prime_moder_tasks/submit_report`,
       {
          steamID: localStorage.getItem('steam_id'),
          id: this.state.task.id,

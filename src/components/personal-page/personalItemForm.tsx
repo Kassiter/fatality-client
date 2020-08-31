@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
 import axios from 'axios';
-import enviroment from '../../enviroment'
+import environment from '../../environment'
 
 interface Props{
    [key: string]: any
@@ -59,7 +59,7 @@ class PersonalItemForm extends React.Component<Props, State> {
    }
 
    query = () =>{
-      axios.post(`${enviroment.backend_url}/personal_items/request_item`,
+      axios.post(`${environment.backend_url}/personal_items/request_item`,
       {
          key: this.state.key,
          description: this.state.description,

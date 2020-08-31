@@ -6,7 +6,7 @@ import '../../../stylesheets/personal_page.css'
 
 import Alert from "react-bootstrap/Alert";
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import enviroment from '../../../enviroment'
+import environment from '../../../environment'
 import ContestKey from "./contestKey";
 import moment from 'moment-timezone';
 import LogRow from "./logRow";
@@ -41,7 +41,7 @@ class RulesModerPage extends React.Component {
       }
       
       if (localStorage.getItem('m_type') != 'no'){
-         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=ruler`)
+         axios.get(`${environment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=ruler`)
          .then(res => {
             this.setState({m_points: res.data.m_points})
          })
@@ -50,7 +50,7 @@ class RulesModerPage extends React.Component {
    
 
    getLog = () =>{
-      axios.get(`${enviroment.backend_url}/logs/show_log?steamID=${localStorage.getItem('steam_id')}&auth_token=${localStorage.getItem('auth_token')}`)
+      axios.get(`${environment.backend_url}/logs/show_log?steamID=${localStorage.getItem('steam_id')}&auth_token=${localStorage.getItem('auth_token')}`)
       .then(res => {
          if(res.data.log){
             this.setState({
@@ -63,7 +63,7 @@ class RulesModerPage extends React.Component {
    }
 
    pullLog = () =>{
-      axios.post(`${enviroment.backend_url}/logs/pull`)
+      axios.post(`${environment.backend_url}/logs/pull`)
       .then(res => {
          this.getLog()
          this.setState({
@@ -94,7 +94,7 @@ class RulesModerPage extends React.Component {
       //    logs[reported_row] = new_row
       // });
 
-      axios.post(`${enviroment.backend_url}/logs/report`,
+      axios.post(`${environment.backend_url}/logs/report`,
       {
          steamID: localStorage.getItem('steam_id'),
          auth_token: localStorage.getItem('auth_token'),

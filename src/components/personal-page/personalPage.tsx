@@ -9,7 +9,7 @@ import Tab from 'react-bootstrap/Tab';
 import TabContainer from 'react-bootstrap/TabContainer';
 import Contest from './contest';
 import axios from 'axios';
-import enviroment from '../../enviroment';
+import environment from '../../environment';
 import ModerContest from './moderContest';
 import ContestModerPage from './moder_personals/contestModerPage';
 import RulesModerPage from './moder_personals/rulesModerPage';
@@ -75,7 +75,7 @@ class PersonalPage extends React.Component<Props, State> {
       axios
         .get(
           `${
-            enviroment.backend_url
+            environment.backend_url
           }/users/refresh?steam_id64=${localStorage.getItem('steam_id64')}`
         )
         .then((res) => {
@@ -87,7 +87,7 @@ class PersonalPage extends React.Component<Props, State> {
     let steam_id = localStorage.getItem('steam_id');
     if (nickname) {
       axios
-        .get(`${enviroment.backend_url}/users/vip_data?nickname=${nickname}`)
+        .get(`${environment.backend_url}/users/vip_data?nickname=${nickname}`)
         .then((res: any) => {
           this.setState({
             vip_group: res.data.vip_group,
@@ -98,7 +98,7 @@ class PersonalPage extends React.Component<Props, State> {
         });
 
       axios
-        .get(`${enviroment.backend_url}/contests?steam_id=${steam_id}`)
+        .get(`${environment.backend_url}/contests?steam_id=${steam_id}`)
         .then((res) => {
           if (res.data.contest) {
             console.log(res);
@@ -109,7 +109,7 @@ class PersonalPage extends React.Component<Props, State> {
         });
 
       axios
-        .get(`${enviroment.backend_url}/users/strikes?steamID=${steam_id}`)
+        .get(`${environment.backend_url}/users/strikes?steamID=${steam_id}`)
         .then((res) => {
           this.setState({
             strikes: res.data.strikes,
@@ -117,7 +117,7 @@ class PersonalPage extends React.Component<Props, State> {
         });
 
       axios
-        .get(`${enviroment.backend_url}/moder_contests?steam_id=${steam_id}`)
+        .get(`${environment.backend_url}/moder_contests?steam_id=${steam_id}`)
         .then((res) => {
           this.setState({
             moder_contest: res.data.contest,
@@ -127,7 +127,7 @@ class PersonalPage extends React.Component<Props, State> {
 
       axios
         .get(
-          `${enviroment.backend_url}/refund/participating?steam_id=${steam_id}`
+          `${environment.backend_url}/refund/participating?steam_id=${steam_id}`
         )
         .then((res) => {
           this.setState({
@@ -261,7 +261,7 @@ class PersonalPage extends React.Component<Props, State> {
     axios
       .get(
         `${
-          enviroment.backend_url
+          environment.backend_url
         }/manage_command_categories/mc_categories?steamID=${localStorage.getItem(
           'steam_id'
         )}&auth_token=${localStorage.getItem('auth_token')}`

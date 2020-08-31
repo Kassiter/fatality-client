@@ -10,7 +10,7 @@ import './stylesheets/global.css'
 import ScrollableAnchor from 'react-scrollable-anchor';
 import OpenTestModal from './components/openTestModal/openTestModal';
 import axios from 'axios';
-import enviroment from './enviroment';
+import environment from './environment';
 import Admins from './components/admins';
 import Preloader from './components/personal-page/preloader';
 

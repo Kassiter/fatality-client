@@ -7,7 +7,7 @@ import '../stylesheets/admins.css'
 import Image from 'react-bootstrap/Image'
 import Alert from "react-bootstrap/Alert";
 
-import enviroment from '../enviroment'
+import environment from '../environment'
 
 interface Props{
    avatar_base: string,

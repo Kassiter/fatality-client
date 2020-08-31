@@ -1,6 +1,6 @@
 import React from 'react'
-import axios, { post } from 'axios';
-import enviroment from '../../enviroment'
+import axios from 'axios';
+import environment from '../../environment'
 import Form from 'react-bootstrap/Form'
 import '../../stylesheets/personal_page.css'
 import '../../stylesheets/keys_generation.css'
@@ -9,19 +9,25 @@ import '../../stylesheets/individuals.css';
 import Button from 'react-bootstrap/Button'
 import moment from 'moment-timezone';
 
-class KeyGenPage extends React.Component {
+interface Props{}
 
-  constructor(props) {
+interface State{
+  lifetime: boolean
+}
+
+class KeyGenPage extends React.Component<Props, State>{
+
+  constructor(props: Props) {
     super(props);
     this.state ={
       lifetime: false
     }
   }
 
-  submit = (priviliege) => {
+  submit = (priviliege: string) => {
     let steamID = localStorage.getItem('steam_id')
     let auth_token = localStorage.getItem('auth_token')
-    axios.get(`${enviroment.backend_url}/priviliege/generate_key?lifetime=${this.state.lifetime}&auth_token=${auth_token}&steamID=${steamID}&priviliege=${priviliege}`)
+    axios.get(`${environment.backend_url}/priviliege/generate_key?lifetime=${this.state.lifetime}&auth_token=${auth_token}&steamID=${steamID}&priviliege=${priviliege}`)
     .then(res => {
       let lt = this.state.lifetime ? "lifetime" : "month"
       let file_name = `tmp/${priviliege}_${lt}_${moment().format("DD_MM_YYYY-hh-mm-ss")}.txt`
@@ -35,11 +41,7 @@ class KeyGenPage extends React.Component {
   }
 
   handleCheckedPress = () => {
-    this.setState({ lifetime: !this.state.lifetime, amountMonth: !this.state.lifetime ? this.props.option_basic_cost : this.props.option_advanced_cost })
-  }
-
-  fileUpload(file){
-   
+    this.setState({ lifetime: !this.state.lifetime })
   }
 
   renderButtons = () =>{
@@ -54,7 +56,7 @@ class KeyGenPage extends React.Component {
       {name: 'Random', img_url: 'https://i.imgur.com/rR6TjXd.jpg', req_data: 'RANDOM'},
       {name: 'Facehugger', img_url: 'https://i.ebayimg.com/images/g/5egAAOSwdJJbaVJ-/s-l300.jpg', req_data: 'FACEHUGGER'}
     ]
-    let res = []
+    let res: Array<JSX.Element> = []
 
     stuff.forEach(priviliege => {
       res.push(<Button variant="success" onClick={() => this.submit(priviliege.req_data)} size='lg' className="gen__btn" type="button" style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(${priviliege.img_url})`}}>
@@ -78,7 +80,7 @@ class KeyGenPage extends React.Component {
                   onstyle='success'
                   onlabel='Навсегда (50k)'
                   //size="m"
-                  className="key__duration"
+                  // className="key__duration"
                   offstyle='danger'
                   style='w-50 mx-3'
                   onChange={() => {

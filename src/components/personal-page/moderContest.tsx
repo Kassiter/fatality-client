@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import '../../stylesheets/personal_page.css'
 import Alert from "react-bootstrap/Alert";
-import enviroment from '../../enviroment'
+import environment from '../../environment'
 
 interface State{
    participating: boolean | null,
@@ -40,7 +40,7 @@ class ModerContest extends React.Component<Props, State>{
    }
 
    takePart = () =>{
-      axios.post(`${enviroment.backend_url}/moder_contests/take_part`,{
+      axios.post(`${environment.backend_url}/moder_contests/take_part`,{
          contest_id: this.props.id,
          steam_id: localStorage.getItem('steam_id')
       })
@@ -69,7 +69,7 @@ class ModerContest extends React.Component<Props, State>{
    }
 
    query = () =>{
-      axios.post(`${enviroment.backend_url}/moder_contest/take_part`,
+      axios.post(`${environment.backend_url}/moder_contest/take_part`,
       {
          age: this.state.age,
          experience: this.state.experience,

@@ -1,12 +1,21 @@
 import React from 'react'
-import axios, { post } from 'axios';
-import enviroment from '../../enviroment'
+import axios from 'axios';
+import environment from '../../environment'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-class ModelUploadPage extends React.Component {
+interface Props{}
 
-  constructor(props) {
+interface State{
+  file: any,
+  model_name: any,
+  team: any,
+  price: any
+}
+
+class ModelUploadPage extends React.Component<Props, State>{
+
+  constructor(props: Props) {
     super(props);
     this.state ={
       file:null,
@@ -18,27 +27,27 @@ class ModelUploadPage extends React.Component {
     this.fileUpload = this.fileUpload.bind(this)
   }
 
-  submit = (e) => {
+  submit = (e: any) => {
     e.preventDefault() // Stop form submit
-    this.fileUpload(this.state.file).then((response)=>{
+    this.fileUpload(this.state.file).then((response: any)=>{
       console.log(response.data);
     })
   }
 
-  onChange(e) {
+  onChange(e: any) {
     this.setState({file:e.target.files[0]})
   }
 
-  changeTeam = (e) => {
+  changeTeam = (e: any) => {
     this.setState({team: e.target.value})
   }
 
-  fileUpload(file){
-    const url = `${enviroment.backend_url}/prime_moder_tasks/upload_skin`;
+  fileUpload(file: any){
+    const url = `${environment.backend_url}/prime_moder_tasks/upload_skin`;
     const formData = new FormData();
     formData.append('file',file)
-    formData.append('steamID', localStorage.getItem('steam_id'))
-    formData.append('auth_token', localStorage.getItem('auth_token'))
+    formData.append('steamID', localStorage.getItem('steam_id') as string)
+    formData.append('auth_token', localStorage.getItem('auth_token') as string)
     formData.append('model_name', this.state.model_name)
     formData.append('model_team', this.state.team)
     formData.append('model_price', this.state.price)
@@ -53,20 +62,20 @@ class ModelUploadPage extends React.Component {
        steamID: localStorage.getItem('steam_id'),
        auth_token: localStorage.getItem('auth_token')
     }
-    return  post(url, formData,config)
+    return axios.post(url, formData, config)
   }
 
-  changeModelName = (e) =>{
+  changeModelName = (e: any) =>{
     this.setState({model_name: e.target.value})
   }
 
-  changePrice = (e) =>{
+  changePrice = (e: any) =>{
     this.setState({price: e.target.value})
   }
 
   render() {
     return (
-      <form onSubmit={this.onFormSubmit}>
+      <form>
         <h2 className="text-center">Загрузить скин</h2>
         <Form>
           <Form.Control placeholder="Имя скина в shop" onChange={this.changeModelName} required />

@@ -6,7 +6,7 @@ import '../../../stylesheets/personal_page.css'
 
 import Alert from "react-bootstrap/Alert";
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import enviroment from '../../../enviroment'
+import environment from '../../../environment'
 import ContestKey from "./contestKey";
 
 class ContestModerPage extends React.Component {
@@ -27,7 +27,7 @@ class ContestModerPage extends React.Component {
       }
          
       if (localStorage.getItem('m_type') != 'no'){
-         axios.get(`${enviroment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=contest`)
+         axios.get(`${environment.backend_url}/moders/m_points?steam_id=${localStorage.getItem('steam_id')}&m_type=contest`)
          .then(res => {
             this.setState({m_points: res.data.m_points})
          })
@@ -36,7 +36,7 @@ class ContestModerPage extends React.Component {
    
 
    getKeys = () =>{
-      axios.get(`${enviroment.backend_url}/contest_keys/index_keys?steamID=${localStorage.getItem('steam_id')}&auth_token=${localStorage.getItem('auth_token')}`)
+      axios.get(`${environment.backend_url}/contest_keys/index_keys?steamID=${localStorage.getItem('steam_id')}&auth_token=${localStorage.getItem('auth_token')}`)
       .then(res => {
          console.log(res)
          this.setState({
@@ -52,7 +52,7 @@ class ContestModerPage extends React.Component {
 
    report = (e, report, id) =>{
       e.preventDefault()
-      axios.post(`${enviroment.backend_url}/contest_keys/submit_report`,
+      axios.post(`${environment.backend_url}/contest_keys/submit_report`,
       {
          steamID: localStorage.getItem('steam_id'),
          auth_token: localStorage.getItem('auth_token'),
@@ -69,7 +69,7 @@ class ContestModerPage extends React.Component {
 
    genKeys = (e) =>{
       e.preventDefault()
-      axios.post(`${enviroment.backend_url}/contest_keys/generate_keys`,
+      axios.post(`${environment.backend_url}/contest_keys/generate_keys`,
       {
          steamID: localStorage.getItem('steam_id'),
          auth_token: localStorage.getItem('auth_token')
@@ -119,7 +119,6 @@ class ContestModerPage extends React.Component {
       let result = []
       this.state.keys.forEach(key_entity => {
          let reported = key_entity.report == null
-         console.log('reported: '+reported)
          result.push(<ContestKey id={key_entity.id} key_name={key_entity.key} submitt={!reported} report = {this.report}/>)
       });
       return result;

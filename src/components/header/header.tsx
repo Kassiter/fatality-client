@@ -7,7 +7,7 @@ import { FaSteamSymbol, FaUserAlt } from 'react-icons/fa';
 
 import axios from 'axios';
 import PersonalPage from '../personal-page/personalPage';
-import enviroment from '../../enviroment';
+import environment from '../../environment';
 
 interface Props {
   toggleModal(): void
@@ -54,7 +54,7 @@ class Header extends React.Component<Props, State> {
       <Button
         variant="danger"
         className="navbar__pp"
-        href={`${enviroment.backend_url}/auth/steam`}
+        href={`${environment.backend_url}/auth/steam`}
       >
         <FaSteamSymbol className="steam-icon" />
         <div className="navbar__pp-text">

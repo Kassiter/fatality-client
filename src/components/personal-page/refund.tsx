@@ -6,7 +6,7 @@ import '../../stylesheets/personal_page.css';
 
 import Alert from 'react-bootstrap/Alert';
 
-import enviroment from '../../enviroment';
+import environment from '../../environment';
 
 interface Props{
   participating: boolean
@@ -57,7 +57,7 @@ class Refund extends React.Component<Props, State> {
   send = (e: any) => {
     e.preventDefault();
     axios
-      .post(`${enviroment.backend_url}/refund/take_part`, {
+      .post(`${environment.backend_url}/refund/take_part`, {
         buyer_nickname: this.state.buyer_nickname,
         when_buyed: this.state.when_buyed,
         priviliege_type: this.state.priviliege_type,

@@ -2,7 +2,7 @@ import React from 'react';
 import '../../stylesheets/individuals.css';
 import axios from 'axios';
 import IndividualsCard from './individualsCard';
-import enviroment from '../../enviroment';
+import environment from '../../environment';
 import RouletteCard from './rouletteCard';
 
 class Individuals extends React.Component {
@@ -14,7 +14,7 @@ class Individuals extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`${enviroment.backend_url}/personal_features`)
+    axios.get(`${environment.backend_url}/personal_features`)
       .then((res) => {
         this.setState({ personal_features: res.data });
       });

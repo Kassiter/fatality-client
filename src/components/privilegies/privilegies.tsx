@@ -4,7 +4,7 @@ import React from "react";
 import '../../stylesheets/previlegies.css'
 import Tooltip from 'react-bootstrap/Tooltip'
 import axios from 'axios';
-import enviroment from '../../enviroment'
+import environment from '../../environment'
 import InstructionsModal from './instructionsModal';
 
 interface Props{}
@@ -25,7 +25,7 @@ class Privilegies extends React.Component<Props, State> {
    }
 
    componentDidMount(){
-    axios.get(`${enviroment.backend_url}/privilieges_all`)
+    axios.get(`${environment.backend_url}/privilieges_all`)
     .then(res => {
       this.setState({ privilieges: res.data });
     })

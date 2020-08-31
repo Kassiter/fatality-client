@@ -7,7 +7,7 @@ import { FiLogOut } from 'react-icons/fi';
 import '../../stylesheets/personal_page.css'
 import '../../stylesheets/global.css'
 import '../../stylesheets/case.css'
-import enviroment from '../../enviroment'
+import environment from '../../environment'
 import axios from 'axios'
 import { AiFillLock } from 'react-icons/ai';
 
@@ -78,7 +78,7 @@ class CaseModal extends React.Component {
    }
 
    requestItem = (item) => {
-      axios.post(`${enviroment.backend_url}/personal_items/request_random_item`,
+      axios.post(`${environment.backend_url}/personal_items/request_random_item`,
       {
          key: this.state.key,
          email: this.state.email,
@@ -190,7 +190,7 @@ class CaseModal extends React.Component {
    validateKey = (e) =>{
       if (e.target.value.length > 40){
          let keyy = e.target.value
-         axios.post(`${enviroment.backend_url}/personal_items/validate_random_key`,
+         axios.post(`${environment.backend_url}/personal_items/validate_random_key`,
          {
             key: keyy
          })

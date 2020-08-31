@@ -1,7 +1,7 @@
 import React from "react";
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
-import enviroment from '../../enviroment'
+import environment from '../../environment'
 
 interface Props{
    id: number,
@@ -27,7 +27,7 @@ class Contest extends React.Component<Props, State> {
    }
 
    takePart = () =>{
-      axios.post(`${enviroment.backend_url}/contests/take_part`,{
+      axios.post(`${environment.backend_url}/contests/take_part`,{
          contest_id: this.props.id,
          steam_id: localStorage.getItem('steam_id')
       })

@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/header/header';
-import Slider from './components/slider/slider';
 import Individuals from './components/individuals/individuals';
 import Privilegies from './components/privilegies/privilegies';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,7 +11,6 @@ import OpenTestModal from './components/openTestModal/openTestModal';
 import axios from 'axios';
 import environment from './environment';
 import Admins from './components/admins';
-import Preloader from './components/personal-page/preloader';
 
 interface Props{}
 
@@ -88,20 +86,11 @@ class App extends React.Component<Props, State>{
         <Header
           toggleModal={this.toggleModal}
         />
-        <Slider 
-          clearp={this.clearPreloader}
-        />
         <ScrollableAnchor id={'privilegies'} >
           <Privilegies />
         </ScrollableAnchor>
-        <div className='splitter'>
-          <ScrollableAnchor id={'personal-stuff'}><div></div></ScrollableAnchor>
-          <div className='splitter__clip'></div>
-        </div>
-        <Individuals/>
-        <ScrollableAnchor id={'admins'}><div></div></ScrollableAnchor>
-        <Admins/>
-        {this.state.pageLoaded ? '' : <Preloader/>}
+        {/* <ScrollableAnchor id={'admins'}><div></div></ScrollableAnchor> */}
+        {/* <Admins/> */}
       </div>
     );
   }

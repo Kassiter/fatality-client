@@ -1,5 +1,5 @@
 #personal-page .personal-page__header, #personal-page .modal-body, #personal-page .modal-footer{
-   background-color: rgb(19, 19, 19);
+   background-color: rgba(19, 19, 19, 0.76);
    color: white;
 }
 
@@ -13,6 +13,7 @@
 
 #personal-page .modal-content{
    width: fit-content !important;
+   background-color: transparent;
 }
 
 #personal-page .modal-footer{
@@ -34,13 +35,19 @@
 }
 
 #personal-page .nav-link.active{
-   background-color: #c60000;
+   background: #cb2d3e;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
    padding-left: 2px;
    padding-right: 2px;
 }
 
 #personal-page .nav-link.active:hover{
-   background-color: #920000;
+   background: #f85032;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #e73827, #f85032);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #e73827, #f85032); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
    color: white !important;
 }
 
@@ -97,6 +104,19 @@
    background-repeat: no-repeat;
    background-size: 80% 80%;
    background-position: 50% 50%;
+}
+
+.pp_quit{
+   background: #cb2d3e;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   transition-duration: 2s !important;
+}
+
+.pp_quit:hover{
+   background: #f85032;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #e73827, #f85032);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #e73827, #f85032); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #moder-form input.form-control, #moder-form textarea.form-control{

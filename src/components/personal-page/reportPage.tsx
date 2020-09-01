@@ -133,7 +133,7 @@ class ReportPage extends React.Component<Props, State> {
                   Дополнительная информация на Ваше усмотрение.
                </Form.Text>
             </Form.Group>
-            <Button variant="success" type="submit" onClick={(e) => this.send(e)}>
+            <Button variant="success" type="submit" className="custom_success_btn" onClick={(e) => this.send(e)}>
                {this.renderSpinner()}
                Отправить
             </Button>

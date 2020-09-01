@@ -3,7 +3,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import '../../stylesheets/navbar.css';
-import { FaSteamSymbol, FaUserAlt } from 'react-icons/fa';
+import { FaSteamSymbol } from 'react-icons/fa';
+import { RiUserStarFill } from 'react-icons/ri';
 
 import axios from 'axios';
 import PersonalPage from '../personal-page/personalPage';
@@ -45,7 +46,7 @@ class Header extends React.Component<Props, State> {
           className="navbar__pp"
           onClick={this.toggleModal}
         >
-          <FaUserAlt className="steam-icon" />
+          <RiUserStarFill className="steam-icon" />
           <div className="navbar__pp-text">Личный кабинет</div>
         </Button>
       );
@@ -80,12 +81,9 @@ class Header extends React.Component<Props, State> {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#privilegies">Привилегии</Nav.Link>
-            <Nav.Link href="#personal-stuff">Персональные товары</Nav.Link>
             <Nav.Link href="#rules" onClick={this.props.toggleModal}>
               Правила
             </Nav.Link>
-            <Nav.Link href="#home">Розыгрыши</Nav.Link>
-            <Nav.Link href="#admins">Администрация</Nav.Link>
           </Nav>
           {this.renderActionButton()}
         </Navbar.Collapse>

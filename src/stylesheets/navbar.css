@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
 .navbar__logo{
    width: 75px;
@@ -15,11 +17,22 @@
    justify-content: space-around;
    width: fit-content;
    margin-right: 50px;
+   background: #cb2d3e;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   transition-duration: 2s !important;
+}
+
+.navbar__pp:hover{
+   transition-duration: 2s !important;
+   background: #f85032;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #e73827, #f85032);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #e73827, #f85032); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .navbar__pp-text{
    text-transform: uppercase;
-   font-family: 'Roboto', sans-serif;
+   font-family: 'Comfortaa', sans-serif;
    text-align: left;
    margin-left: 5px;
 }
@@ -42,4 +55,23 @@
 
 .navbar--container{
    background-color: rgb(29, 29, 29) !important;
+}
+
+.logo_container{
+   width: 170px;
+   height: 100% !important;
+   display: flex;
+   align-items: flex-end;
+   justify-content: flex-start;
+}
+
+.logo__text{
+   margin-top: 30px !important;
+   z-index: 900;
+   position: absolute;
+   margin-left: 50px !important;
+   color: #700000;
+   font-size: 2em;
+   font-family: 'Poppins', sans-serif;
+   -webkit-text-stroke: 0.3px white;
 }

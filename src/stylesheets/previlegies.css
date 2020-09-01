@@ -3,14 +3,16 @@
 .previlegies-section__container{
    min-width: 100%;
    min-height: 600px;
+   height: fit-content;
    justify-content: space-around !important;
    align-items: space-around !important;
+   background-color: #181818;
 }
 
 .previlegies-section__container .card-deck{
    width: 100%;
-   height: 400px;
-   justify-content: center;
+   height: fit-content;
+   justify-content: space-around;
 }
 
 .previlegies-section__container .card{
@@ -18,8 +20,72 @@
    min-height: 500px !important;
 }
 
+.priviliege{
+   width: 400px;
+   height: 500px;
+   background-size: 110% 100%;
+   background-position-x: center;
+   border-radius: 10px;
+   transition-duration: 0.3s;
+   display: flex;
+   align-items: flex-end;
+}
+
+.darken{
+   width: 100%;
+   height: 120px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: rgba(0, 0, 0, 0.712);
+   background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.712) 0%, rgba(0, 0, 0, 0.712) 52%, rgba(2,29,166,0) 100%);
+   background: -webkit-gradient(left bottom, left bottom, color-stop(0%, rgba(0, 0, 0, 0.712)), color-stop(52%, rgba(0, 0, 0, 0.712)), color-stop(100%, rgba(2,29,166,0)));
+   background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.712) 0%, rgba(0, 0, 0, 0.712) 52%, rgba(2,29,166,0) 100%);
+   background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.712) 0%, rgba(0, 0, 0, 0.712) 52%, rgba(2,29,166,0) 100%);
+   background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.712) 0%, rgba(0, 0, 0, 0.712) 52%, rgba(2,29,166,0) 100%);
+   background: linear-gradient(to top, rgba(0, 0, 0, 0.712) 0%, rgba(0, 0, 0, 0.712) 52%, rgba(2,29,166,0) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#021da6', endColorstr='#021da6', GradientType=0 );
+}
+
+.buy-priv{
+   border: none !important;
+}
+
+.buy_buttons{
+   width: fit-content;
+   margin-top: 50px !important;
+   /* border-width: 3px;
+  border-style: solid;
+  border-image: 
+    linear-gradient(
+      to left, 
+      #28a745, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%; */
+    border: 1pt solid;
+    border-radius: 20px !important;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: linear-gradient(to left, #28a745, #dc3545);
+   display: flex;
+   flex-direction: row;
+   width: fit-content;
+   height: fit-content;
+   transition-duration: 0.2s;
+}
+
+.buy_buttons:hover{
+   border: none;
+}
+
+.priviliege:hover{
+   background-size: 130% 120%;
+   background-position-y: center;
+}
+
 .previlegies-section__container h1{
    padding: 10px;
+   color: white;
 }
 
 .previlegies-section__container .previlegies-card__top{

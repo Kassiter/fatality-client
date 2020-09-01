@@ -14,7 +14,6 @@ import ModerContest from './moderContest';
 import ContestModerPage from './moder_personals/contestModerPage';
 import RulesModerPage from './moder_personals/rulesModerPage';
 import Refund from './refund';
-import TipsModal from './tipsModal';
 import PrimeModerPage from './moder_personals/primeModerPage';
 import ModelUploadPage from './modelUploadPage';
 import MapUploadPage from './mapUploadPage';
@@ -279,13 +278,7 @@ class PersonalPage extends React.Component<Props, State> {
       !localStorage.getItem('m_type')!.includes('no')
     ) {
       return (
-        <Button
-          onClick={this.toggleModal}
-          variant="success"
-          className="mr-50px"
-        >
-          Полезные команды
-        </Button>
+          <></>
       );
     }
   };
@@ -346,13 +339,13 @@ class PersonalPage extends React.Component<Props, State> {
             <Tab eventKey="profile" title="Персональный товар">
               <PersonalItemForm />
             </Tab>
-            <Tab eventKey="giveaway" title="Розыгрыши">
+            {/* <Tab eventKey="giveaway" title="Розыгрыши">
               {this.renderContest()}
-            </Tab>
+            </Tab> */}
 
-            <Tab eventKey="moderators" title="Модерация">
+            {/* <Tab eventKey="moderators" title="Модерация">
               {this.renderModerContest()}
-            </Tab>
+            </Tab> */}
 
             <Tab eventKey="refund" title="Возврат привелегий">
               <Refund participating={this.state.refund_participating} />
@@ -363,19 +356,14 @@ class PersonalPage extends React.Component<Props, State> {
           </Tabs>
         </Modal.Body>
         <Modal.Footer className="justify-content-between">
-          <Button onClick={this.logout} variant="danger" size="sm">
-            <FiLogOut className="h5 mt-2" /> Выход из учётной записи
-          </Button>
-          {this.renderHelpBtn()}
-          <Button onClick={this.props.onHide} variant="light">
+        <Button onClick={this.props.onHide} variant="light">
             Закрыть
           </Button>
+          {this.renderHelpBtn()}
+          <Button onClick={this.logout} variant="danger" size="sm" className='pp_quit'>
+            <FiLogOut className="h5 mt-2" /> Выход из учётной записи
+          </Button>
         </Modal.Footer>
-        <TipsModal
-          show={this.state.tipsModalToggled}
-          mcc={this.state.manageCommandsCategories}
-          onHide={() => this.toggleModal()}
-        />
       </Modal>
     );
   }

@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 
 .btn-danger{
    background-color: #a30000;
@@ -15,11 +17,23 @@
    background-color: #9b0000;
 }
 
+.custom_success_btn{
+   background: #11998e;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #26a757, #00a108);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right,  #26a757, #00a108); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.custom_success_btn:hover{
+   background: #00F260;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to left, #04af4b, #01be4d);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to left, #04af4b, #01be4d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
 h1{
    font-size: 3em;
    text-transform: uppercase;
-   font-family: 'Montserrat', sans-serif;
-   font-weight: 300;
+   font-family: 'Comfortaa', sans-serif;
+   font-weight: 300 !important;
    color: black
 }
 
@@ -27,8 +41,8 @@ h2{
    font-size: 2em;
    padding: 5px;
    text-transform: uppercase;
-   font-family: 'Montserrat', sans-serif;
-   font-weight: 300;
+   font-family: 'Comfortaa', sans-serif;
+   font-weight: 300 !important;
 
 }
 
@@ -36,14 +50,14 @@ h3{
    font-size: 1.3em;
    padding: 5px;
    text-transform: uppercase;
-   font-family: 'Montserrat', sans-serif;
-   font-weight: 300;
+   font-family: 'Comfortaa', sans-serif;
+   font-weight: 300 !important;
 
 }
 
 h4{
-   font-family: 'Montserrat', sans-serif;
-   font-weight: 300;
+   font-family: 'Comfortaa', sans-serif;
+   font-weight: 300 !important;
 }
 
 body::-webkit-scrollbar {
@@ -75,12 +89,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 .btn-price{
-   font-family: 'Montserrat', sans-serif;
+   font-family: 'Comfortaa', sans-serif;
    font-weight: 300;
 }
 
 .switch-on, .switch-off{
-   font-family: 'Montserrat', sans-serif;
+   font-family: 'Comfortaa', sans-serif;
    font-weight: 300;
    font-size: 1.5em;
    display: flex;
@@ -101,12 +115,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 h5{
-   font-family: 'Montserrat', sans-serif;
+   font-family: 'Comfortaa', sans-serif;
 }
 
 .custom-input--transparent{
-   background-color: #00000000 !important;
-   color: white !important;
+   /* background-color: #00000000 !important; */
+   /* color: white !important; */
    font-family: 'Roboto', sans-serif;
    font-weight: 300;
 }

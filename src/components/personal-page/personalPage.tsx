@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { FiLogOut } from 'react-icons/fi';
+import { ImExit } from 'react-icons/im';
 import PersonalItemForm from './personalItemForm';
 import '../../stylesheets/personal_page.css';
 import Tabs from 'react-bootstrap/Tabs';
@@ -67,7 +67,7 @@ class PersonalPage extends React.Component<Props, State> {
       localStorage.getItem('m_type') &&
       !localStorage.getItem('m_type')!.includes('no')
     ) {
-      this.getManageCommandsCategories();
+      // this.getManageCommandsCategories();
     }
 
     if (localStorage.getItem('steam_id64')) {
@@ -84,55 +84,55 @@ class PersonalPage extends React.Component<Props, State> {
 
     let nickname = localStorage.getItem('nickname');
     let steam_id = localStorage.getItem('steam_id');
-    if (nickname) {
-      axios
-        .get(`${environment.backend_url}/users/vip_data?nickname=${nickname}`)
-        .then((res: any) => {
-          this.setState({
-            vip_group: res.data.vip_group,
-            vip_expires: res.data.expires,
-            nickname: nickname,
-            avatar: localStorage.getItem('avatarfull'),
-          });
-        });
+  //   if (nickname) {
+  //     axios
+  //       .get(`${environment.backend_url}/users/vip_data?nickname=${nickname}`)
+  //       .then((res: any) => {
+  //         this.setState({
+  //           vip_group: res.data.vip_group,
+  //           vip_expires: res.data.expires,
+  //           nickname: nickname,
+  //           avatar: localStorage.getItem('avatarfull'),
+  //         });
+  //       });
 
-      axios
-        .get(`${environment.backend_url}/contests?steam_id=${steam_id}`)
-        .then((res) => {
-          if (res.data.contest) {
-            this.setState({
-              contest: res.data.contest,
-            });
-          }
-        });
+  //     axios
+  //       .get(`${environment.backend_url}/contests?steam_id=${steam_id}`)
+  //       .then((res) => {
+  //         if (res.data.contest) {
+  //           this.setState({
+  //             contest: res.data.contest,
+  //           });
+  //         }
+  //       });
 
-      axios
-        .get(`${environment.backend_url}/users/strikes?steamID=${steam_id}`)
-        .then((res) => {
-          this.setState({
-            strikes: res.data.strikes,
-          });
-        });
+  //     axios
+  //       .get(`${environment.backend_url}/users/strikes?steamID=${steam_id}`)
+  //       .then((res) => {
+  //         this.setState({
+  //           strikes: res.data.strikes,
+  //         });
+  //       });
 
-      axios
-        .get(`${environment.backend_url}/moder_contests?steam_id=${steam_id}`)
-        .then((res) => {
-          this.setState({
-            moder_contest: res.data.contest,
-            moder_contest_winner: res.data.winner,
-          });
-        });
+  //     axios
+  //       .get(`${environment.backend_url}/moder_contests?steam_id=${steam_id}`)
+  //       .then((res) => {
+  //         this.setState({
+  //           moder_contest: res.data.contest,
+  //           moder_contest_winner: res.data.winner,
+  //         });
+  //       });
 
-      axios
-        .get(
-          `${environment.backend_url}/refund/participating?steam_id=${steam_id}`
-        )
-        .then((res) => {
-          this.setState({
-            refund_participating: res.data.participating,
-          });
-        });
-    }
+  //     axios
+  //       .get(
+  //         `${environment.backend_url}/refund/participating?steam_id=${steam_id}`
+  //       )
+  //       .then((res) => {
+  //         this.setState({
+  //           refund_participating: res.data.participating,
+  //         });
+  //       });
+  //   }
   }
 
   logout = () => {
@@ -315,13 +315,13 @@ class PersonalPage extends React.Component<Props, State> {
                 <div className="row profile__feature">
                   <div
                     className="profile__avatar"
-                    style={{ backgroundImage: `url(${this.state.avatar})` }}
+                    style={{ backgroundImage: `url(${localStorage.getItem('avatarfull')})` }}
                   ></div>
                 </div>
                 <div className="row profile__nickname">
-                  <h2>{this.state.nickname}</h2>
+                  <h2>{localStorage.getItem('nickname')}</h2>
                 </div>
-                <div className="row profile__feature--point">
+                {/* <div className="row profile__feature--point">
                   <h3 className="text-left">
                     <span className="text-muted">Привилегия: </span>
                     {this.state.vip_group}
@@ -332,7 +332,7 @@ class PersonalPage extends React.Component<Props, State> {
                     <span className="text-muted">Истекает: </span>
                     {this.state.vip_expires}
                   </h3>
-                </div>
+                </div> */}
                 {this.renderStrikes()}
               </div>
             </Tab>
@@ -361,7 +361,7 @@ class PersonalPage extends React.Component<Props, State> {
           </Button>
           {this.renderHelpBtn()}
           <Button onClick={this.logout} variant="danger" size="sm" className='pp_quit'>
-            <FiLogOut className="h5 mt-2" /> Выход из учётной записи
+            <ImExit className="h5 mt-2" /> Выход из учётной записи
           </Button>
         </Modal.Footer>
       </Modal>

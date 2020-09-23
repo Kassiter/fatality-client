@@ -3,7 +3,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import '../../stylesheets/navbar.css';
-import { FaSteamSymbol } from 'react-icons/fa';
+import { FaSteam } from 'react-icons/fa';
 import { RiUserStarFill } from 'react-icons/ri';
 
 import axios from 'axios';
@@ -57,11 +57,9 @@ class Header extends React.Component<Props, State> {
         className="navbar__pp"
         href={`${environment.backend_url}/auth/steam`}
       >
-        <FaSteamSymbol className="steam-icon" />
+        <FaSteam className="steam-icon" />
         <div className="navbar__pp-text">
           войти
-          <br />
-          через Steam
         </div>
       </Button>
     );

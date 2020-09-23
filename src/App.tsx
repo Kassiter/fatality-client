@@ -11,6 +11,7 @@ import OpenTestModal from './components/openTestModal/openTestModal';
 import axios from 'axios';
 import environment from './environment';
 import Admins from './components/admins';
+import WebGL from './webGL'
 
 interface Props{}
 

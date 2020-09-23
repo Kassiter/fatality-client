@@ -9,10 +9,21 @@
    background-color: #181818;
 }
 
+.flash{
+   position: absolute;
+   z-index: 1002;
+   background-color: silver;
+   width: 50px;
+   height: 100%;
+   clip-path: polygon(0 0, 30% 0, 50% 100%, 20% 100%);
+   width: 117px;
+   height: 450px;
+}
+
 .previlegies-section__container .card-deck{
-   width: 100%;
    height: fit-content;
    justify-content: space-around;
+   padding-bottom: 14px;
 }
 
 .previlegies-section__container .card{
@@ -21,13 +32,15 @@
 }
 
 .priviliege{
-   width: 400px;
-   height: 500px;
+   width: 368px;
+   height: 406px;
    background-size: 110% 100%;
    background-position-x: center;
    border-radius: 10px;
    transition-duration: 0.3s;
    display: flex;
+   margin-left: 95px;
+   margin-top: 33px;
    align-items: flex-end;
 }
 

@@ -35,21 +35,26 @@
 }
 
 #personal-page .nav-link.active{
-   background: #cb2d3e;  /* fallback for old browsers */
-   background: -webkit-linear-gradient(to right, #ef473a, #cb2d3e);  /* Chrome 10-25, Safari 5.1-6 */
-   background: linear-gradient(to right, #ef473a, #cb2d3e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-   padding-left: 2px;
+   background: transparent;
+   border: none;
+   border-bottom: 1pt solid transparent;
+   border-image: linear-gradient(to right, #ef473a, #cb2d3e);
+   border-image-slice: 1;
    padding-right: 2px;
 }
 
-#personal-page .nav-link.active:hover{
-   background: #f85032;  /* fallback for old browsers */
-   background: -webkit-linear-gradient(to right, #e73827, #f85032);  /* Chrome 10-25, Safari 5.1-6 */
-   background: linear-gradient(to right, #e73827, #f85032); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+#personal-page .nav-link:hover{
+   /* background: #f85032;  
+   background: -webkit-linear-gradient(to right, #e73827, #f85032); 
+   background: linear-gradient(to right, #e73827, #f85032); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   border: none;
+   border-bottom: 1pt solid transparent;
+   border-image: linear-gradient(to right, #4b120d, #cb2d3e);
+   border-image-slice: 1;
+   padding-right: 2px;
    color: white !important;
 }
+
 
 #personal-page .tab-pane{
    margin-top: 10px;

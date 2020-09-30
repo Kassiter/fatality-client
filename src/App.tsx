@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/header/header';
-import Individuals from './components/individuals/individuals';
 import Privilegies from './components/privilegies/privilegies';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './stylesheets/global.css'
@@ -10,7 +9,6 @@ import ScrollableAnchor from 'react-scrollable-anchor';
 import OpenTestModal from './components/openTestModal/openTestModal';
 import axios from 'axios';
 import environment from './environment';
-import Admins from './components/admins';
 import WebGL from './webGL'
 
 interface Props{}
@@ -90,8 +88,6 @@ class App extends React.Component<Props, State>{
         <ScrollableAnchor id={'privilegies'} >
           <Privilegies />
         </ScrollableAnchor>
-        {/* <ScrollableAnchor id={'admins'}><div></div></ScrollableAnchor> */}
-        {/* <Admins/> */}
       </div>
     );
   }

@@ -5,7 +5,6 @@ import '../../stylesheets/previlegies.css'
 import Tooltip from 'react-bootstrap/Tooltip'
 import axios from 'axios';
 import environment from '../../environment'
-import InstructionsModal from './instructionsModal';
 
 interface Props{}
 
@@ -71,7 +70,6 @@ class Privilegies extends React.Component<Props, State> {
                <CardDeck>
                   {this.renderCards()}
                </CardDeck>
-               <InstructionsModal show={this.state.instructionShown} onHide={this.showInstructionModal} />
             </div>
         );
     }
